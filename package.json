@@ -1,0 +1,34 @@
+{
+  "name": "particle-develop",
+  "version": "0.1.0",
+  "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "es6-shim": "^0.34.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-typescript": "^2.10.0",
+    "harmony-reflect": "^1.4.2",
+    "tsify": "^0.13.2",
+    "typescript": "^1.7.5",
+    "typings": "^0.6.6"
+  },
+  "scripts": {
+    "install": "typings install",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build-particle-system;",
+    "copyfile": "cp ../core/libs/asset-shapes.js asset-shapes.js ",
+    "build-particle-system": "browserify src/particle-bundle.ts -p [ tsify --noImplicitAny --target 'es5'] --outDir 'tmp' > libs/particle-system.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ics-creative/project-particle-develop.git"
+  },
+  "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ics-creative/project-particle-develop/issues"
+  },
+  "homepage": "https://github.com/ics-creative/project-particle-develop#readme"
+}

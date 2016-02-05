@@ -1,0 +1,15 @@
+{
+  "dependencies": {},
+  "devDependencies": {},
+  "ambientDevDependencies": {
+    "createjs": "github:DefinitelyTyped/DefinitelyTyped/createjs/createjs.d.ts#1d345f6c1471fab46b7eb54ebe90013f578c78ca",
+    "createjs-lib": "github:DefinitelyTyped/DefinitelyTyped/createjs-lib/createjs-lib.d.ts#17d36657b89ab615ece6425b7d6555ff8855ad24",
+    "easeljs": "github:DefinitelyTyped/DefinitelyTyped/easeljs/easeljs.d.ts#13dc65314e7f3387086cacc36d53543fa75aa7d9"
+  },
+  "ambientDependencies": {
+    "createjs": "github:DefinitelyTyped/DefinitelyTyped/createjs/createjs.d.ts#1d345f6c1471fab46b7eb54ebe90013f578c78ca",
+    "preloadjs": "github:DefinitelyTyped/DefinitelyTyped/preloadjs/preloadjs.d.ts#89aedb70c31297a6ff6398f63c46448ac0189b28",
+    "soundjs": "github:DefinitelyTyped/DefinitelyTyped/soundjs/soundjs.d.ts#c9b2b234a5f8f28df50ded178be61786f2204518",
+    "tweenjs": "github:DefinitelyTyped/DefinitelyTyped/tweenjs/tweenjs.d.ts#48f20e97bfaf70fc1a9537b38aed98e9749be0ae"
+  }
+}
