@@ -1,13 +1,21 @@
-"use strict";
-var ShapeGenerator = (function () {
-    function ShapeGenerator() {
+System.register([], function(exports_1) {
+    "use strict";
+    var ShapeGenerator;
+    return {
+        setters:[],
+        execute: function() {
+            ShapeGenerator = (function () {
+                function ShapeGenerator() {
+                }
+                ShapeGenerator.prototype.generateShape = function (id) {
+                    var namespaceObj = window["lib"];
+                    var cls = namespaceObj[id];
+                    return new cls();
+                };
+                return ShapeGenerator;
+            })();
+            exports_1("ShapeGenerator", ShapeGenerator);
+        }
     }
-    ShapeGenerator.prototype.generateShape = function (id) {
-        var namespaceObj = window["lib"];
-        var cls = namespaceObj[id];
-        return new cls();
-    };
-    return ShapeGenerator;
-})();
-exports.ShapeGenerator = ShapeGenerator;
+});
 //# sourceMappingURL=shape-generator.js.map

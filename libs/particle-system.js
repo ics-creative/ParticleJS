@@ -278,7 +278,6 @@ var ParticleEmitter = (function () {
 exports.ParticleEmitter = ParticleEmitter;
 
 },{"../assets/shape-generator":1,"../enum/alpha-curve-type":3,"./particle":6}],6:[function(require,module,exports){
-///<reference path="../../typings/main.d.ts" />
 "use strict";
 var data_color_1 = require("../data/data-color");
 /**

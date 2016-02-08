@@ -1,5 +1,3 @@
-///<reference path="../../typings/main.d.ts" />
-
 "use strict";
 
 import {ColorData} from "../data/data-color";
