@@ -1,4 +1,3 @@
-
 "use strict";
 
 import {Particle} from "./particle";
@@ -113,6 +112,39 @@ export class ParticleEmitter {
         i--;
       }
     }
+  }
+
+  /**
+   * パーティクルをいったんすべて削除する
+   */
+  public clear() {
+    for (let i = 0; i < this._activeParticles.length; i++) {
+      let particle = this._activeParticles[i];
+      particle.isAlive = false;
+      this.container.removeChild(particle.particleShape);
+      this._activeParticles.splice(i, 1);
+      this._particlesPool.push(particle);
+      i--;
+    }
+  }
+
+  /**
+   * パーティクルシステムを破棄します
+   */
+  public dispose() {
+    for (let i = 0; i < this._activeParticles.length; i++) {
+      let particle = this._activeParticles[i];
+      particle.isAlive = false;
+      this.container.removeChild(particle.particleShape);
+    }
+
+    this._activeParticles.splice(0, this._activeParticles.length);
+    this._particlesPool.splice(0, this._particlesPool.length);
+
+    this._activeParticles = null;
+    this._particlesPool = null;
+
+    this.container = null;
   }
 
   /**

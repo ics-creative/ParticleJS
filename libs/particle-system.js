@@ -124,6 +124,34 @@ var ParticleEmitter = (function () {
         }
     };
     /**
+     * パーティクルをいったんすべて削除する
+     */
+    ParticleEmitter.prototype.clear = function () {
+        for (var i = 0; i < this._activeParticles.length; i++) {
+            var particle = this._activeParticles[i];
+            particle.isAlive = false;
+            this.container.removeChild(particle.particleShape);
+            this._activeParticles.splice(i, 1);
+            this._particlesPool.push(particle);
+            i--;
+        }
+    };
+    /**
+     * パーティクルシステムを破棄します
+     */
+    ParticleEmitter.prototype.dispose = function () {
+        for (var i = 0; i < this._activeParticles.length; i++) {
+            var particle = this._activeParticles[i];
+            particle.isAlive = false;
+            this.container.removeChild(particle.particleShape);
+        }
+        this._activeParticles.splice(0, this._activeParticles.length);
+        this._particlesPool.splice(0, this._particlesPool.length);
+        this._activeParticles = null;
+        this._particlesPool = null;
+        this.container = null;
+    };
+    /**
      * パーティクルの生成（インターバルチェックする）
      */
     ParticleEmitter.prototype.emit = function () {
