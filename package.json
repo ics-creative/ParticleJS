@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
   "main": "index.js",
-  "dependencies": {},
   "devDependencies": {
     "browserify": "^13.0.0",
     "es6-shim": "^0.34.2",
@@ -12,14 +11,17 @@
     "harmony-reflect": "^1.4.2",
     "tsify": "^0.13.2",
     "typescript": "^1.7.5",
-    "typings": "^0.6.6"
+    "typings": "^0.6.6",
+    "uglify-js": "^2.6.1"
   },
   "scripts": {
     "install": "typings install",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build-particle-system;",
-    "copyfile": "cp ../core/libs/asset-shapes.js asset-shapes.js ",
-    "build-particle-system": "browserify src/particle-bundle.ts -p [ tsify --noImplicitAny --target 'es5'] --outDir 'tmp' > libs/particle-system.js"
+    "start": "npm run build-particle-system ; npm run uglify;npm run clear-tmp",
+    "clear-tmp": "rm particle-system.js.tmp",
+    "copyfile": "cp ../core/libs/asset-shapes.js asset-shapes.js",
+    "uglify": "uglifyjs --compress --mangle -- particle-system.js.tmp > libs/particle-system.js",
+    "build-particle-system": "browserify src/particle-bundle.ts -p [ tsify --noImplicitAny --target 'es5'] --outDir 'tmp' > particle-system.js.tmp"
   },
   "repository": {
     "type": "git",
