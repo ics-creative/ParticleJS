@@ -206,7 +206,11 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                         : this._drawingData.shapeIdList[r];
                     particle.colorCommand = null;
                     var container = this.shapeGenerator.generateShape(shapeId);
+                    particle.particleShape.addChild(container);
                     var shape = container.getChildAt(0); // こういう作りにする
+                    if (shape == null) {
+                        return;
+                    }
                     var instructions = shape.graphics.instructions;
                     if (instructions && instructions.length > 0) {
                         for (var i = 0; i < instructions.length; i++) {
@@ -231,7 +235,6 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                             }
                         }
                     }
-                    particle.particleShape.addChild(container);
                 };
                 /**
                  * 一定範囲の数値を計算します。

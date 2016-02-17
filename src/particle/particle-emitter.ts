@@ -265,7 +265,13 @@ export class ParticleEmitter {
     particle.colorCommand = null;
 
     let container = <createjs.Container> this.shapeGenerator.generateShape(shapeId);
+    particle.particleShape.addChild(container);
+
     let shape = <createjs.Shape> container.getChildAt(0); // こういう作りにする
+
+    if( shape == null ) {
+      return ;
+    }
 
     let instructions = shape.graphics.instructions;
     if (instructions && instructions.length > 0) {
@@ -296,7 +302,6 @@ export class ParticleEmitter {
         }
       }
     }
-    particle.particleShape.addChild(container);
   }
 
   /**
