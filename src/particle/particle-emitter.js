@@ -92,7 +92,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     }
                 };
                 /**
-                 * パーティクルをいったんすべて削除する
+                 * パーティクルを全て削除します。
                  */
                 ParticleEmitter.prototype.clear = function () {
                     for (var i = 0; i < this._activeParticles.length; i++) {
@@ -105,7 +105,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     }
                 };
                 /**
-                 * パーティクルシステムを破棄します
+                 * パーティクルシステムを破棄します。
                  */
                 ParticleEmitter.prototype.dispose = function () {
                     for (var i = 0; i < this._activeParticles.length; i++) {

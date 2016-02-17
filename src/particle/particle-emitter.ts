@@ -115,7 +115,7 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルをいったんすべて削除する
+   * パーティクルを全て削除します。
    */
   public clear() {
     for (let i = 0; i < this._activeParticles.length; i++) {
@@ -129,7 +129,7 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルシステムを破棄します
+   * パーティクルシステムを破棄します。
    */
   public dispose() {
     for (let i = 0; i < this._activeParticles.length; i++) {
