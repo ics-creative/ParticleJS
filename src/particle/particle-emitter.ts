@@ -249,13 +249,13 @@ export class ParticleEmitter {
 
     particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
     particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
-    particle.startColor.satuation = this.calcRandomValueWithVariance(startColor.satuation, startColor.satuationVariance, false);
+    particle.startColor.saturation = this.calcRandomValueWithVariance(startColor.saturation, startColor.saturationVariance, false);
 
     let hue = Number(particle.startColor.hue);
-    let satuation = Number(particle.startColor.satuation);
+    let saturation = Number(particle.startColor.saturation);
     let luminance = Number(particle.startColor.luminance);
 
-    let color = `hsl(${hue}, ${satuation}%, ${luminance}%)`;
+    let color = `hsl(${hue}, ${saturation}%, ${luminance}%)`;
 
     let r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
     let shapeId = ( this._drawingData.shapeIdList.length == 0 )
@@ -283,7 +283,7 @@ export class ParticleEmitter {
             // 昔のグラデーションを保持
             let oldStyle = <any> cmd.style;
             let g = ParticleEmitter.HELPER_GRAPHICS;
-            let newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${satuation}%, ${luminance}%, 0)`],
+            let newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${saturation}%, ${luminance}%, 0)`],
               oldStyle.props.ratios,
               oldStyle.props.x0,
               oldStyle.props.y0,

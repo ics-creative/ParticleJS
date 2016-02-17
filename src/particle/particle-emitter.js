@@ -195,11 +195,11 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     var startColor = this._drawingData.startColor;
                     particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
                     particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
-                    particle.startColor.satuation = this.calcRandomValueWithVariance(startColor.satuation, startColor.satuationVariance, false);
+                    particle.startColor.saturation = this.calcRandomValueWithVariance(startColor.saturation, startColor.saturationVariance, false);
                     var hue = Number(particle.startColor.hue);
-                    var satuation = Number(particle.startColor.satuation);
+                    var saturation = Number(particle.startColor.saturation);
                     var luminance = Number(particle.startColor.luminance);
-                    var color = "hsl(" + hue + ", " + satuation + "%, " + luminance + "%)";
+                    var color = "hsl(" + hue + ", " + saturation + "%, " + luminance + "%)";
                     var r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
                     var shapeId = (this._drawingData.shapeIdList.length == 0)
                         ? ''
@@ -221,7 +221,7 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                                     // 昔のグラデーションを保持
                                     var oldStyle = cmd.style;
                                     var g = ParticleEmitter.HELPER_GRAPHICS;
-                                    var newStyle = g.beginRadialGradientFill([color, ("hsla(" + hue + ", " + satuation + "%, " + luminance + "%, 0)")], oldStyle.props.ratios, oldStyle.props.x0, oldStyle.props.y0, oldStyle.props.r0, oldStyle.props.x1, oldStyle.props.y1, oldStyle.props.r1).command;
+                                    var newStyle = g.beginRadialGradientFill([color, ("hsla(" + hue + ", " + saturation + "%, " + luminance + "%, 0)")], oldStyle.props.ratios, oldStyle.props.x0, oldStyle.props.y0, oldStyle.props.r0, oldStyle.props.x1, oldStyle.props.y1, oldStyle.props.r1).command;
                                     instructions[i] = newStyle;
                                 }
                                 else {

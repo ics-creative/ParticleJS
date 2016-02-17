@@ -8,8 +8,8 @@ System.register([], function(exports_1) {
                 function ColorData() {
                     this.hue = 0;
                     this.hueVariance = 0;
-                    this.satuation = 0;
-                    this.satuationVariance = 0;
+                    this.saturation = 0;
+                    this.saturationVariance = 0;
                     this.luminance = 0;
                     this.luminanceVariance = 0;
                 }
