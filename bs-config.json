@@ -1,0 +1,6 @@
+{
+  "port": 8000,
+  "files": ["./libs/**/*.{html,htm,css,js}"],
+  "server": { "baseDir": "." },"index" : "examples/sample01.html"
+
+}
