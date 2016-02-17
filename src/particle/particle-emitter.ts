@@ -196,7 +196,7 @@ export class ParticleEmitter {
       particle = new Particle();
     }
 
-    this.setParticleParamater(particle);
+    this.setParticleParameter(particle);
 
     return particle;
   }
@@ -205,7 +205,7 @@ export class ParticleEmitter {
    * パーティクルパラメータの設定
    * @param particle
    */
-  private setParticleParamater(particle:Particle):void {
+  private setParticleParameter(particle:Particle):void {
 
     particle.particleShape.removeAllChildren();
 

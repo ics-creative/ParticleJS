@@ -159,14 +159,14 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     else {
                         particle = new particle_1.Particle();
                     }
-                    this.setParticleParamater(particle);
+                    this.setParticleParameter(particle);
                     return particle;
                 };
                 /**
                  * パーティクルパラメータの設定
                  * @param particle
                  */
-                ParticleEmitter.prototype.setParticleParamater = function (particle) {
+                ParticleEmitter.prototype.setParticleParameter = function (particle) {
                     particle.particleShape.removeAllChildren();
                     particle.isAlive = true;
                     particle.x = this.calcRandomValueWithVariance(this._drawingData.startX, this._drawingData.startXVariance, false);
