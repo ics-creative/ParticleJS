@@ -17,6 +17,11 @@ export class ParticleEmitter {
   private _activeParticles:Particle[];
   private _drawingData:DrawingData;
   private _frameCount:number = 0;
+  private _playing:boolean;
+
+  public isPlaying() : boolean{
+    return this._playing;
+  }
 
   constructor() {
     this._particlesPool = [];
@@ -28,6 +33,8 @@ export class ParticleEmitter {
     this.container.mouseChildren = false;
     this.container.mouseEnabled = false;
 
+    this._playing = true;
+
     this.shapeGenerator = new ShapeGenerator();
   }
 
@@ -35,6 +42,10 @@ export class ParticleEmitter {
 
   public update(drawingData:DrawingData) {
     this._drawingData = drawingData;
+
+    if( !this._playing ) {
+      return;
+    }
 
     this.emit();
     this.animate();
@@ -302,6 +313,20 @@ export class ParticleEmitter {
         }
       }
     }
+  }
+
+  /**
+   * 一時的にパーティクルの再生を停止します。
+   */
+  public pause() : void{
+    this._playing = false;
+  }
+
+  /**
+   * pause()で停止したパーティクルの再生を再開します。
+   */
+  public resume() : void{
+    this._playing = true;
   }
 
   /**

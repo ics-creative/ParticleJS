@@ -24,10 +24,17 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                     // パフォーマンス向上の基本テクニック
                     this.container.mouseChildren = false;
                     this.container.mouseEnabled = false;
+                    this._playing = true;
                     this.shapeGenerator = new shape_generator_1.ShapeGenerator();
                 }
+                ParticleEmitter.prototype.isPlaying = function () {
+                    return this._playing;
+                };
                 ParticleEmitter.prototype.update = function (drawingData) {
                     this._drawingData = drawingData;
+                    if (!this._playing) {
+                        return;
+                    }
                     this.emit();
                     this.animate();
                     this.lifeCheck();
@@ -235,6 +242,18 @@ System.register(["./particle", "../assets/shape-generator", "../enum/alpha-curve
                             }
                         }
                     }
+                };
+                /**
+                 * 一時的にパーティクルの再生を停止します。
+                 */
+                ParticleEmitter.prototype.pause = function () {
+                    this._playing = false;
+                };
+                /**
+                 * pause()で停止したパーティクルの再生を再開します。
+                 */
+                ParticleEmitter.prototype.resume = function () {
+                    this._playing = true;
                 };
                 /**
                  * 一定範囲の数値を計算します。
