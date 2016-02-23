@@ -34,5 +34,10 @@
   "bugs": {
     "url": "https://github.com/ics-creative/project-particle-develop/issues"
   },
-  "homepage": "https://github.com/ics-creative/project-particle-develop#readme"
+  "homepage": "https://github.com/ics-creative/project-particle-develop#readme",
+  "dependencies": {
+    "del": "^2.2.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^1.5.3"
+  }
 }
