@@ -3,4 +3,5 @@
 
 import {ParticleEmitter} from "./particle/particle-emitter";
 
-(<any>window).ParticleEmitter = ParticleEmitter;
+(<any>window).effects = (<any>window).effects || {};
+(<any>window).effects.ParticleEmitter = ParticleEmitter;
