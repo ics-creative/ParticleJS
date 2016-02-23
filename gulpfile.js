@@ -26,10 +26,13 @@ gulp.task("uglify", shell.task([
     ])
 );
 
+
 gulp.task("build-particle-system", shell.task([
-      "browserify src/particle-bundle.ts -p [ tsify --noImplicitAny --target 'es5'] --outDir 'tmp' > particle-system.js.tmp"
-    ])
+    "tsc -p src --module 'commonjs'",
+    "browserify src/particle-bundle.js > particle-system.js.tmp"
+  ])
 );
+
 gulp.task('clean-tmp', function(cb) {
   del(['particle-system.js.tmp', 'particle-system.js.concat'], cb);
 });

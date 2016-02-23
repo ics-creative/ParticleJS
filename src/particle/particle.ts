@@ -16,7 +16,6 @@ export class Particle {
   /** パーティクルの生存期間（フレーム数）です。 */
   public totalLife:number;
 
-
   /** パーティクルの現在のx位置です。 */
   public x:number;
   /** パーティクルの現在のy位置です。 */
@@ -46,7 +45,8 @@ export class Particle {
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
   public colorCommand:any;
 
-  alphaCurveType:number;
+  /** アルファカーブ */
+  public alphaCurveType:number;
 
   constructor() {
     this.particleShape = new createjs.Container;

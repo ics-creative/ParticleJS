@@ -14,20 +14,17 @@
 
 <script>
 
-  var script = new effects.ParticleEmitter();
+  var emitter = new effects.ParticleEmitter();
   var stage = new createjs.Stage("myCanvas");
 
   window.addEventListener("load", function () {
 
-    stage.addChild(script.container);
+    stage.addChild(emitter.container);
     createjs.Ticker.framerate = 60;
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.addEventListener("tick", handleTick);
 
-  });
-
-  function handleTick() {
-    script.update(
+    emitter.setData(
       {
         "bgColor": "#00000",
         "width": 611.3333333333334,
@@ -67,6 +64,11 @@
         "alphaCurveType": "0"
       }
     );
+
+  });
+
+  function handleTick() {
+    emitter.update();
     stage.update();
 
   }

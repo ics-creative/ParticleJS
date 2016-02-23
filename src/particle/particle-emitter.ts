@@ -19,11 +19,12 @@ export class ParticleEmitter {
   private _frameCount:number = 0;
   private _playing:boolean;
 
-  public isPlaying() : boolean{
+  public isPlaying():boolean {
     return this._playing;
   }
 
   constructor() {
+    this._drawingData = new DrawingData();
     this._particlesPool = [];
     this._activeParticles = [];
 
@@ -40,10 +41,13 @@ export class ParticleEmitter {
 
   private shapeGenerator:ShapeGenerator;
 
-  public update(drawingData:DrawingData) {
+  public setData(drawingData:DrawingData) {
     this._drawingData = drawingData;
+  }
 
-    if( !this._playing ) {
+  public update() {
+
+    if (!this._playing) {
       return;
     }
 
@@ -280,8 +284,8 @@ export class ParticleEmitter {
 
     let shape = <createjs.Shape> container.getChildAt(0); // こういう作りにする
 
-    if( shape == null ) {
-      return ;
+    if (shape == null) {
+      return;
     }
 
     let instructions = shape.graphics.instructions;
@@ -318,14 +322,14 @@ export class ParticleEmitter {
   /**
    * 一時的にパーティクルの再生を停止します。
    */
-  public pause() : void{
+  public pause():void {
     this._playing = false;
   }
 
   /**
    * pause()で停止したパーティクルの再生を再開します。
    */
-  public resume() : void{
+  public resume():void {
     this._playing = true;
   }
 
@@ -366,5 +370,434 @@ export class ParticleEmitter {
    */
   private calcCurrentValue(start:number, end:number, life:number):number {
     return Number(start) * life + Number(end) * (1 - life);
+  }
+
+  /**
+   * 1秒あたりの発生数です。
+   * @param value
+   */
+  public set emitFrequency(value:number) {
+    this._drawingData.emitFrequency = value;
+  }
+
+  /**
+   * 1秒あたりの発生数です。
+   * @returns {number}
+   */
+  public get emitFrequency():number {
+    return this._drawingData.emitFrequency;
+  }
+
+
+  /**
+   * 発生基準位置 - X座標 (px)です。
+   * @param value
+   */
+  public set startX(value:number) {
+    this._drawingData.startX = value;
+  }
+
+  /**
+   * 発生基準位置 - X座標 (px)です。
+   * @returns {number}
+   */
+  public get startX():number {
+    return this._drawingData.startX;
+  }
+
+  /**
+   * 発生基準位置 - X座標のばらつき (px)です。
+   * @param value
+   */
+  public set startXVariance(value:number) {
+    this._drawingData.startXVariance = value;
+  }
+
+
+  /**
+   * 発生基準位置 - X座標のばらつき (px)です。
+   * @returns {number}
+   */
+  public get startXVariance():number {
+    return this._drawingData.startX;
+  }
+
+
+  /**
+   * 発生位置 - Y座標 (px)です。
+   * @param value
+   */
+  public set startY(value:number) {
+    this._drawingData.startY = value;
+  }
+
+
+  /**
+   * 発生位置 - Y座標 (px)です。
+   * @returns {number}
+   */
+  public get startY():number {
+    return this._drawingData.startY;
+  }
+
+  /**
+   * 発生基準位置 - X座標のばらつき (px)です。
+   * @param value
+   */
+  public set startYVariance(value:number) {
+    this._drawingData.startYVariance = value;
+  }
+
+
+  /**
+   * 発生基準位置 - X座標のばらつき (px)です。
+   * @returns {number}
+   */
+  public get startYVariance():number {
+    return this._drawingData.startYVariance;
+  }
+
+  /**
+   * 初期速度 - 方向 (度)です。
+   * @param value
+   */
+  public set initialDirection(value:number) {
+    this._drawingData.initialDirection = value;
+  }
+
+
+  /**
+   * 初期速度 - 方向 (度)です。
+   * @returns {number}
+   */
+  public get initialDirection():number {
+    return this._drawingData.initialDirection;
+  }
+
+  /**
+   * 初期速度 - 方向のばらつき (度)です。
+   * @param value
+   */
+  public set initialDirectionVariance(value:number) {
+    this._drawingData.initialDirectionVariance = value;
+  }
+
+
+  /**
+   * 初期速度 - 方向のばらつき (度)です。
+   * @returns {number}
+   */
+  public get initialDirectionVariance():number {
+    return this._drawingData.initialDirectionVariance;
+  }
+
+  /**
+   * 初期速度 (px)です。
+   * @param value
+   */
+  public set initialSpeed(value:number) {
+    this._drawingData.initialSpeed = value;
+  }
+
+
+  /**
+   * 初期速度 (px)です。
+   * @returns {number}
+   */
+  public get initialSpeed():number {
+    return this._drawingData.initialSpeed;
+  }
+
+  /**
+   * 初期速度のばらつきです。
+   * @param value
+   */
+  public set initialSpeedVariance(value:number) {
+    this._drawingData.initialSpeedVariance = value;
+  }
+
+
+  /**
+   * 初期速度のばらつきです。
+   * @returns {number}
+   */
+  public get initialSpeedVariance():number {
+    return this._drawingData.initialSpeedVariance;
+  }
+
+  /**
+   * 摩擦です。
+   * @param value
+   */
+  public set friction(value:number) {
+    this._drawingData.friction = value;
+  }
+
+
+  /**
+   * 摩擦です。
+   * @returns {number}
+   */
+  public get friction():number {
+    return this._drawingData.friction;
+  }
+
+  /**
+   * 重力です。
+   * @param value
+   */
+  public set accelerationSpeed(value:number) {
+    this._drawingData.accelerationSpeed = value;
+  }
+
+
+  /**
+   * 重力です。
+   * @returns {number}
+   */
+  public get accelerationSpeed():number {
+    return this._drawingData.accelerationSpeed;
+  }
+
+  /**
+   * 重力方向 (度)です。
+   * @param value
+   */
+  public set accelerationDirection(value:number) {
+    this._drawingData.accelerationDirection = value;
+  }
+
+  /**
+   * 重力です。
+   * @returns {number}
+   */
+  public get accelerationDirection():number {
+    return this._drawingData.accelerationDirection;
+  }
+
+  /**
+   * 開始時のスケールです。
+   * @param value
+   */
+  public set startScale(value:number) {
+    this._drawingData.startScale = value;
+  }
+
+  /**
+   * 開始時のスケールです。
+   * @returns {number}
+   */
+  public get startScale():number {
+    return this._drawingData.startScale;
+  }
+
+  /**
+   * 開始時のスケールのばらつきです。
+   * @param value
+   */
+  public set startScaleVariance(value:number) {
+    this._drawingData.startScaleVariance = value;
+  }
+
+  /**
+   * 開始時のスケールのばらつきです。
+   * @returns {number}
+   */
+  public get startScaleVariance():number {
+    return this._drawingData.startScaleVariance;
+  }
+
+  /**
+   * 終了時のスケールです。
+   * @param value
+   */
+  public set finishScale(value:number) {
+    this._drawingData.finishScale = value;
+  }
+
+  /**
+   * 終了時のスケールです。
+   * @returns {number}
+   */
+  public get finishScale():number {
+    return this._drawingData.finishScale;
+  }
+
+  /**
+   * 終了時のスケールのばらつきです。
+   * @param value
+   */
+  public set finishScaleVariance(value:number) {
+    this._drawingData.finishScaleVariance = value;
+  }
+
+  /**
+   * 終了時のスケールのばらつきです。
+   * @returns {number}
+   */
+  public get finishScaleVariance():number {
+    return this._drawingData.finishScaleVariance;
+  }
+
+  /**
+   * ライフ(フレーム数)です。
+   * @param value
+   */
+  public set lifeSpan(value:number) {
+    this._drawingData.lifeSpan = value;
+  }
+
+  /**
+   * ライフ(フレーム数)です。
+   * @returns {number}
+   */
+  public get lifeSpan():number {
+    return this._drawingData.lifeSpan;
+  }
+
+
+  /**
+   * ライフのばらつき(フレーム数)です。
+   * @param value
+   */
+  public set lifeSpanVariance(value:number) {
+    this._drawingData.lifeSpanVariance = value;
+  }
+
+  /**
+   * ライフのばらつき(フレーム数)です。
+   * @returns {number}
+   */
+  public get lifeSpanVariance():number {
+    return this._drawingData.lifeSpanVariance;
+  }
+
+  /**
+   * 始時の透明度です。
+   * @param value
+   */
+  public set startAlpha(value:number) {
+    this._drawingData.startAlpha = value;
+  }
+
+  /**
+   * 始時の透明度です。
+   * @returns {number}
+   */
+  public get startAlpha():number {
+    return this._drawingData.startAlpha;
+  }
+
+  /**
+   * 開始時の透明度のばらつきです。
+   * @param value
+   */
+  public set startAlphaVariance(value:number) {
+    this._drawingData.startAlphaVariance = value;
+  }
+
+  /**
+   * 開始時の透明度のばらつきです。
+   * @returns {number}
+   */
+  public get startAlphaVariance():number {
+    return this._drawingData.startAlphaVariance;
+  }
+
+  /**
+   * 終了時の透明度です。
+   * @param value
+   */
+  public set finishAlpha(value:number) {
+    this._drawingData.finishAlpha = value;
+  }
+
+  /**
+   * 終了時の透明度です。
+   * @returns {number}
+   */
+  public get finishAlpha():number {
+    return this._drawingData.finishAlpha;
+  }
+
+  /**
+   * 終了時の透明度のばらつきです。
+   * @param value
+   */
+  public set finishAlphaVariance(value:number) {
+    this._drawingData.finishAlphaVariance = value;
+  }
+
+  /**
+   * 終了時の透明度のばらつきです。
+   * @returns {number}
+   */
+  public get finishAlphaVariance():number {
+    return this._drawingData.finishAlphaVariance;
+  }
+
+  /**
+   * 使用するシェイプID設定です。
+   * @param string[]
+   */
+  public set shapeIdList(value:string[]) {
+    this._drawingData.shapeIdList = value;
+  }
+
+  /**
+   * 使用するシェイプID設定です。
+   * @returns {string[]}
+   */
+  public get shapeIdList():string[] {
+    return this._drawingData.shapeIdList;
+  }
+
+  /**
+   * 初期カラーの設定です。
+   * @param value
+   */
+  public set startColor(value:ColorData) {
+    this._drawingData.startColor = value;
+  }
+
+  /**
+   * 初期カラーの設定です。
+   * @returns {ColorData}
+   */
+  public get startColor():ColorData {
+    return this._drawingData.startColor;
+  }
+
+
+  /**
+   * trueのときシェイプを加算合成します。
+   * @param value
+   */
+  public set blendMode(value:boolean) {
+    this._drawingData.blendMode = value;
+  }
+
+  /**
+   * trueのときシェイプを加算合成します。
+   * @returns {boolean}
+   */
+  public get blendMode():boolean {
+    return this._drawingData.blendMode;
+  }
+
+  /**
+   * 透明度の計算式の設定です。
+   * @param value
+   */
+  public set alphaCurveType(value:number) {
+    this._drawingData.alphaCurveType = value;
+  }
+
+  /**
+   * 透明度の計算式の設定です。
+   * @returns {number}
+   */
+  public get alphaCurveType():number {
+    return this._drawingData.alphaCurveType;
   }
 }
