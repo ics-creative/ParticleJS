@@ -8,7 +8,7 @@ System.register([], function(exports_1) {
                 function ShapeGenerator() {
                 }
                 ShapeGenerator.prototype.generateShape = function (id) {
-                    var namespaceObj = window["lib"];
+                    var namespaceObj = window["effects"]["assets"];
                     var cls = namespaceObj[id];
                     return new cls();
                 };
