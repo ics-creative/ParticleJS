@@ -215,17 +215,50 @@ declare module effects {
     importFromJson(json:any):void;
   }
 
+  /**
+   * 透明度の計算式の種類です。
+   */
   export enum AlphaCurveType {
+    /**
+     * 通常の透明度の計算式です。
+     */
     Normal = 0,
+    /**
+     * ランダムです。
+     */
     Random = 1,
   }
 
   export class ColorData {
+    /**
+     * 色相を表します(0-360)。
+     * @type {number}
+     */
     hue:number;
+    /**
+     * 色相のばらつきを示します。
+     * @type {number}
+     */
     hueVariance:number;
+    /**
+     * 彩度です(0-100)。
+     * @type {number}
+     */
     saturation:number;
+    /**
+     * 彩度のばらつきです。
+     * @type {number}
+     */
     saturationVariance:number;
+    /**
+     * 輝度です(0-100)。
+     * @type {number}
+     */
     luminance:number;
+    /**
+     * 輝度のばらつきです。
+     * @type {number}
+     */
     luminanceVariance:number;
   }
 
@@ -237,56 +270,56 @@ declare module effects {
      * ふわっとした円のシェイプIDです。
      * @type {string}
      */
-    static BLUR_CIRCLE: string;
+    static BLUR_CIRCLE:string;
     /**
      * 円のシェイプIDです。
      * @type {string}
      */
-    static CIRCLE: string;
+    static CIRCLE:string;
     /**
      * 花の形のシェイプIDです。
      * @type {string}
      */
-    static FLOWER: string;
+    static FLOWER:string;
     /**
      * ハートの形のシェイプIDです。
      * @type {string}
      */
-    static HEART: string;
+    static HEART:string;
     /**
      * キラキラ(1)のシェイプIDです。
      * @type {string}
      */
-    static KIRAKIRA: string;
+    static KIRAKIRA:string;
     /**
      * キラキラ(2)のシェイプIDです。
      * @type {string}
      */
-    static KIRAKIRA2: string;
+    static KIRAKIRA2:string;
     /**
      * 中央が繰り抜かれた円のシェイプIDです。
      * @type {string}
      */
-    static REVERSE_CIRCLE: string;
+    static REVERSE_CIRCLE:string;
     /**
      * 四角形のシェイプIDです。
      * @type {string}
      */
-    static SQUARE: string;
+    static SQUARE:string;
     /**
      * 星形のシェイプIDです。
      * @type {string}
      */
-    static STAR: string;
+    static STAR:string;
     /**
      * 星形(棘が10)のシェイプIDです。
      * @type {string}
      */
-    static STAR_10: string;
+    static STAR_10:string;
     /**
      * 三角形のシェイプIDです。
      * @type {string}
      */
-    static TRIANGLE: string;
+    static TRIANGLE:string;
   }
 }
