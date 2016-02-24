@@ -76,25 +76,72 @@ export class DrawingData {
   /** 透明度の計算式の設定です。 */
   alphaCurveType:number = AlphaCurveType.Normal;
 
-  constructor(initSrc:any = null) {
-    if(initSrc) {
-      this.into(initSrc);
+  constructor(json:any = null) {
+    if (json) {
+      this.importFromJson(json);
     }
   }
 
-  /** パーティクルの設定を読み込みます */
-  public into(obj:any):void {
-    for (let key in obj) {
+  static ENABLE_REFLECT:boolean = DrawingData.checkReflectEnable();
 
-      // 無視するプロパティー
-      if (key == "width" || key == "height" || key == "startX" || key == "startY") {
-        continue;
+  /**
+   * パーティクルの設定をJSON形式のオブジェクトから読み込みます。
+   * @param json
+   */
+  public importFromJson(obj:any):void {
+
+    var checkSkipKey = (key:string) => {
+      return key == "width" || key == "height" || key == "bgColor";
+    }
+
+    this.setData(obj, checkSkipKey);
+  }
+
+  /**
+   * パーティクルの設定をDrawingDataオブジェクトから読み込みます
+   * @param obj
+   */
+  public importData(obj:DrawingData) {
+    var checkSkipKey = (key:string)=> {
+      return key == "width" || key == "height" || key == "bgColor" || key == "startX" || key == "startY";
+    }
+
+    this.setData(obj, checkSkipKey);
+  }
+
+  static checkReflectEnable():boolean {
+    try {
+      var result = !!( Reflect && Reflect.has );
+      return result;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  private setData(obj:any, checkSkipKey:(key:string)=>boolean):void {
+
+    if (DrawingData.ENABLE_REFLECT) {
+      for (let key in  obj) {
+        // 無視するプロパティー
+        if (checkSkipKey(key)) {
+          continue;
+        }
+        if (Reflect.has(this, key) == true) {
+          let val = <any> obj[key];
+          // イマドキなプロパティー反映方法を適用 ICS-Ikeda 2016-01-22
+          Reflect.set(this, key, val);
+        }
       }
-
-      if (Reflect.has(this, key) == true) {
-        let val = <any> obj[key];
-        // イマドキなプロパティー反映方法を適用 ICS-Ikeda 2016-01-22
-        Reflect.set(this, key, val);
+    } else {
+      var self = <any>this;
+      for (let key in obj) {
+        // 無視するプロパティー
+        if (checkSkipKey(key)) {
+          continue;
+        }
+        if (this.hasOwnProperty(key)) {
+          self[key] = obj[key];
+        }
       }
     }
   }

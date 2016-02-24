@@ -208,8 +208,11 @@ declare module effects {
     /** 透明度の計算式の設定です。 */
     alphaCurveType:number;
 
-    /** パーティクルの設定を読み込みます */
-    into(obj:any):void;
+    /**
+     * パーティクルの設定をJSON形式のオブジェクトから読み込みます。
+     * @param json
+     */
+    importFromJson(json:any):void;
   }
 
   export enum AlphaCurveType {
