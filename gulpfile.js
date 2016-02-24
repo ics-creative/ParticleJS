@@ -28,7 +28,7 @@ gulp.task("uglify", shell.task([
 
 
 gulp.task("build-particle-system", shell.task([
-    "tsc -p src --outDir tmp --module commonjs",
+    "tsc -p src --outDir tmp --module commonjs --declaration",
     "browserify tmp/particle-bundle.js > particle-system.js.tmp"
   ])
 );
@@ -39,4 +39,30 @@ gulp.task('clean-tmp', function (cb) {
 
 gulp.task("start", function () {
   return runSequence("build-particle-system", "concat", "uglify", "clean-tmp");
+});
+
+var typedoc = require("gulp-typedoc");
+
+
+//typedoc --out docs src libs/effects-particle-system.d.ts --includeDeclarations
+gulp.task("typedoc", function () {
+  return gulp
+    .src(["libs/effects-particle-system.d.ts"])
+    .pipe(typedoc({
+      // TypeScript options (see typescript docs)
+      module: "commonjs",
+      target: "es5",
+      includeDeclarations: true,
+
+      // Output options (see typedoc docs)
+      out: "./docs",
+      json: "tmp/doc.json",
+
+      // TypeDoc options (see typedoc docs)
+      name: "EffectsParticleSystem",
+      theme: "minimal",
+      ignoreCompilerErrors: true,
+      version: true,
+    }))
+    ;
 });
