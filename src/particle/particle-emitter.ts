@@ -6,7 +6,9 @@ import {ShapeGenerator} from "../assets/shape-generator";
 import {ColorData} from "../data/data-color";
 import {AlphaCurveType} from "../enum/alpha-curve-type";
 
-/** パーティクルの発生装置の制御クラスです。 */
+/**
+ * パーティクルの発生装置の制御クラスです。
+ */
 export class ParticleEmitter {
 
   /** グラフィックオブジェクトです。内部計算に使用します。 */
@@ -41,10 +43,17 @@ export class ParticleEmitter {
 
   private shapeGenerator:ShapeGenerator;
 
+
+  /**
+   * パーティクルの設定データを取り込みます。
+   */
   public setData(drawingData:DrawingData) {
     this._drawingData = drawingData;
   }
 
+  /**
+   * パーティクルシステムの更新を行います。
+   */
   public update() {
 
     if (!this._playing) {
@@ -57,7 +66,7 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルの動き。
+   * パーティクルの動きを更新します。
    */
   private animate() {
 
@@ -114,7 +123,7 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルが生きているか確認する。
+   * パーティクルが生きているか確認します。
    */
   private lifeCheck() {
     for (let i = 0; i < this._activeParticles.length; i++) {
@@ -163,15 +172,15 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルの生成（インターバルチェックする）
+   * パーティクルの生成を行います。
    */
   private emit() {
 
+    // インターバルチェック
     const framerate = Math.round(createjs.Ticker.framerate);
     const frameInSec = this._frameCount % framerate;
     const emitPerSec = this._drawingData.emitFrequency;
     const loopInt = Math.floor(emitPerSec / framerate);
-
 
     // ① 整数分の実行回数
     for (let i = 0; i < loopInt; i++) {
@@ -192,6 +201,10 @@ export class ParticleEmitter {
 
   }
 
+  /**
+   * 個々のパーティクルを生成し、パーティクルシステムに登録します。
+   * @returns {Particle}
+   */
   private emitParticle():void {
     let particle = this.generateParticle();
     this.container.addChild(particle.particleShape);
@@ -199,8 +212,8 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルのパラメータを設定します
-   * @returns {null}
+   * パーティクルを生成し、パラメーターを設定します。
+   * @returns {Particle}
    */
   private generateParticle():Particle {
 
@@ -217,7 +230,7 @@ export class ParticleEmitter {
   }
 
   /**
-   * パーティクルパラメータの設定
+   * パーティクルパラメータの設定を行います。
    * @param particle
    */
   private setParticleParameter(particle:Particle):void {
@@ -255,7 +268,11 @@ export class ParticleEmitter {
     particle.alphaCurveType = this._drawingData.alphaCurveType;
   }
 
-
+  /**
+   * パーティクルに使用するシェイプを生成します。
+   * @param particle
+   * @param shapeIdList
+   */
   public generateShape(particle:Particle, shapeIdList:string[]) {
 
     particle.particleShape.removeAllChildren();
@@ -787,7 +804,7 @@ export class ParticleEmitter {
 
   /**
    * 透明度の計算式の設定です。
-   * @param value
+   * @param value - 0:通常, 1:ランダム
    */
   public set alphaCurveType(value:number) {
     this._drawingData.alphaCurveType = value;
