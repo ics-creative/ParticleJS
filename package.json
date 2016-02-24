@@ -25,7 +25,7 @@
     "start": "gulp start",
     "sync": "lite-server & watch 'gulp build-particle-system' src",
     "generate-declaration": "tsc -p src --outDir tmp --module commonjs --declaration",
-    "generate-documentation":"gulp typedoc"
+    "generate-documentation":"gulp typedoc ; cd generate-examples-code; node index;"
   },
   "repository": {
     "type": "git",
