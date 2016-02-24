@@ -1,0 +1,57 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${title}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+
+  <style>
+    canvas {
+      background-color: black;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    iframe {
+      width: 500px;
+      height: 500px;
+      border: 0;
+    }
+
+    #code-box {
+      padding: 0px;
+      flex: 1;
+      width: 500px;
+      height: 500px;
+      overflow: auto;
+    }
+
+    #code-box pre {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #canvas-box {
+      padding: 0px;
+      margin: 0px;
+    }
+
+  </style>
+
+</head>
+<body>
+<div class="container">
+  <div id="canvas-box">
+    <iframe src="${url}">
+    </iframe>
+  </div>
+  <div id="code-box">
+    <pre id="mycode"><code class="js">${sourcecode}</code></pre>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </div>
+</div>
+</body>
+
+</html>

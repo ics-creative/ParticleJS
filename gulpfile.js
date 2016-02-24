@@ -43,8 +43,6 @@ gulp.task("start", function () {
 
 var typedoc = require("gulp-typedoc");
 
-
-//typedoc --out docs src libs/effects-particle-system.d.ts --includeDeclarations
 gulp.task("typedoc", function () {
   return gulp
     .src(["libs/effects-particle-system.d.ts"])
@@ -57,6 +55,7 @@ gulp.task("typedoc", function () {
       // Output options (see typedoc docs)
       out: "./docs",
       json: "tmp/doc.json",
+      mode: "modules",
 
       // TypeDoc options (see typedoc docs)
       name: "EffectsParticleSystem",

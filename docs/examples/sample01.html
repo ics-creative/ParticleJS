@@ -1,0 +1,137 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>sample01.html</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+
+  <style>
+    canvas {
+      background-color: black;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    iframe {
+      width: 500px;
+      height: 500px;
+      border: 0;
+    }
+
+    #code-box {
+      padding: 0px;
+      flex: 1;
+      width: 500px;
+      height: 500px;
+      overflow: auto;
+    }
+
+    #code-box pre {
+      padding: 0px;
+      margin: 0px;
+    }
+
+    #canvas-box {
+      padding: 0px;
+      margin: 0px;
+    }
+
+  </style>
+
+</head>
+<body>
+<div class="container">
+  <div id="canvas-box">
+    <iframe src="../../examples/sample01.html">
+    </iframe>
+  </div>
+  <div id="code-box">
+    <pre id="mycode"><code class="js">&lt;html&gt;
+&lt;head&gt;
+  &lt;script src=&quot;https://code.createjs.com/createjs-2015.11.26.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;../libs/effects-particle-system.min.js&quot;&gt;&lt;/script&gt;
+  &lt;style&gt;
+    canvas {
+      background-color: black;
+    }
+    *{
+      margin:0px;
+      padding:0px;
+    }
+  &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;canvas width=&quot;500&quot; height=&quot;500&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+  var emitter = new effects.ParticleEmitter();
+  var stage = new createjs.Stage(&quot;myCanvas&quot;);
+
+  window.addEventListener(&quot;load&quot;, function () {
+
+    stage.addChild(emitter.container);
+    createjs.Ticker.framerate = 60;
+    createjs.Ticker.timingMode = createjs.Ticker.RAF;
+    createjs.Ticker.addEventListener(&quot;tick&quot;, handleTick);
+
+    var data = new effects.DrawingData();
+    data.importFromJson({
+      &quot;bgColor&quot;: &quot;#00000&quot;,
+      &quot;width&quot;: 611.3333333333334,
+      &quot;height&quot;: 624.6666666666666,
+      &quot;emitFrequency&quot;: 300,
+      &quot;lifeSpan&quot;: &quot;40&quot;,
+      &quot;lifeSpanVariance&quot;: &quot;0&quot;,
+      &quot;initialDirection&quot;: &quot;209.5&quot;,
+      &quot;initialDirectionVariance&quot;: &quot;155&quot;,
+      &quot;initialSpeed&quot;: &quot;2.6&quot;,
+      &quot;initialSpeedVariance&quot;: &quot;3.8&quot;,
+      &quot;friction&quot;: &quot;0.0085&quot;,
+      &quot;accelerationSpeed&quot;: &quot;0.835&quot;,
+      &quot;accelerationDirection&quot;: &quot;233.2&quot;,
+      &quot;startScale&quot;: &quot;1&quot;,
+      &quot;startScaleVariance&quot;: &quot;0.52&quot;,
+      &quot;finishScale&quot;: &quot;0&quot;,
+      &quot;finishScaleVariance&quot;: &quot;0&quot;,
+      &quot;startAlpha&quot;: &quot;1&quot;,
+      &quot;startAlphaVariance&quot;: &quot;0&quot;,
+      &quot;finishAlpha&quot;: &quot;1&quot;,
+      &quot;finishAlphaVariance&quot;: &quot;0&quot;,
+      &quot;startX&quot;: 320,
+      &quot;startXVariance&quot;: &quot;0&quot;,
+      &quot;startY&quot;: 349,
+      &quot;startYVariance&quot;: &quot;0&quot;,
+      &quot;shapeIdList&quot;: [effects.ShapeType.KIRAKIRA],
+      &quot;startColor&quot;: {
+        &quot;hue&quot;: &quot;17&quot;,
+        &quot;hueVariance&quot;: &quot;32&quot;,
+        &quot;saturation&quot;: &quot;100&quot;,
+        &quot;saturationVariance&quot;: &quot;45&quot;,
+        &quot;luminance&quot;: &quot;56&quot;,
+        &quot;luminanceVariance&quot;: &quot;19&quot;
+      },
+      &quot;blendMode&quot;: true,
+      &quot;alphaCurveType&quot;: &quot;0&quot;
+    });
+
+    emitter.setData(data);
+  });
+
+  function handleTick() {
+    emitter.update();
+    stage.update();
+
+  }
+&lt;/script&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</code></pre>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </div>
+</div>
+</body>
+
+</html>

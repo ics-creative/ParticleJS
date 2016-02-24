@@ -1,0 +1,14 @@
+{
+  "name": "generate-examples-code",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
+  "license": "MIT",
+  "dependencies": {
+    "typings": "^0.6.8"
+  }
+}
