@@ -24,7 +24,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp start",
     "sync": "lite-server & watch 'gulp build-particle-system' src",
-    "generate-declaration": "tsc -p src --outDir tmp --module commonjs --declaration"
+    "generate-declaration": "tsc -p src --outDir tmp --module commonjs --declaration",
+    "generate-documentation":"gulp typedoc"
   },
   "repository": {
     "type": "git",
@@ -40,6 +41,7 @@
     "del": "^2.2.0",
     "gulp-concat": "^2.6.0",
     "gulp-typedoc": "^1.2.1",
-    "gulp-uglify": "^1.5.3"
+    "gulp-uglify": "^1.5.3",
+    "typedoc": "^0.3.12"
   }
 }
