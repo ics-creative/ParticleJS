@@ -76,7 +76,10 @@ export class DrawingData {
   /** 透明度の計算式の設定です。 */
   alphaCurveType:number = AlphaCurveType.Normal;
 
-  constructor() {
+  constructor(initSrc:any = null) {
+    if(initSrc) {
+      this.into(initSrc);
+    }
   }
 
   /** パーティクルの設定を読み込みます */

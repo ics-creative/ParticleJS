@@ -11,16 +11,25 @@ import {AlphaCurveType} from "../enum/alpha-curve-type";
  */
 export class ParticleEmitter {
 
-  /** グラフィックオブジェクトです。内部計算に使用します。 */
-  static HELPER_GRAPHICS:createjs.Graphics = new createjs.Graphics();
+  /**
+   *  グラフィックオブジェクトです。内部計算に使用します。
+   */
+  private static HELPER_GRAPHICS:createjs.Graphics = new createjs.Graphics();
 
+  /**
+   * パーティクルが配置されるコンテナーです。
+   */
   public container:createjs.Container;
+
   private _particlesPool:Particle[];
   private _activeParticles:Particle[];
   private _drawingData:DrawingData;
   private _frameCount:number = 0;
   private _playing:boolean;
 
+  /**
+   * パーティクルのアニメーションが再生されているかどうか。
+   */
   public isPlaying():boolean {
     return this._playing;
   }

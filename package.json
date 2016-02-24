@@ -23,7 +23,8 @@
     "install": "typings install",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp start",
-    "sync": "lite-server & watch 'gulp build-particle-system' src"
+    "sync": "lite-server & watch 'gulp build-particle-system' src",
+    "generate-declaration" : "tsc -p src --outDir tmp --module commonjs --declaration"
   },
   "repository": {
     "type": "git",
