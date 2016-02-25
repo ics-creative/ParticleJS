@@ -103,7 +103,7 @@ export class DrawingData {
    */
   public importData(obj:DrawingData) {
     var checkSkipKey = (key:string)=> {
-      return key == "width" || key == "height" || key == "bgColor" || key == "startX" || key == "startY";
+      return key == "width" || key == "height" || key == "startX" || key == "startY";
     }
 
     this.setData(obj, checkSkipKey);
