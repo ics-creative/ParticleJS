@@ -1,5 +1,5 @@
 {
-  "name": "particle-develop",
+  "name": "effects-particle-system",
   "version": "0.1.0",
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
   "main": "index.js",
@@ -29,14 +29,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ics-creative/project-particle-develop.git"
+    "url": "git+https://github.com/ics-creative/createjs-particle-system.git"
   },
   "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ics-creative/project-particle-develop/issues"
+    "url": "https://github.com/ics-creative/createjs-particle-system/issues"
   },
-  "homepage": "https://github.com/ics-creative/project-particle-develop#readme",
+  "homepage": "https://github.com/ics-creative/createjs-particle-system#readme",
   "dependencies": {
     "del": "^2.2.0",
     "gulp-concat": "^2.6.0",
