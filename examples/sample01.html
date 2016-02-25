@@ -1,14 +1,15 @@
 <html>
 <head>
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
-  <script src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.0/libs/effects-particle-system.min.js"></script>
+  <script src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js"></script>
   <style>
     canvas {
       background-color: black;
     }
-    *{
-      margin:0px;
-      padding:0px;
+
+    * {
+      margin: 0px;
+      padding: 0px;
     }
   </style>
 
@@ -27,8 +28,7 @@
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.addEventListener("tick", handleTick);
 
-    var data = new effects.DrawingData();
-    data.importFromJson({
+    emitter.importFromJson({
       "bgColor": "#00000",
       "width": 611.3333333333334,
       "height": 624.6666666666666,
@@ -66,8 +66,6 @@
       "blendMode": true,
       "alphaCurveType": "0"
     });
-
-    emitter.setData(data);
   });
 
   function handleTick() {

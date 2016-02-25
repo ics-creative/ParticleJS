@@ -1,6 +1,6 @@
 {
   "name": "effects-particle-system",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
   "main": "index.js",
   "devDependencies": {

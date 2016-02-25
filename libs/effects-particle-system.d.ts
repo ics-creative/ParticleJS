@@ -19,6 +19,11 @@ declare module effects {
     setData(drawingData:DrawingData):void;
 
     /**
+     * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
+     */
+    importFromJson(jsonObject:any);
+
+    /**
      * パーティクルシステムの更新を行います。
      */
     update():void;

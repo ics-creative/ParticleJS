@@ -56,9 +56,10 @@
     canvas {
       background-color: black;
     }
-    *{
-      margin:0px;
-      padding:0px;
+
+    * {
+      margin: 0px;
+      padding: 0px;
     }
   &lt;/style&gt;
 
@@ -77,8 +78,7 @@
     createjs.Ticker.timingMode = createjs.Ticker.RAF;
     createjs.Ticker.addEventListener(&quot;tick&quot;, handleTick);
 
-    var data = new effects.DrawingData();
-    data.importFromJson({
+    emitter.importFromJson({
       &quot;bgColor&quot;: &quot;#00000&quot;,
       &quot;width&quot;: 611.3333333333334,
       &quot;height&quot;: 624.6666666666666,
@@ -116,8 +116,6 @@
       &quot;blendMode&quot;: true,
       &quot;alphaCurveType&quot;: &quot;0&quot;
     });
-
-    emitter.setData(data);
   });
 
   function handleTick() {

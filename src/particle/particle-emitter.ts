@@ -60,6 +60,14 @@ export class ParticleEmitter {
     this._drawingData = drawingData;
   }
 
+
+  /**
+   * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
+   */
+  public importFromJson(jsonObject:any)  {
+    this._drawingData.importFromJson(jsonObject);
+  }
+
   /**
    * パーティクルシステムの更新を行います。
    */
