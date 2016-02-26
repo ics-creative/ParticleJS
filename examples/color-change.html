@@ -80,6 +80,12 @@
     );
 
     function handleTick() {
+      // 時間経過によって色相の基準値を変化させる
+      emitter.startColor.hue += 2;
+      if (emitter.startColor.hue >= 360) {
+        emitter.startColor.hue = 0;
+      }
+
       // パーティクルの発生・更新
       emitter.update();
 

@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>first-step.html</title>
+  <title>mouse-tracking.html</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
 
@@ -44,7 +44,7 @@
 <body>
 <div class="container">
   <div id="canvas-box">
-    <iframe src="../../examples/first-step.html">
+    <iframe src="../../examples/mouse-tracking.html">
     </iframe>
   </div>
   <div id="code-box">
@@ -54,7 +54,8 @@
   &lt;script src=&quot;https://code.createjs.com/createjs-2015.11.26.min.js&quot;&gt;&lt;/script&gt;
 
   &lt;!-- パーティクルシステムのライブラリー読み込み --&gt;
-  &lt;script src=&quot;https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script
+    src=&quot;https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js&quot;&gt;&lt;/script&gt;
 
   &lt;!-- CSSの更新 --&gt;
   &lt;style&gt;
@@ -73,8 +74,12 @@
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener(&quot;load&quot;, function () {
+
+        // パーティクル発生器の作成
         emitter = new effects.ParticleEmitter();
+        // CreateJS用の描画ステージを作成、「myCanvas」と名前がついたcanvasと関連付ける
         stage = new createjs.Stage(&quot;myCanvas&quot;);
+        // パーティクル発生器の描画用コンテナーを描画ステージに登録する
         stage.addChild(emitter.container);
 
         // フレームレートの設定
@@ -84,7 +89,8 @@
         // 定期的に呼ばれるメソッドの定義
         createjs.Ticker.addEventListener(&quot;tick&quot;, handleTick);
 
-        // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) からパーティクルの設定を読み込む
+        // Particle Develop
+        // ( http://ics-web.jp/projects/particle-develop/ ) からパーティクルの設定を読み込む
         emitter.importFromJson(
           // パラメーターJSONのコピー＆ペースト ここから--
           {
@@ -130,6 +136,10 @@
     );
 
     function handleTick() {
+      //  マウス位置に従って、パーティクル発生位置を変更する
+      emitter.startX = stage.mouseX;
+      emitter.startY = stage.mouseY;
+
       // パーティクルの発生・更新
       emitter.update();
 
