@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "out": "generate-assets.jsfl",
+  },
+  "files": [
+    "generate-assets.ts"
+  ]
+  "exclude": [
+    "node_modules"
+  ]
+}

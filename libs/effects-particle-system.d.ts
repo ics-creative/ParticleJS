@@ -21,7 +21,7 @@ declare module effects {
     /**
      * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
      */
-    importFromJson(jsonObject:any);
+    importFromJson(jsonObject:any):void;
 
     /**
      * パーティクルシステムの更新を行います。
@@ -160,6 +160,16 @@ declare module effects {
   }
 
   export class DrawingData {
+
+    /** 設定された背景の幅です。 */
+    width:number;
+
+    /** 設定された背景の高さです。 */
+    height:number;
+
+    /** 背景職です。 */
+    bgColor:string;
+
     /** 1秒あたりの発生数です。 */
     emitFrequency:number;
     /** 発生基準位置 - X座標 (px)です。 */
@@ -218,6 +228,12 @@ declare module effects {
      * @param json
      */
     importFromJson(json:any):void;
+
+    /**
+     * データを取り込みます。
+     * @param json
+     */
+    importData(data:effects.DrawingData):void;
   }
 
   /**
@@ -326,5 +342,9 @@ declare module effects {
      * @type {string}
      */
     static TRIANGLE:string;
+  }
+
+  export class ShapeData {
+    assetList:string[];
   }
 }
