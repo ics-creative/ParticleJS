@@ -1,0 +1,98 @@
+<html>
+<head>
+  <!-- CreateJSのライブラリー読み込み -->
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
+  <!-- パーティクルシステムのライブラリー読み込み -->
+  <script src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js"></script>
+
+  <!-- CSS -->
+  <style>
+    canvas {
+      background-color: black;
+    }
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+  </style>
+  <!-- JS -->
+  <script>
+    var emitter = null;
+    var stage = null;
+
+    //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
+    window.addEventListener("load", function () {
+      emitter = new effects.ParticleEmitter();
+      stage = new createjs.Stage("myCanvas");
+      stage.addChild(emitter.container);
+
+      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
+      emitter.importFromJson(
+        // パラメーターJSONのコピー＆ペースト ここから--
+        {
+					"bgColor": "#00000",
+					"width": 960,
+					"height": 540,
+					"emitFrequency": "100",
+					"startX": 482,
+					"startXVariance": 960,
+					"startY": 396,
+					"startYVariance": "222",
+					"initialDirection": "0",
+					"initialDirectionVariance": "360",
+					"initialSpeed": "2",
+					"initialSpeedVariance": "3.7",
+					"friction": "0.038",
+					"accelerationSpeed": "0.13",
+					"accelerationDirection": "273.3",
+					"startScale": 1,
+					"startScaleVariance": 0.79,
+					"finishScale": "0",
+					"finishScaleVariance": "0",
+					"lifeSpan": "50",
+					"lifeSpanVariance": "196",
+					"startAlpha": "1",
+					"startAlphaVariance": "0",
+					"finishAlpha": "0.35",
+					"finishAlphaVariance": 0.5,
+					"shapeIdList": [
+							"blur_circle",
+							"circle"
+					],
+					"startColor": {
+							"hue": 222,
+							"hueVariance": "55",
+							"saturation": "71",
+							"saturationVariance": "78",
+							"luminance": "83",
+							"luminanceVariance": "16"
+					},
+					"blendMode": true,
+					"alphaCurveType": "1"
+			}
+        // パラメーターJSONのコピー＆ペースト ここまで---
+      );
+
+      // フレームレートの設定
+      createjs.Ticker.framerate = 60;
+      // requestAnimationFrameに従った呼び出し
+      createjs.Ticker.timingMode = createjs.Ticker.RAF;
+      // 定期的に呼ばれるメソッドの定義
+      createjs.Ticker.addEventListener("tick", handleTick);
+    });
+
+    function handleTick() {
+      // パーティクルの発生・更新
+      emitter.update();
+
+      // 描画を更新する
+      stage.update();
+    }
+  </script>
+</head>
+<body>
+<canvas width="960" height="540" id="myCanvas"></canvas>
+</body>
+</html>
