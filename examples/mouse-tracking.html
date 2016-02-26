@@ -4,8 +4,7 @@
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
   <!-- パーティクルシステムのライブラリー読み込み -->
-  <script
-    src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js"></script>
+  <script src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js"></script>
 
   <!-- CSSの更新 -->
   <style>
@@ -24,66 +23,61 @@
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener("load", function () {
+      emitter = new effects.ParticleEmitter();
+      stage = new createjs.Stage("myCanvas");
+      stage.addChild(emitter.container);
 
-        // パーティクル発生器の作成
-        emitter = new effects.ParticleEmitter();
-        // CreateJS用の描画ステージを作成、「myCanvas」と名前がついたcanvasと関連付ける
-        stage = new createjs.Stage("myCanvas");
-        // パーティクル発生器の描画用コンテナーを描画ステージに登録する
-        stage.addChild(emitter.container);
+      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) からパーティクルの設定を読み込む
+      emitter.importFromJson(
+        // パラメーターJSONのコピー＆ペースト ここから--
+        {
+          "bgColor": "#00000",
+          "width": 611,
+          "height": 624,
+          "emitFrequency": 300,
+          "lifeSpan": "40",
+          "lifeSpanVariance": "0",
+          "initialDirection": "209.5",
+          "initialDirectionVariance": "155",
+          "initialSpeed": "2.6",
+          "initialSpeedVariance": "3.8",
+          "friction": "0.0085",
+          "accelerationSpeed": "0.835",
+          "accelerationDirection": "233.2",
+          "startScale": "1",
+          "startScaleVariance": "0.52",
+          "finishScale": "0",
+          "finishScaleVariance": "0",
+          "startAlpha": "1",
+          "startAlphaVariance": "0",
+          "finishAlpha": "1",
+          "finishAlphaVariance": "0",
+          "startX": 320,
+          "startXVariance": "0",
+          "startY": 349,
+          "startYVariance": "0",
+          "shapeIdList": [effects.ShapeType.KIRAKIRA],
+          "startColor": {
+            "hue": "17",
+            "hueVariance": "32",
+            "saturation": "100",
+            "saturationVariance": "45",
+            "luminance": "56",
+            "luminanceVariance": "19"
+          },
+          "blendMode": true,
+          "alphaCurveType": "0"
+        }
+        // パラメーターJSONのコピー＆ペースト ここまで---
+      );
 
-        // フレームレートの設定
-        createjs.Ticker.framerate = 60;
-        // requestAnimationFrameに従った呼び出し
-        createjs.Ticker.timingMode = createjs.Ticker.RAF;
-        // 定期的に呼ばれるメソッドの定義
-        createjs.Ticker.addEventListener("tick", handleTick);
-
-        // Particle Develop
-        // ( http://ics-web.jp/projects/particle-develop/ ) からパーティクルの設定を読み込む
-        emitter.importFromJson(
-          // パラメーターJSONのコピー＆ペースト ここから--
-          {
-            "bgColor": "#00000",
-            "width": 611,
-            "height": 624,
-            "emitFrequency": 300,
-            "lifeSpan": "40",
-            "lifeSpanVariance": "0",
-            "initialDirection": "209.5",
-            "initialDirectionVariance": "155",
-            "initialSpeed": "2.6",
-            "initialSpeedVariance": "3.8",
-            "friction": "0.0085",
-            "accelerationSpeed": "0.835",
-            "accelerationDirection": "233.2",
-            "startScale": "1",
-            "startScaleVariance": "0.52",
-            "finishScale": "0",
-            "finishScaleVariance": "0",
-            "startAlpha": "1",
-            "startAlphaVariance": "0",
-            "finishAlpha": "1",
-            "finishAlphaVariance": "0",
-            "startX": 320,
-            "startXVariance": "0",
-            "startY": 349,
-            "startYVariance": "0",
-            "shapeIdList": [effects.ShapeType.KIRAKIRA],
-            "startColor": {
-              "hue": "17",
-              "hueVariance": "32",
-              "saturation": "100",
-              "saturationVariance": "45",
-              "luminance": "56",
-              "luminanceVariance": "19"
-            },
-            "blendMode": true,
-            "alphaCurveType": "0"
-          });
-      }
-      // パラメーターJSONのコピー＆ペースト ここから--
-    );
+      // フレームレートの設定
+      createjs.Ticker.framerate = 60;
+      // requestAnimationFrameに従った呼び出し
+      createjs.Ticker.timingMode = createjs.Ticker.RAF;
+      // 定期的に呼ばれるメソッドの定義
+      createjs.Ticker.addEventListener("tick", handleTick);
+    });
 
     function handleTick() {
       //  マウス位置に従って、パーティクル発生位置を変更する
