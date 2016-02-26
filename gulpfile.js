@@ -16,13 +16,13 @@ gulp.task("default", ["copy"]);
 
 gulp.task('concat', function () {
   gulp.src(['particle-system.js.tmp', 'asset-shapes.js'])
-    .pipe(concat('particle-system.js.concat'))
+    .pipe(concat('libs/particle-system.js'))
     .pipe(gulp.dest('./'));
 });
 
 
 gulp.task("uglify", shell.task([
-    "uglifyjs --compress --mangle -- particle-system.js.concat > libs/effects-particle-system.min.js"
+    "uglifyjs --compress --mangle -- libs/particle-system.js > libs/effects-particle-system.min.js"
   ])
 );
 
@@ -34,7 +34,7 @@ gulp.task("build-particle-system", shell.task([
 );
 
 gulp.task('clean-tmp', function (cb) {
-  del(['particle-system.js.tmp', 'particle-system.js.concat', 'tmp'], cb);
+  del(['particle-system.js.tmp', 'tmp'], cb);
 });
 
 gulp.task("start", function () {
