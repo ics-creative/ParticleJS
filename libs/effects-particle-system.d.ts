@@ -344,7 +344,9 @@ declare module effects {
     static TRIANGLE:string;
   }
 
+  /** 指定できるシェイプ一覧です。 */
   export class ShapeData {
+    /** 指定できるシェイプ一覧です。 */
     assetList:string[];
   }
 }
