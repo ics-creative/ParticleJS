@@ -1,6 +1,6 @@
 {
-  "name": "effects-particle-system",
-  "version": "0.1.1",
+  "name": "particlejs",
+  "version": "0.1.2",
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
   "main": "index.js",
   "devDependencies": {
@@ -25,18 +25,18 @@
     "start": "gulp start",
     "sync": "lite-server & watch 'gulp build-particle-system' src",
     "generate-declaration": "tsc -p src --outDir tmp --module commonjs --declaration",
-    "generate-documentation":"gulp typedoc ; cd generate-examples-code; node index;"
+    "generate-documentation": "gulp typedoc ; cd generate-examples-code; node index;"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ics-creative/createjs-particle-system.git"
+    "url": "git+https://github.com/ics-creative/ParticleJS.git"
   },
   "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ics-creative/createjs-particle-system/issues"
+    "url": "https://github.com/ics-creative/ParticleJS/issues"
   },
-  "homepage": "https://github.com/ics-creative/createjs-particle-system#readme",
+  "homepage": "https://github.com/ics-creative/ParticleJS#readme",
   "dependencies": {
     "del": "^2.2.0",
     "gulp-concat": "^2.6.0",

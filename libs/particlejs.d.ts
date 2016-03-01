@@ -1,8 +1,8 @@
-declare module effects {
+declare module particlejs {
   /**
    * パーティクルの発生装置の制御クラスです。
    */
-  export class ParticleEmitter {
+  export class ParticleSystem {
     /**
      * パーティクルが配置されるコンテナーです。
      */
@@ -233,7 +233,7 @@ declare module effects {
      * データを取り込みます。
      * @param json
      */
-    importData(data:effects.DrawingData):void;
+    importData(data:particlejs.DrawingData):void;
   }
 
   /**

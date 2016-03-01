@@ -4,9 +4,9 @@
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
   <!-- パーティクルシステムのライブラリー読み込み -->
-  <script src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js"></script>
+  <script src="../libs/particlejs.min.js"></script>
 
-  <!-- CSSの更新 -->
+  <!-- CSS -->
   <style>
     canvas {
       background-color: black;
@@ -17,56 +17,65 @@
       padding: 0px;
     }
   </style>
+  <!-- JS -->
   <script>
-    var emitter = null;
+    var particleSystem = null;
     var stage = null;
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener("load", function () {
-      emitter = new effects.ParticleEmitter();
+      // CretateJSのステージを作成します。
       stage = new createjs.Stage("myCanvas");
-      stage.addChild(emitter.container);
 
-      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) からパーティクルの設定を読み込む
-      emitter.importFromJson(
+      // パーティクル発生装置を作成します。
+      particleSystem = new particlejs.ParticleSystem();
+
+      // ステージにパーティクルのコンテナー追加します。
+      stage.addChild(particleSystem.container);
+
+      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
+      particleSystem.importFromJson(
         // パラメーターJSONのコピー＆ペースト ここから--
         {
           "bgColor": "#00000",
-          "width": 611,
-          "height": 624,
-          "emitFrequency": 300,
-          "lifeSpan": "40",
-          "lifeSpanVariance": "0",
-          "initialDirection": "209.5",
-          "initialDirectionVariance": "155",
-          "initialSpeed": "2.6",
-          "initialSpeedVariance": "3.8",
-          "friction": "0.0085",
-          "accelerationSpeed": "0.835",
-          "accelerationDirection": "233.2",
-          "startScale": "1",
-          "startScaleVariance": "0.52",
+          "width": 500,
+          "height": 500,
+          "emitFrequency": "100",
+          "startX": 250,
+          "startXVariance": 50,
+          "startY": 250,
+          "startYVariance": 50,
+          "initialDirection": "0",
+          "initialDirectionVariance": "360",
+          "initialSpeed": "5",
+          "initialSpeedVariance": "3.7",
+          "friction": "0.038",
+          "accelerationSpeed": "0.0",
+          "accelerationDirection": "0",
+          "startScale": 1,
+          "startScaleVariance": 0.79,
           "finishScale": "0",
           "finishScaleVariance": "0",
+          "lifeSpan": "50",
+          "lifeSpanVariance": "196",
           "startAlpha": "1",
           "startAlphaVariance": "0",
-          "finishAlpha": "1",
-          "finishAlphaVariance": "0",
-          "startX": 320,
-          "startXVariance": "0",
-          "startY": 349,
-          "startYVariance": "0",
-          "shapeIdList": [effects.ShapeType.KIRAKIRA],
+          "finishAlpha": "0.35",
+          "finishAlphaVariance": 0.5,
+          "shapeIdList": [
+            "blur_circle",
+            "circle"
+          ],
           "startColor": {
-            "hue": "17",
-            "hueVariance": "32",
-            "saturation": "100",
-            "saturationVariance": "45",
-            "luminance": "56",
-            "luminanceVariance": "19"
+            "hue": 222,
+            "hueVariance": "55",
+            "saturation": "71",
+            "saturationVariance": "78",
+            "luminance": "83",
+            "luminanceVariance": "16"
           },
           "blendMode": true,
-          "alphaCurveType": "0"
+          "alphaCurveType": "1"
         }
         // パラメーターJSONのコピー＆ペースト ここまで---
       );
@@ -81,7 +90,7 @@
 
     function handleTick() {
       // パーティクルの発生・更新
-      emitter.update();
+      particleSystem.update();
 
       // 描画を更新する
       stage.update();

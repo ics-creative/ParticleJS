@@ -54,9 +54,9 @@
   &lt;script src=&quot;https://code.createjs.com/createjs-2015.11.26.min.js&quot;&gt;&lt;/script&gt;
 
   &lt;!-- パーティクルシステムのライブラリー読み込み --&gt;
-  &lt;script src=&quot;https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js&quot;&gt;&lt;/script&gt;
+  &lt;script src=&quot;../libs/particlejs.min.js&quot;&gt;&lt;/script&gt;
 
-  &lt;!-- CSSの更新 --&gt;
+  &lt;!-- CSS --&gt;
   &lt;style&gt;
     canvas {
       background-color: black;
@@ -67,56 +67,65 @@
       padding: 0px;
     }
   &lt;/style&gt;
+  &lt;!-- JS --&gt;
   &lt;script&gt;
-    var emitter = null;
+    var particleSystem = null;
     var stage = null;
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener(&quot;load&quot;, function () {
-      emitter = new effects.ParticleEmitter();
+      // CretateJSのステージを作成します。
       stage = new createjs.Stage(&quot;myCanvas&quot;);
-      stage.addChild(emitter.container);
 
-      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) からパーティクルの設定を読み込む
-      emitter.importFromJson(
+      // パーティクル発生装置を作成します。
+      particleSystem = new particlejs.ParticleSystem();
+
+      // ステージにパーティクルのコンテナー追加します。
+      stage.addChild(particleSystem.container);
+
+      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
+      particleSystem.importFromJson(
         // パラメーターJSONのコピー＆ペースト ここから--
         {
           &quot;bgColor&quot;: &quot;#00000&quot;,
-          &quot;width&quot;: 611,
-          &quot;height&quot;: 624,
-          &quot;emitFrequency&quot;: 300,
-          &quot;lifeSpan&quot;: &quot;40&quot;,
-          &quot;lifeSpanVariance&quot;: &quot;0&quot;,
-          &quot;initialDirection&quot;: &quot;209.5&quot;,
-          &quot;initialDirectionVariance&quot;: &quot;155&quot;,
-          &quot;initialSpeed&quot;: &quot;2.6&quot;,
-          &quot;initialSpeedVariance&quot;: &quot;3.8&quot;,
-          &quot;friction&quot;: &quot;0.0085&quot;,
-          &quot;accelerationSpeed&quot;: &quot;0.835&quot;,
-          &quot;accelerationDirection&quot;: &quot;233.2&quot;,
-          &quot;startScale&quot;: &quot;1&quot;,
-          &quot;startScaleVariance&quot;: &quot;0.52&quot;,
+          &quot;width&quot;: 500,
+          &quot;height&quot;: 500,
+          &quot;emitFrequency&quot;: &quot;100&quot;,
+          &quot;startX&quot;: 250,
+          &quot;startXVariance&quot;: 50,
+          &quot;startY&quot;: 250,
+          &quot;startYVariance&quot;: 50,
+          &quot;initialDirection&quot;: &quot;0&quot;,
+          &quot;initialDirectionVariance&quot;: &quot;360&quot;,
+          &quot;initialSpeed&quot;: &quot;5&quot;,
+          &quot;initialSpeedVariance&quot;: &quot;3.7&quot;,
+          &quot;friction&quot;: &quot;0.038&quot;,
+          &quot;accelerationSpeed&quot;: &quot;0.0&quot;,
+          &quot;accelerationDirection&quot;: &quot;0&quot;,
+          &quot;startScale&quot;: 1,
+          &quot;startScaleVariance&quot;: 0.79,
           &quot;finishScale&quot;: &quot;0&quot;,
           &quot;finishScaleVariance&quot;: &quot;0&quot;,
+          &quot;lifeSpan&quot;: &quot;50&quot;,
+          &quot;lifeSpanVariance&quot;: &quot;196&quot;,
           &quot;startAlpha&quot;: &quot;1&quot;,
           &quot;startAlphaVariance&quot;: &quot;0&quot;,
-          &quot;finishAlpha&quot;: &quot;1&quot;,
-          &quot;finishAlphaVariance&quot;: &quot;0&quot;,
-          &quot;startX&quot;: 320,
-          &quot;startXVariance&quot;: &quot;0&quot;,
-          &quot;startY&quot;: 349,
-          &quot;startYVariance&quot;: &quot;0&quot;,
-          &quot;shapeIdList&quot;: [effects.ShapeType.KIRAKIRA],
+          &quot;finishAlpha&quot;: &quot;0.35&quot;,
+          &quot;finishAlphaVariance&quot;: 0.5,
+          &quot;shapeIdList&quot;: [
+            &quot;blur_circle&quot;,
+            &quot;circle&quot;
+          ],
           &quot;startColor&quot;: {
-            &quot;hue&quot;: &quot;17&quot;,
-            &quot;hueVariance&quot;: &quot;32&quot;,
-            &quot;saturation&quot;: &quot;100&quot;,
-            &quot;saturationVariance&quot;: &quot;45&quot;,
-            &quot;luminance&quot;: &quot;56&quot;,
-            &quot;luminanceVariance&quot;: &quot;19&quot;
+            &quot;hue&quot;: 222,
+            &quot;hueVariance&quot;: &quot;55&quot;,
+            &quot;saturation&quot;: &quot;71&quot;,
+            &quot;saturationVariance&quot;: &quot;78&quot;,
+            &quot;luminance&quot;: &quot;83&quot;,
+            &quot;luminanceVariance&quot;: &quot;16&quot;
           },
           &quot;blendMode&quot;: true,
-          &quot;alphaCurveType&quot;: &quot;0&quot;
+          &quot;alphaCurveType&quot;: &quot;1&quot;
         }
         // パラメーターJSONのコピー＆ペースト ここまで---
       );
@@ -131,7 +140,7 @@
 
     function handleTick() {
       // パーティクルの発生・更新
-      emitter.update();
+      particleSystem.update();
 
       // 描画を更新する
       stage.update();

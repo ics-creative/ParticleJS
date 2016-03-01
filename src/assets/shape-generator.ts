@@ -1,7 +1,7 @@
 "use strict";
 
 declare namespace window {
-  export var effects:any;
+  export var particlejs:any;
 }
 
 export class ShapeGenerator {
@@ -10,7 +10,7 @@ export class ShapeGenerator {
   }
 
   public generateShape(id:string):createjs.Container {
-    let namespaceObj = <any>( window.effects.assets );
+    let namespaceObj = <any>( window.particlejs.assets );
     let cls = <any> namespaceObj[id];
     return <createjs.Container> new cls();
   }

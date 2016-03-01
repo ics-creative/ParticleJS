@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>color-change.html</title>
+  <title>demo.html</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
 
@@ -44,7 +44,7 @@
 <body>
 <div class="container">
   <div id="canvas-box">
-    <iframe src="../../examples/color-change.html">
+    <iframe src="../../examples/demo.html">
     </iframe>
   </div>
   <div id="code-box">
@@ -88,20 +88,20 @@
         // パラメーターJSONのコピー＆ペースト ここから--
         {
           &quot;bgColor&quot;: &quot;#00000&quot;,
-          &quot;width&quot;: 500,
-          &quot;height&quot;: 500,
+          &quot;width&quot;: 960,
+          &quot;height&quot;: 540,
           &quot;emitFrequency&quot;: &quot;100&quot;,
-          &quot;startX&quot;: 250,
-          &quot;startXVariance&quot;: 50,
-          &quot;startY&quot;: 250,
-          &quot;startYVariance&quot;: 50,
+          &quot;startX&quot;: 482,
+          &quot;startXVariance&quot;: 960,
+          &quot;startY&quot;: 396,
+          &quot;startYVariance&quot;: &quot;222&quot;,
           &quot;initialDirection&quot;: &quot;0&quot;,
           &quot;initialDirectionVariance&quot;: &quot;360&quot;,
-          &quot;initialSpeed&quot;: &quot;5&quot;,
+          &quot;initialSpeed&quot;: &quot;2&quot;,
           &quot;initialSpeedVariance&quot;: &quot;3.7&quot;,
           &quot;friction&quot;: &quot;0.038&quot;,
-          &quot;accelerationSpeed&quot;: &quot;0.0&quot;,
-          &quot;accelerationDirection&quot;: &quot;0&quot;,
+          &quot;accelerationSpeed&quot;: &quot;0.13&quot;,
+          &quot;accelerationDirection&quot;: &quot;273.3&quot;,
           &quot;startScale&quot;: 1,
           &quot;startScaleVariance&quot;: 0.79,
           &quot;finishScale&quot;: &quot;0&quot;,
@@ -139,12 +139,6 @@
     });
 
     function handleTick() {
-      // 時間経過によって色相の基準値を変化させる
-      particleSystem.startColor.hue += 2;
-      if (particleSystem.startColor.hue &gt;= 360) {
-        particleSystem.startColor.hue = 0;
-      }
-
       // パーティクルの発生・更新
       particleSystem.update();
 
@@ -154,7 +148,7 @@
   &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;canvas width=&quot;500&quot; height=&quot;500&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
+&lt;canvas width=&quot;960&quot; height=&quot;540&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
     <script>hljs.initHighlightingOnLoad();</script>

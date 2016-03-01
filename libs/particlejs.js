@@ -4,12 +4,12 @@ var ShapeGenerator = (function () {
     function ShapeGenerator() {
     }
     ShapeGenerator.prototype.generateShape = function (id) {
-        var namespaceObj = (window.effects.assets);
+        var namespaceObj = (window.particlejs.assets);
         var cls = namespaceObj[id];
         return new cls();
     };
     return ShapeGenerator;
-})();
+}());
 exports.ShapeGenerator = ShapeGenerator;
 
 },{}],2:[function(require,module,exports){
@@ -48,7 +48,7 @@ var ColorData = (function () {
         this.luminanceVariance = 0;
     }
     return ColorData;
-})();
+}());
 exports.ColorData = ColorData;
 
 },{}],3:[function(require,module,exports){
@@ -175,7 +175,7 @@ var DrawingData = (function () {
     };
     DrawingData.ENABLE_REFLECT = DrawingData.checkReflectEnable();
     return DrawingData;
-})();
+}());
 exports.DrawingData = DrawingData;
 
 },{"../enum/alpha-curve-type":5,"./data-color":2}],4:[function(require,module,exports){
@@ -189,7 +189,7 @@ var ShapeData = (function () {
         this.assetList = ["blur_circle", "circle", "flower", "heart", "kirakira", "kirakira2", "reverse_blur_circle", "square", "star", "star_10", "triangle"];
     }
     return ShapeData;
-})();
+}());
 exports.ShapeData = ShapeData;
 
 },{}],5:[function(require,module,exports){
@@ -273,37 +273,38 @@ var ShapeType = (function () {
      */
     ShapeType.TRIANGLE = "triangle";
     return ShapeType;
-})();
+}());
 exports.ShapeType = ShapeType;
 
 },{}],7:[function(require,module,exports){
 /// <reference path="../node_modules/typescript/lib/lib.es6.d.ts"/>
 /// <reference path="../typings/main.d.ts"/>
-var particle_emitter_1 = require("./particle/particle-emitter");
+"use strict";
+var particle_system_1 = require("./particle/particle-system");
 var data_drawing_1 = require("./data/data-drawing");
 var data_color_1 = require("./data/data-color");
 var data_shape_1 = require("./data/data-shape");
 var alpha_curve_type_1 = require("./enum/alpha-curve-type");
 var shape_type_1 = require("./enum/shape-type");
-window.effects = window.effects || {};
-window.effects.ParticleEmitter = particle_emitter_1.ParticleEmitter;
-window.effects.DrawingData = data_drawing_1.DrawingData;
-window.effects.ColorData = data_color_1.ColorData;
-window.effects.AlphaCurveType = alpha_curve_type_1.AlphaCurveType;
-window.effects.ShapeType = shape_type_1.ShapeType;
-window.effects.ShapeData = data_shape_1.ShapeData;
+window.particlejs = window.effects || {};
+window.particlejs.ParticleSystem = particle_system_1.ParticleSystem;
+window.particlejs.DrawingData = data_drawing_1.DrawingData;
+window.particlejs.ColorData = data_color_1.ColorData;
+window.particlejs.AlphaCurveType = alpha_curve_type_1.AlphaCurveType;
+window.particlejs.ShapeType = shape_type_1.ShapeType;
+window.particlejs.ShapeData = data_shape_1.ShapeData;
 
-},{"./data/data-color":2,"./data/data-drawing":3,"./data/data-shape":4,"./enum/alpha-curve-type":5,"./enum/shape-type":6,"./particle/particle-emitter":8}],8:[function(require,module,exports){
+},{"./data/data-color":2,"./data/data-drawing":3,"./data/data-shape":4,"./enum/alpha-curve-type":5,"./enum/shape-type":6,"./particle/particle-system":8}],8:[function(require,module,exports){
 "use strict";
 var particle_1 = require("./particle");
 var data_drawing_1 = require("../data/data-drawing");
 var shape_generator_1 = require("../assets/shape-generator");
 var alpha_curve_type_1 = require("../enum/alpha-curve-type");
 /**
- * パーティクルの発生装置の制御クラスです。
+ * パーティクルの制御クラスです。
  */
-var ParticleEmitter = (function () {
-    function ParticleEmitter() {
+var ParticleSystem = (function () {
+    function ParticleSystem() {
         this._frameCount = 0;
         this._drawingData = new data_drawing_1.DrawingData();
         this._particlesPool = [];
@@ -318,25 +319,25 @@ var ParticleEmitter = (function () {
     /**
      * パーティクルのアニメーションが再生されているかどうか。
      */
-    ParticleEmitter.prototype.isPlaying = function () {
+    ParticleSystem.prototype.isPlaying = function () {
         return this._playing;
     };
     /**
      * パーティクルの設定データを取り込みます。
      */
-    ParticleEmitter.prototype.setData = function (drawingData) {
+    ParticleSystem.prototype.setData = function (drawingData) {
         this._drawingData = drawingData;
     };
     /**
      * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
      */
-    ParticleEmitter.prototype.importFromJson = function (jsonObject) {
+    ParticleSystem.prototype.importFromJson = function (jsonObject) {
         this._drawingData.importFromJson(jsonObject);
     };
     /**
      * パーティクルシステムの更新を行います。
      */
-    ParticleEmitter.prototype.update = function () {
+    ParticleSystem.prototype.update = function () {
         if (!this._playing) {
             return;
         }
@@ -347,7 +348,7 @@ var ParticleEmitter = (function () {
     /**
      * パーティクルの動きを更新します。
      */
-    ParticleEmitter.prototype.animate = function () {
+    ParticleSystem.prototype.animate = function () {
         var rad = createjs.Matrix2D.DEG_TO_RAD * this._drawingData.accelerationDirection;
         var accX = Math.cos(rad) * this._drawingData.accelerationSpeed;
         var accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
@@ -391,7 +392,7 @@ var ParticleEmitter = (function () {
     /**
      * パーティクルが生きているか確認します。
      */
-    ParticleEmitter.prototype.lifeCheck = function () {
+    ParticleSystem.prototype.lifeCheck = function () {
         for (var i = 0; i < this._activeParticles.length; i++) {
             // もしも死んでいたら、アクティブリストから外してプールに保存する。
             if (!this._activeParticles[i].isAlive) {
@@ -406,7 +407,7 @@ var ParticleEmitter = (function () {
     /**
      * パーティクルを全て削除します。
      */
-    ParticleEmitter.prototype.clear = function () {
+    ParticleSystem.prototype.clear = function () {
         for (var i = 0; i < this._activeParticles.length; i++) {
             var particle = this._activeParticles[i];
             particle.isAlive = false;
@@ -419,7 +420,7 @@ var ParticleEmitter = (function () {
     /**
      * パーティクルシステムを破棄します。
      */
-    ParticleEmitter.prototype.dispose = function () {
+    ParticleSystem.prototype.dispose = function () {
         for (var i = 0; i < this._activeParticles.length; i++) {
             var particle = this._activeParticles[i];
             particle.isAlive = false;
@@ -434,7 +435,7 @@ var ParticleEmitter = (function () {
     /**
      * パーティクルの生成を行います。
      */
-    ParticleEmitter.prototype.emit = function () {
+    ParticleSystem.prototype.emit = function () {
         // インターバルチェック
         var framerate = Math.round(createjs.Ticker.framerate);
         var frameInSec = this._frameCount % framerate;
@@ -459,7 +460,7 @@ var ParticleEmitter = (function () {
      * 個々のパーティクルを生成し、パーティクルシステムに登録します。
      * @returns {Particle}
      */
-    ParticleEmitter.prototype.emitParticle = function () {
+    ParticleSystem.prototype.emitParticle = function () {
         var particle = this.generateParticle();
         this.container.addChild(particle.particleShape);
         this._activeParticles.push(particle);
@@ -468,7 +469,7 @@ var ParticleEmitter = (function () {
      * パーティクルを生成し、パラメーターを設定します。
      * @returns {Particle}
      */
-    ParticleEmitter.prototype.generateParticle = function () {
+    ParticleSystem.prototype.generateParticle = function () {
         var particle = null;
         if (this._particlesPool.length >= 1) {
             particle = this._particlesPool.shift();
@@ -483,7 +484,7 @@ var ParticleEmitter = (function () {
      * パーティクルパラメータの設定を行います。
      * @param particle
      */
-    ParticleEmitter.prototype.setParticleParameter = function (particle) {
+    ParticleSystem.prototype.setParticleParameter = function (particle) {
         particle.particleShape.removeAllChildren();
         particle.isAlive = true;
         particle.x = this.calcRandomValueWithVariance(this._drawingData.startX, this._drawingData.startXVariance, false);
@@ -512,7 +513,7 @@ var ParticleEmitter = (function () {
      * @param particle
      * @param shapeIdList
      */
-    ParticleEmitter.prototype.generateShape = function (particle, shapeIdList) {
+    ParticleSystem.prototype.generateShape = function (particle, shapeIdList) {
         particle.particleShape.removeAllChildren();
         var startColor = this._drawingData.startColor;
         particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
@@ -542,7 +543,7 @@ var ParticleEmitter = (function () {
                     if (cmd.style instanceof CanvasGradient) {
                         // 昔のグラデーションを保持
                         var oldStyle = cmd.style;
-                        var g = ParticleEmitter.HELPER_GRAPHICS;
+                        var g = ParticleSystem.HELPER_GRAPHICS;
                         var newStyle = g.beginRadialGradientFill([color, ("hsla(" + hue + ", " + saturation + "%, " + luminance + "%, 0)")], oldStyle.props.ratios, oldStyle.props.x0, oldStyle.props.y0, oldStyle.props.r0, oldStyle.props.x1, oldStyle.props.y1, oldStyle.props.r1).command;
                         instructions[i] = newStyle;
                     }
@@ -561,13 +562,13 @@ var ParticleEmitter = (function () {
     /**
      * 一時的にパーティクルの再生を停止します。
      */
-    ParticleEmitter.prototype.pause = function () {
+    ParticleSystem.prototype.pause = function () {
         this._playing = false;
     };
     /**
      * pause()で停止したパーティクルの再生を再開します。
      */
-    ParticleEmitter.prototype.resume = function () {
+    ParticleSystem.prototype.resume = function () {
         this._playing = true;
     };
     /**
@@ -577,7 +578,7 @@ var ParticleEmitter = (function () {
      * @param value
      * @returns {number}
      */
-    ParticleEmitter.prototype.calcRandomValueWithRange = function (minValue, maxValue, value) {
+    ParticleSystem.prototype.calcRandomValueWithRange = function (minValue, maxValue, value) {
         return Math.min(maxValue, Math.max(minValue, value));
     };
     /**
@@ -587,7 +588,7 @@ var ParticleEmitter = (function () {
      * @param isInteger 整数であるかを指定します。
      * @returns {number}  数値を返します。
      */
-    ParticleEmitter.prototype.calcRandomValueWithVariance = function (value, variance, isInteger) {
+    ParticleSystem.prototype.calcRandomValueWithVariance = function (value, variance, isInteger) {
         var result = Number(value) + (Math.random() - 0.5) * variance;
         if (isInteger == true) {
             return Math.floor(result);
@@ -601,10 +602,10 @@ var ParticleEmitter = (function () {
      * @param life 現在の寿命を示します。開始時は1.0で、終了時は0.0の想定です。
      * @returns {number} 現在の値です。
      */
-    ParticleEmitter.prototype.calcCurrentValue = function (start, end, life) {
+    ParticleSystem.prototype.calcCurrentValue = function (start, end, life) {
         return Number(start) * life + Number(end) * (1 - life);
     };
-    Object.defineProperty(ParticleEmitter.prototype, "emitFrequency", {
+    Object.defineProperty(ParticleSystem.prototype, "emitFrequency", {
         /**
          * 1秒あたりの発生数です。
          * @returns {number}
@@ -622,7 +623,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startX", {
+    Object.defineProperty(ParticleSystem.prototype, "startX", {
         /**
          * 発生基準位置 - X座標 (px)です。
          * @returns {number}
@@ -640,7 +641,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startXVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "startXVariance", {
         /**
          * 発生基準位置 - X座標のばらつき (px)です。
          * @returns {number}
@@ -658,7 +659,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startY", {
+    Object.defineProperty(ParticleSystem.prototype, "startY", {
         /**
          * 発生位置 - Y座標 (px)です。
          * @returns {number}
@@ -676,7 +677,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startYVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "startYVariance", {
         /**
          * 発生基準位置 - X座標のばらつき (px)です。
          * @returns {number}
@@ -694,7 +695,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "initialDirection", {
+    Object.defineProperty(ParticleSystem.prototype, "initialDirection", {
         /**
          * 初期速度 - 方向 (度)です。
          * @returns {number}
@@ -712,7 +713,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "initialDirectionVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "initialDirectionVariance", {
         /**
          * 初期速度 - 方向のばらつき (度)です。
          * @returns {number}
@@ -730,7 +731,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "initialSpeed", {
+    Object.defineProperty(ParticleSystem.prototype, "initialSpeed", {
         /**
          * 初期速度 (px)です。
          * @returns {number}
@@ -748,7 +749,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "initialSpeedVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "initialSpeedVariance", {
         /**
          * 初期速度のばらつきです。
          * @returns {number}
@@ -766,7 +767,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "friction", {
+    Object.defineProperty(ParticleSystem.prototype, "friction", {
         /**
          * 摩擦です。
          * @returns {number}
@@ -784,7 +785,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "accelerationSpeed", {
+    Object.defineProperty(ParticleSystem.prototype, "accelerationSpeed", {
         /**
          * 重力です。
          * @returns {number}
@@ -802,7 +803,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "accelerationDirection", {
+    Object.defineProperty(ParticleSystem.prototype, "accelerationDirection", {
         /**
          * 重力です。
          * @returns {number}
@@ -820,7 +821,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startScale", {
+    Object.defineProperty(ParticleSystem.prototype, "startScale", {
         /**
          * 開始時のスケールです。
          * @returns {number}
@@ -838,7 +839,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startScaleVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "startScaleVariance", {
         /**
          * 開始時のスケールのばらつきです。
          * @returns {number}
@@ -856,7 +857,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "finishScale", {
+    Object.defineProperty(ParticleSystem.prototype, "finishScale", {
         /**
          * 終了時のスケールです。
          * @returns {number}
@@ -874,7 +875,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "finishScaleVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "finishScaleVariance", {
         /**
          * 終了時のスケールのばらつきです。
          * @returns {number}
@@ -892,7 +893,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "lifeSpan", {
+    Object.defineProperty(ParticleSystem.prototype, "lifeSpan", {
         /**
          * ライフ(フレーム数)です。
          * @returns {number}
@@ -910,7 +911,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "lifeSpanVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "lifeSpanVariance", {
         /**
          * ライフのばらつき(フレーム数)です。
          * @returns {number}
@@ -928,7 +929,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startAlpha", {
+    Object.defineProperty(ParticleSystem.prototype, "startAlpha", {
         /**
          * 始時の透明度です。
          * @returns {number}
@@ -946,7 +947,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startAlphaVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "startAlphaVariance", {
         /**
          * 開始時の透明度のばらつきです。
          * @returns {number}
@@ -964,7 +965,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "finishAlpha", {
+    Object.defineProperty(ParticleSystem.prototype, "finishAlpha", {
         /**
          * 終了時の透明度です。
          * @returns {number}
@@ -982,7 +983,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "finishAlphaVariance", {
+    Object.defineProperty(ParticleSystem.prototype, "finishAlphaVariance", {
         /**
          * 終了時の透明度のばらつきです。
          * @returns {number}
@@ -1000,7 +1001,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "shapeIdList", {
+    Object.defineProperty(ParticleSystem.prototype, "shapeIdList", {
         /**
          * 使用するシェイプID設定です。
          * @returns {string[]}
@@ -1018,7 +1019,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "startColor", {
+    Object.defineProperty(ParticleSystem.prototype, "startColor", {
         /**
          * 初期カラーの設定です。
          * @returns {ColorData}
@@ -1036,7 +1037,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "blendMode", {
+    Object.defineProperty(ParticleSystem.prototype, "blendMode", {
         /**
          * trueのときシェイプを加算合成します。
          * @returns {boolean}
@@ -1054,7 +1055,7 @@ var ParticleEmitter = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(ParticleEmitter.prototype, "alphaCurveType", {
+    Object.defineProperty(ParticleSystem.prototype, "alphaCurveType", {
         /**
          * 透明度の計算式の設定です。
          * @returns {number}
@@ -1075,10 +1076,10 @@ var ParticleEmitter = (function () {
     /**
      *  グラフィックオブジェクトです。内部計算に使用します。
      */
-    ParticleEmitter.HELPER_GRAPHICS = new createjs.Graphics();
-    return ParticleEmitter;
-})();
-exports.ParticleEmitter = ParticleEmitter;
+    ParticleSystem.HELPER_GRAPHICS = new createjs.Graphics();
+    return ParticleSystem;
+}());
+exports.ParticleSystem = ParticleSystem;
 
 },{"../assets/shape-generator":1,"../data/data-drawing":3,"../enum/alpha-curve-type":5,"./particle":9}],9:[function(require,module,exports){
 "use strict";
@@ -1092,7 +1093,7 @@ var Particle = (function () {
         this.startColor = new data_color_1.ColorData();
     }
     return Particle;
-})();
+}());
 exports.Particle = Particle;
 
 },{"../data/data-color":2}]},{},[7]);
@@ -1303,5 +1304,5 @@ p.nominalBounds = new cjs.Rectangle(-32.5,-32.5,65.1,65.1);
 }).prototype = p = new cjs.Container();
 p.nominalBounds = new cjs.Rectangle(275,200,554,187.5);
 
-})( (effects = effects||{}).assets = effects.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
-var effects, images, createjs, ss;
+})( (particlejs = particlejs||{}).assets = particlejs.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
+var particlejs, images, createjs, ss;

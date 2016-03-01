@@ -15,26 +15,26 @@ gulp.task("copy", function () {
 gulp.task("default", ["copy"]);
 
 gulp.task('concat', function () {
-  gulp.src(['particle-system.js.tmp', 'asset-shapes.js'])
-    .pipe(concat('libs/particle-system.js'))
+  gulp.src(['particlejs.js.tmp', 'asset-shapes.js'])
+    .pipe(concat('libs/particlejs.js'))
     .pipe(gulp.dest('./'));
 });
 
 
 gulp.task("uglify", shell.task([
-    "uglifyjs --compress --mangle -- libs/particle-system.js > libs/effects-particle-system.min.js"
+    "uglifyjs --compress --mangle -- libs/particlejs.js > libs/particlejs.min.js"
   ])
 );
 
 
 gulp.task("build-particle-system", shell.task([
     "tsc -p src --outDir tmp --module commonjs --declaration",
-    "browserify tmp/particle-bundle.js > particle-system.js.tmp"
+    "browserify tmp/particle-bundle.js > particlejs.js.tmp"
   ])
 );
 
 gulp.task('clean-tmp', function (cb) {
-  del(['particle-system.js.tmp', 'tmp'], cb);
+  del(['particlejs.js.tmp', 'tmp'], cb);
 });
 
 gulp.task("start", function () {
@@ -45,7 +45,7 @@ var typedoc = require("gulp-typedoc");
 
 gulp.task("typedoc", function () {
   return gulp
-    .src(["libs/effects-particle-system.d.ts"])
+    .src(["libs/particlejs.d.ts"])
     .pipe(typedoc({
       // TypeScript options (see typescript docs)
       module: "commonjs",
@@ -58,7 +58,7 @@ gulp.task("typedoc", function () {
       mode: "modules",
 
       // TypeDoc options (see typedoc docs)
-      name: "EffectsParticleSystem",
+      name: "ParticleJS",
       theme: "minimal",
       ignoreCompilerErrors: true,
       version: true,

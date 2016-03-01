@@ -204,5 +204,5 @@ p.nominalBounds = new cjs.Rectangle(-32.5,-32.5,65.1,65.1);
 }).prototype = p = new cjs.Container();
 p.nominalBounds = new cjs.Rectangle(275,200,554,187.5);
 
-})( (effects = effects||{}).assets = effects.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
-var effects, images, createjs, ss;
+})( (particlejs = particlejs||{}).assets = particlejs.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
+var particlejs, images, createjs, ss;

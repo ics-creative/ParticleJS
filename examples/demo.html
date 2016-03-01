@@ -4,7 +4,7 @@
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
   <!-- パーティクルシステムのライブラリー読み込み -->
-  <script src="https://cdn.rawgit.com/ics-creative/createjs-particle-system/release/0.1.1/libs/effects-particle-system.min.js"></script>
+  <script src="../libs/particlejs.min.js"></script>
 
   <!-- CSS -->
   <style>
@@ -19,17 +19,22 @@
   </style>
   <!-- JS -->
   <script>
-    var emitter = null;
+    var particleSystem = null;
     var stage = null;
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener("load", function () {
-      emitter = new effects.ParticleEmitter();
+      // CretateJSのステージを作成します。
       stage = new createjs.Stage("myCanvas");
-      stage.addChild(emitter.container);
+
+      // パーティクル発生装置を作成します。
+      particleSystem = new particlejs.ParticleSystem();
+
+      // ステージにパーティクルのコンテナー追加します。
+      stage.addChild(particleSystem.container);
 
       // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
-      emitter.importFromJson(
+      particleSystem.importFromJson(
         // パラメーターJSONのコピー＆ペースト ここから--
         {
           "bgColor": "#00000",
@@ -85,7 +90,7 @@
 
     function handleTick() {
       // パーティクルの発生・更新
-      emitter.update();
+      particleSystem.update();
 
       // 描画を更新する
       stage.update();

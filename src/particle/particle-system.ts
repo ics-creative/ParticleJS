@@ -7,9 +7,9 @@ import {ColorData} from "../data/data-color";
 import {AlphaCurveType} from "../enum/alpha-curve-type";
 
 /**
- * パーティクルの発生装置の制御クラスです。
+ * パーティクルの制御クラスです。
  */
-export class ParticleEmitter {
+export class ParticleSystem {
 
   /**
    *  グラフィックオブジェクトです。内部計算に使用します。
@@ -331,7 +331,7 @@ export class ParticleEmitter {
           if (cmd.style instanceof CanvasGradient) {
             // 昔のグラデーションを保持
             let oldStyle = <any> cmd.style;
-            let g = ParticleEmitter.HELPER_GRAPHICS;
+            let g = ParticleSystem.HELPER_GRAPHICS;
             let newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${saturation}%, ${luminance}%, 0)`],
               oldStyle.props.ratios,
               oldStyle.props.x0,
