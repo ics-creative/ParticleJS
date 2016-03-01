@@ -5,7 +5,7 @@ That way, adding special effects like explosions, smoke, snow, fire, etc. is ver
 
 - [API Document](https://ics-creative.github.io/createjs-particle-system/docs/)
 - Examples
-	- [First step]( https://ics-creative.github.io/createjs-particle-system/docs/examples/first-step.html)
-	- [Mouse tracking]( https://ics-creative.github.io/createjs-particle-system/docs/examples/mouse-tracking.html )
-	- [Color change]( https://ics-creative.github.io/createjs-particle-system/docs/examples/color-change.html )
-- [MIT LICENSE](https://raw.githubusercontent.com/ics-creative/createjs-particle-system/master/LICENSE)
+	- [First step]( https://ics-creative.github.io/ParticleJS/docs/examples/first-step.html)
+	- [Mouse tracking]( https://ics-creative.github.io/ParticleJS/docs/examples/mouse-tracking.html )
+	- [Color change]( https://ics-creative.github.io/ParticleJS/docs/examples/color-change.html )
+- [MIT LICENSE](https://raw.githubusercontent.com/ics-creative/ParticleJS/master/LICENSE)
