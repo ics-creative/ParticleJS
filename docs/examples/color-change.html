@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>color-change.html</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
 
   <style>
     iframe {
@@ -51,17 +51,6 @@
   &lt;!-- パーティクルシステムのライブラリー読み込み --&gt;
   &lt;script src=&quot;https://cdn.rawgit.com/ics-creative/ParticleJS/release/0.1.2/libs/particlejs.min.js&quot;&gt;&lt;/script&gt;
 
-  &lt;!-- CSS --&gt;
-  &lt;style&gt;
-    canvas {
-      background-color: black;
-    }
-
-    * {
-      margin: 0px;
-      padding: 0px;
-    }
-  &lt;/style&gt;
   &lt;!-- JS --&gt;
   &lt;script&gt;
     var particleSystem = null;
@@ -149,6 +138,18 @@
       stage.update();
     }
   &lt;/script&gt;
+
+  &lt;!-- CSS --&gt;
+  &lt;style&gt;
+    canvas {
+      background-color: black;
+    }
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+  &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;canvas width=&quot;960&quot; height=&quot;540&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
