@@ -1,5 +1,9 @@
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
+  <title>ParticleJS - マウス追従</title>
+
   <!-- CreateJSのライブラリー読み込み -->
   <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 
@@ -24,13 +28,13 @@
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener("load", function () {
-      // CretateJSのステージを作成します。
+      // Stageオブジェクトを作成します。表示リストのルートになります。
       stage = new createjs.Stage("myCanvas");
 
-      // パーティクル発生装置を作成します。
+      // パーティクルシステム作成します。
       particleSystem = new particlejs.ParticleSystem();
 
-      // ステージにパーティクルのコンテナー追加します。
+      // パーティクルシステムの描画コンテナーを表示リストに登録します。
       stage.addChild(particleSystem.container);
 
       // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
@@ -84,7 +88,7 @@
       createjs.Ticker.framerate = 60;
       // requestAnimationFrameに従った呼び出し
       createjs.Ticker.timingMode = createjs.Ticker.RAF;
-      // 定期的に呼ばれるメソッドの定義
+      // 定期的に呼ばれる関数を登録
       createjs.Ticker.addEventListener("tick", handleTick);
     });
 

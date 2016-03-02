@@ -48,8 +48,12 @@
     </iframe>
   </div>
   <div id="code-box">
-    <pre id="mycode"><code class="js">&lt;html&gt;
+    <pre id="mycode"><code class="js">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
 &lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;ParticleJS - デモ&lt;/title&gt;
+
   &lt;!-- CreateJSのライブラリー読み込み --&gt;
   &lt;script src=&quot;https://code.createjs.com/createjs-2015.11.26.min.js&quot;&gt;&lt;/script&gt;
 
@@ -74,13 +78,13 @@
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
     window.addEventListener(&quot;load&quot;, function () {
-      // CretateJSのステージを作成します。
+      // Stageオブジェクトを作成します。表示リストのルートになります。
       stage = new createjs.Stage(&quot;myCanvas&quot;);
 
-      // パーティクル発生装置を作成します。
+      // パーティクルシステム作成します。
       particleSystem = new particlejs.ParticleSystem();
 
-      // ステージにパーティクルのコンテナー追加します。
+      // パーティクルシステムの描画コンテナーを表示リストに登録します。
       stage.addChild(particleSystem.container);
 
       // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
@@ -134,7 +138,7 @@
       createjs.Ticker.framerate = 60;
       // requestAnimationFrameに従った呼び出し
       createjs.Ticker.timingMode = createjs.Ticker.RAF;
-      // 定期的に呼ばれるメソッドの定義
+      // 定期的に呼ばれる関数を登録
       createjs.Ticker.addEventListener(&quot;tick&quot;, handleTick);
     });
 
