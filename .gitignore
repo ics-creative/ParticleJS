@@ -4,4 +4,5 @@ node_modules
 typings
 *.map
 src/**/*.js
+!src/asset-shapes.js
 tmp/

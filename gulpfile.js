@@ -15,7 +15,7 @@ gulp.task("copy", function () {
 gulp.task("default", ["copy"]);
 
 gulp.task('concat', function () {
-  gulp.src(['particlejs.js.tmp', 'asset-shapes.js'])
+  gulp.src(['particlejs.js.tmp', 'src/asset-shapes.js'])
     .pipe(concat('libs/particlejs.js'))
     .pipe(gulp.dest('./'));
 });
