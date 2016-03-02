@@ -87,7 +87,7 @@ let generateHTML = (dirName:string, fileName:string, resolve:Function) => {
       return;
     }
 
-    let fileRawName = fileName.split(".md").join("");
+    let fileRawName = fileName.split(".html").join("");
 
     let escapeHTML = (str:string) => {
       return str.replace(/&/g, '&amp;')
@@ -97,12 +97,15 @@ let generateHTML = (dirName:string, fileName:string, resolve:Function) => {
         .replace(/'/g, '&#039;');
     }
 
+    let headerMatch = text.match(/<title>(.*?)<\/title>/);
+    let articleTitle = headerMatch ? headerMatch[1] : fileRawName;
+
     // --------------------------------
     // テンプレートへの適用
     // --------------------------------
     let values = {
       "sourcecode": escapeHTML(text),
-      "title" : fileRawName,
+      "title" : articleTitle,
       "url": "../../examples/" + fileName
     };
     if (!templateHtml) {

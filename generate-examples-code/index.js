@@ -3,10 +3,10 @@
 var fs = require("fs");
 var marked = require("marked");
 var mkdirp = require("mkdirp");
-let promises = [];
-let samplesUrl = "https://ics-creative.github.io/tutorial-createjs/";
-let samplesHtmlUrl = "https://github.com/ics-creative/tutorial-createjs/blob/gh-pages/";
-let templateHtml;
+var promises = [];
+var samplesUrl = "https://ics-creative.github.io/tutorial-createjs/";
+var samplesHtmlUrl = "https://github.com/ics-creative/tutorial-createjs/blob/gh-pages/";
+var templateHtml;
 /**
  * テンプレート文字列を展開
  * http://webdesign-dackel.com/2015/07/17/javascript-template-string/
@@ -14,7 +14,7 @@ let templateHtml;
  * @param values:Object 展開する値
  * @return string
  */
-let template = (text, values) => {
+var template = function (text, values) {
     if (!text) {
         console.log("template-error!");
         return "";
@@ -23,11 +23,11 @@ let template = (text, values) => {
         return Object.prototype.hasOwnProperty.call(values, key) ? values[key] : "";
     });
 };
-const renderer = new marked.Renderer();
-renderer.link = (href, title, text) => {
+var renderer = new marked.Renderer();
+renderer.link = function (href, title, text) {
     //console.log("href:" + href);
-    let sampledIndex = href.indexOf("samples/");
-    let absolutePass = href.indexOf("http") == 0;
+    var sampledIndex = href.indexOf("samples/");
+    var absolutePass = href.indexOf("http") == 0;
     if (!absolutePass && sampledIndex >= 0) {
         href = samplesHtmlUrl + href.slice(sampledIndex);
     }
@@ -36,23 +36,23 @@ renderer.link = (href, title, text) => {
             href = href.replace("md", "html");
         }
     }
-    let htmlHref = (href != null && href != "") ? ` href="${href}"` : "";
-    let htmlTitle = (title != null && title != "") ? ` title=${title}` : "";
-    return `<a${htmlHref}${htmlTitle}>${text}</a>`;
+    var htmlHref = (href != null && href != "") ? " href=\"" + href + "\"" : "";
+    var htmlTitle = (title != null && title != "") ? " title=" + title : "";
+    return "<a" + htmlHref + htmlTitle + ">" + text + "</a>";
 };
-renderer.image = (href, title, text) => {
+renderer.image = function (href, title, text) {
     //console.log("imgs:" + href);
-    let absolutePass = href.indexOf("http") == 0;
-    let sampledIndex = href.indexOf("../imgs/");
+    var absolutePass = href.indexOf("http") == 0;
+    var sampledIndex = href.indexOf("../imgs/");
     if (!absolutePass && sampledIndex >= 0) {
         href = samplesUrl + href.slice(sampledIndex + ("../").length);
     }
-    let htmlHref = (href != null && href != "") ? ` src="${href}"` : "";
-    let htmlTitle = (title != null && title != "") ? ` title=${title}` : "";
-    return `<img${htmlHref}${htmlTitle} />`;
+    var htmlHref = (href != null && href != "") ? " src=\"" + href + "\"" : "";
+    var htmlTitle = (title != null && title != "") ? " title=" + title : "";
+    return "<img" + htmlHref + htmlTitle + " />";
 };
 renderer.heading = function (text, level) {
-    return `<h${level}>${text}</h${level}>`;
+    return "<h" + level + ">" + text + "</h" + level + ">";
 };
 marked.setOptions({
     highlight: function (code) {
@@ -60,34 +60,36 @@ marked.setOptions({
     },
     renderer: renderer
 });
-let generateHTML = (dirName, fileName, resolve) => {
-    fs.readFile("../examples/" + dirName + fileName, "utf8", (error, text) => {
+var generateHTML = function (dirName, fileName, resolve) {
+    fs.readFile("../examples/" + dirName + fileName, "utf8", function (error, text) {
         if (error) {
             console.log("erroe exit:" + fileName);
             return;
         }
-        let fileRawName = fileName.split(".md").join("");
-        let escapeHTML = (str) => {
+        var fileRawName = fileName.split(".html").join("");
+        var escapeHTML = function (str) {
             return str.replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
                 .replace(/>/g, '&gt;')
                 .replace(/"/g, '&quot;')
                 .replace(/'/g, '&#039;');
         };
+        var headerMatch = text.match(/<title>(.*?)<\/title>/);
+        var articleTitle = headerMatch ? headerMatch[1] : fileRawName;
         // --------------------------------
         // テンプレートへの適用
         // --------------------------------
-        let values = {
+        var values = {
             "sourcecode": escapeHTML(text),
-            "title": fileRawName,
+            "title": articleTitle,
             "url": "../../examples/" + fileName
         };
         if (!templateHtml) {
             console.log(fileName + " generate error!");
             return;
         }
-        let textValue = template(templateHtml, values);
-        fs.writeFile("../docs/examples/" + dirName + fileName.replace("md", "html"), textValue, (error) => {
+        var textValue = template(templateHtml, values);
+        fs.writeFile("../docs/examples/" + dirName + fileName.replace("md", "html"), textValue, function (error) {
             //console.log(fileName + "- maked");
             if (error) {
                 return;
@@ -96,8 +98,8 @@ let generateHTML = (dirName, fileName, resolve) => {
         });
     });
 };
-fs.readdir("../examples/", (err, files) => {
-    promises.push(new Promise((resolve) => {
+fs.readdir("../examples/", function (err, files) {
+    promises.push(new Promise(function (resolve) {
         mkdirp("../docs/examples/", function (err) {
             if (err) {
                 console.error("mkdir-error" + err);
@@ -107,22 +109,22 @@ fs.readdir("../examples/", (err, files) => {
             }
         });
     }));
-    promises.push(new Promise((resolve) => {
-        fs.readFile("example-template.html", "utf8", (error, text) => {
+    promises.push(new Promise(function (resolve) {
+        fs.readFile("example-template.html", "utf8", function (error, text) {
             templateHtml = text;
             resolve();
         });
     }));
-    for (let i = 0; i < files.length; i++) {
-        let filename = files[i];
-        let childPromise = new Promise((resolve) => {
+    for (var i = 0; i < files.length; i++) {
+        var filename = files[i];
+        var childPromise = new Promise(function (resolve) {
             generateHTML("", filename, resolve);
         });
         promises.push(childPromise);
     }
     Promise
         .all(promises)
-        .then((results) => {
+        .then(function (results) {
         console.log("[Success] HTML files are generated.");
     });
 });
@@ -132,6 +134,6 @@ fs.readdir("../examples/", (err, files) => {
  * @returns {string} 「◯年◯月◯日」フォーマットの日付
  */
 function toLocaleString(date) {
-    return `${date.getFullYear()}年${date.getMonth() + 1}月${date.getDate()}日`;
+    return date.getFullYear() + "\u5E74" + (date.getMonth() + 1) + "\u6708" + date.getDate() + "\u65E5";
 }
 //# sourceMappingURL=index.js.map
