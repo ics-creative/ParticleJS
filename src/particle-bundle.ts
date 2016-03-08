@@ -1,7 +1,7 @@
 /// <reference path="../node_modules/typescript/lib/lib.es6.d.ts"/>
 /// <reference path="../typings/main.d.ts"/>
 
-import {ParticleSystem} from "./particle/particle-system";
+import {particlejs, ParticleSystem} from "./particle/particle-system";
 import {DrawingData} from "./data/data-drawing";
 import {ColorData} from "./data/data-color";
 import {ShapeData} from "./data/data-shape";
@@ -15,3 +15,4 @@ import {ShapeType} from "./enum/shape-type";
 (<any>window).particlejs.AlphaCurveType = AlphaCurveType;
 (<any>window).particlejs.ShapeType = ShapeType;
 (<any>window).particlejs.ShapeData = ShapeData;
+(<any>window).particlejs.VERSION = particlejs.VERSION;

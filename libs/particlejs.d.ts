@@ -1,8 +1,20 @@
 declare module particlejs {
+
   /**
-   * パーティクルの発生装置の制御クラスです。
+   * バージョンです。
+   */
+  const VERSION:string;
+
+  /**
+   * 現在のバージョンと互換性があるかどうかをチェックします。
+   */
+  function checkVersion(value: string): boolean;
+
+  /**
+   * パーティクルの制御クラスです。
    */
   export class ParticleSystem {
+
     /**
      * パーティクルが配置されるコンテナーです。
      */

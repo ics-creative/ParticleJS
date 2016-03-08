@@ -293,6 +293,7 @@ window.particlejs.ColorData = data_color_1.ColorData;
 window.particlejs.AlphaCurveType = alpha_curve_type_1.AlphaCurveType;
 window.particlejs.ShapeType = shape_type_1.ShapeType;
 window.particlejs.ShapeData = data_shape_1.ShapeData;
+window.particlejs.VERSION = particle_system_1.particlejs.VERSION;
 
 },{"./data/data-color":2,"./data/data-drawing":3,"./data/data-shape":4,"./enum/alpha-curve-type":5,"./enum/shape-type":6,"./particle/particle-system":8}],8:[function(require,module,exports){
 "use strict";
@@ -300,6 +301,45 @@ var particle_1 = require("./particle");
 var data_drawing_1 = require("../data/data-drawing");
 var shape_generator_1 = require("../assets/shape-generator");
 var alpha_curve_type_1 = require("../enum/alpha-curve-type");
+var particlejs;
+(function (particlejs) {
+    particlejs.VERSION = "0.1.3";
+    /**
+     * 現在のバージョンと互換性があるかどうかをチェックします。
+     * @param value
+     */
+    function checkVersion(value) {
+        var currentVersion = particlejs.VERSION.split(".");
+        //  ここはそもそもこない想定だけれども。
+        if (currentVersion.length <= 2) {
+            console.log("ERROR! バージョン表記エラーが発生しました。");
+            return false;
+        }
+        //  versionが空の場合
+        if (!value) {
+            if (currentVersion[0] == "0" && currentVersion[1] == "1") {
+                //「0.1.▲」のバージョンのParticleSystemは問題なく動作させる
+                return true;
+            }
+            else {
+                //  バージョンが空の場合はエラー
+                return false;
+            }
+        }
+        var jsonVersion = value.split(".");
+        //  メジャーバージョンのチェック
+        if (currentVersion[0] != jsonVersion[0]) {
+            return false;
+        }
+        //  マイナーバージョンのチェック
+        if (currentVersion[1] != jsonVersion[1]) {
+            return false;
+        }
+        //  リビジョン番号が同じなら互換性があると行って良い
+        return true;
+    }
+    particlejs.checkVersion = checkVersion;
+})(particlejs = exports.particlejs || (exports.particlejs = {}));
 /**
  * パーティクルの制御クラスです。
  */
@@ -332,6 +372,9 @@ var ParticleSystem = (function () {
      * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
      */
     ParticleSystem.prototype.importFromJson = function (jsonObject) {
+        if (!particlejs.checkVersion(jsonObject["VERSION"] || "")) {
+            console.log("WARN! 読み込んだJSONファイルとParticleJSのバージョンが違います。 https://github.com/ics-creative/ParticleJS");
+        }
         this._drawingData.importFromJson(jsonObject);
     };
     /**
