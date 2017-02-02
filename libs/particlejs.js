@@ -483,15 +483,15 @@ var ParticleSystem = (function () {
         var framerate = Math.round(createjs.Ticker.framerate);
         var frameInSec = this._frameCount % framerate;
         var emitPerSec = this._drawingData.emitFrequency;
-        var loopInt = Math.floor(emitPerSec / framerate);
+        var loopInt = (emitPerSec == 0) ? 0 : Math.floor(emitPerSec / framerate);
         // ① 整数分の実行回数
         for (var i = 0; i < loopInt; i++) {
             this.emitParticle();
         }
         // ② 小数点分の実行回数
         var loopFloat = ((emitPerSec / framerate) - loopInt);
-        // フレームレートより少ない場合
-        if (frameInSec % Math.floor(1 / loopFloat) == 0) {
+        // フレームレートより少ない場合、かつ、生成persecが0ではないとき
+        if (emitPerSec != 0 && (frameInSec % Math.floor(1 / loopFloat) == 0)) {
             this.emitParticle();
         }
         this._frameCount++;

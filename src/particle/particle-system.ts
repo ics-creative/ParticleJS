@@ -245,7 +245,7 @@ export class ParticleSystem {
     const framerate = Math.round(createjs.Ticker.framerate);
     const frameInSec = this._frameCount % framerate;
     const emitPerSec = this._drawingData.emitFrequency;
-    const loopInt = Math.floor(emitPerSec / framerate);
+    const loopInt = (emitPerSec == 0) ? 0 : Math.floor(emitPerSec / framerate);
 
     // ① 整数分の実行回数
     for (let i = 0; i < loopInt; i++) {
@@ -254,8 +254,8 @@ export class ParticleSystem {
 
     // ② 小数点分の実行回数
     const loopFloat = ((emitPerSec / framerate) - loopInt);
-    // フレームレートより少ない場合
-    if (frameInSec % Math.floor(1 / loopFloat) == 0) {
+    // フレームレートより少ない場合、かつ、生成persecが0ではないとき
+    if (emitPerSec != 0 && (frameInSec % Math.floor(1 / loopFloat) == 0)) {
       this.emitParticle();
     }
 
