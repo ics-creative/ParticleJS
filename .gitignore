@@ -6,3 +6,6 @@ typings
 src/**/*.js
 !src/asset-shapes.js
 tmp/
+/.idea
+/yarn.lock
+/particlejs.js.tmp
