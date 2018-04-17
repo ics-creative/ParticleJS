@@ -1,26 +1,26 @@
-var gulp = require("gulp");
-var shell = require("gulp-shell");
-var uglify = require("gulp-uglify");
-var concat = require("gulp-concat");
-var del = require("del");
-var runSequence = require("run-sequence");
+const gulp = require("gulp");
+const shell = require("gulp-shell");
+const uglify = require("gulp-uglify");
+const concat = require("gulp-concat");
+const del = require("del");
+const runSequence = require("run-sequence");
 
-gulp.task("copy", function() {
+gulp.task("copy", () =>
   // コピー元フォルダーの指定
   gulp
     .src("../core/libs/asset-shapes.js")
     // コピー先フォルダーの指定
-    .pipe(gulp.dest("./"));
-});
+    .pipe(gulp.dest("./"))
+);
 
 gulp.task("default", ["copy"]);
 
-gulp.task("concat", function() {
+gulp.task("concat", () =>
   gulp
     .src(["particlejs.js.tmp", "src/asset-shapes.js"])
     .pipe(concat("libs/particlejs.js"))
-    .pipe(gulp.dest("./"));
-});
+    .pipe(gulp.dest("./"))
+);
 
 gulp.task(
   "uglify",
@@ -37,18 +37,18 @@ gulp.task(
   ])
 );
 
-gulp.task("clean-tmp", function(cb) {
+gulp.task("clean-tmp", cb => {
   del(["particlejs.js.tmp", "tmp"], cb);
 });
 
-gulp.task("start", function() {
-  return runSequence("build-particle-system", "concat", "uglify", "clean-tmp");
-});
+gulp.task("start", () =>
+  runSequence("build-particle-system", "concat", "uglify", "clean-tmp")
+);
 
-var typedoc = require("gulp-typedoc");
+const typedoc = require("gulp-typedoc");
 
-gulp.task("typedoc", function() {
-  return gulp.src(["libs/particlejs.d.ts"]).pipe(
+gulp.task("typedoc", () =>
+  gulp.src(["libs/particlejs.d.ts"]).pipe(
     typedoc({
       // TypeScript options (see typescript docs)
       module: "commonjs",
@@ -66,5 +66,5 @@ gulp.task("typedoc", function() {
       ignoreCompilerErrors: true,
       version: true
     })
-  );
-});
+  )
+);
