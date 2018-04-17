@@ -1,26 +1,8 @@
 const gulp = require("gulp");
 const shell = require("gulp-shell");
 const uglify = require("gulp-uglify");
-const concat = require("gulp-concat");
 const del = require("del");
 const runSequence = require("run-sequence");
-
-gulp.task("copy", () =>
-  // コピー元フォルダーの指定
-  gulp
-    .src("../core/libs/asset-shapes.js")
-    // コピー先フォルダーの指定
-    .pipe(gulp.dest("./"))
-);
-
-gulp.task("default", ["copy"]);
-
-gulp.task("concat", () =>
-  gulp
-    .src(["particlejs.js.tmp", "src/asset-shapes.js"])
-    .pipe(concat("libs/particlejs.js"))
-    .pipe(gulp.dest("./"))
-);
 
 gulp.task(
   "uglify",
@@ -29,29 +11,23 @@ gulp.task(
   ])
 );
 
-gulp.task(
-  "build-particle-system",
-  shell.task([
-    "tsc -p src --outDir tmp --module commonjs --declaration",
-    "browserify tmp/particle-bundle.js > particlejs.js.tmp"
-  ])
-);
+gulp.task("build-particle-system", shell.task(["webpack"]));
 
 gulp.task("clean-tmp", cb => {
   del(["particlejs.js.tmp", "tmp"], cb);
 });
 
 gulp.task("start", () =>
-  runSequence("build-particle-system", "concat", "uglify", "clean-tmp")
+  runSequence("build-particle-system", "uglify", "clean-tmp")
 );
 
 const typedoc = require("gulp-typedoc");
 
 gulp.task("typedoc", () =>
-  gulp.src(["libs/particlejs.d.ts"]).pipe(
+  gulp.src(["libs/d.ts/particlejs.d.ts"]).pipe(
     typedoc({
       // TypeScript options (see typescript docs)
-      module: "commonjs",
+      module: "es2015",
       target: "es5",
       includeDeclarations: true,
 

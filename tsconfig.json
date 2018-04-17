@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "target": "es5",
+    // TSはECMAScript 5に変換
+    "module": "es2015",
+    // TSのモジュールはES Modulesとして出力
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "declaration": true,
+    "declarationDir": "d.ts"
+  },
+  "files": [
+    "./src/particlejs.ts"
+  ],
+  "exclude": [
+    "./node_modules"
+  ]
+}

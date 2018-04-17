@@ -1,50 +1,48 @@
-import { Particle } from "./particle";
-import { DrawingData } from "../data/data-drawing";
 import { ShapeGenerator } from "../assets/shape-generator";
 import { ColorData } from "../data/data-color";
+import { DrawingData } from "../data/data-drawing";
 import { AlphaCurveType } from "../enum/alpha-curve-type";
+import { Particle } from "./particle";
 
-export namespace particlejs {
-  export const VERSION = "0.1.3";
+export const VERSION = "0.1.3";
 
-  /**
-   * 現在のバージョンと互換性があるかどうかをチェックします。
-   * @param value
-   */
-  export function checkVersion(value: string) {
-    const currentVersion = VERSION.split(".");
+/**
+ * 現在のバージョンと互換性があるかどうかをチェックします。
+ * @param value
+ */
+export function checkVersion(value: string) {
+  const currentVersion = VERSION.split(".");
 
-    //  ここはそもそもこない想定だけれども。
-    if (currentVersion.length <= 2) {
-      console.log("バージョン表記エラーが発生しました。");
-      return false;
-    }
-
-    //  versionが空の場合
-    if (!value) {
-      if (currentVersion[0] == "0" && currentVersion[1] == "1") {
-        //「0.1.▲」のバージョンのParticleSystemは問題なく動作させる
-        return true;
-      } else {
-        //  バージョンが空の場合はエラー
-        return false;
-      }
-    }
-
-    const jsonVersion = value.split(".");
-
-    //  メジャーバージョンのチェック
-    if (currentVersion[0] != jsonVersion[0]) {
-      return false;
-    }
-    //  マイナーバージョンのチェック
-    if (currentVersion[1] != jsonVersion[1]) {
-      return false;
-    }
-
-    //  リビジョン番号が同じなら互換性があると行って良い
-    return true;
+  //  ここはそもそもこない想定だけれども。
+  if (currentVersion.length <= 2) {
+    console.log("バージョン表記エラーが発生しました。");
+    return false;
   }
+
+  //  versionが空の場合
+  if (!value) {
+    if (currentVersion[0] == "0" && currentVersion[1] == "1") {
+      //「0.1.▲」のバージョンのParticleSystemは問題なく動作させる
+      return true;
+    } else {
+      //  バージョンが空の場合はエラー
+      return false;
+    }
+  }
+
+  const jsonVersion = value.split(".");
+
+  //  メジャーバージョンのチェック
+  if (currentVersion[0] != jsonVersion[0]) {
+    return false;
+  }
+  //  マイナーバージョンのチェック
+  if (currentVersion[1] != jsonVersion[1]) {
+    return false;
+  }
+
+  //  リビジョン番号が同じなら互換性があると行って良い
+  return true;
 }
 
 /**
@@ -103,9 +101,10 @@ export class ParticleSystem {
    * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
    */
   public importFromJson(jsonObject: any) {
-    if (!particlejs.checkVersion(jsonObject["VERSION"] || "")) {
-      console.log(
-        "WARN! 読み込んだJSONファイルとParticleJSのバージョンが違います。 https://github.com/ics-creative/ParticleJS"
+    if (!checkVersion(jsonObject["VERSION"] || "")) {
+      console.warn(
+        "読み込んだJSONファイルとParticleJSのバージョンが異なります。\n" +
+          "https://github.com/ics-creative/ParticleJS"
       );
     }
 

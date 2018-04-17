@@ -1,3 +1,8 @@
+var libs = {};
+var images = {};
+var createjs = window.createjs;
+var ss = {};
+
 (function (lib, img, cjs, ss) {
 
 var p; // shortcut to reference prototypes
@@ -204,5 +209,6 @@ p.nominalBounds = new cjs.Rectangle(-32.5,-32.5,65.1,65.1);
 }).prototype = p = new cjs.Container();
 p.nominalBounds = new cjs.Rectangle(275,200,554,187.5);
 
-})( (particlejs = particlejs||{}).assets = particlejs.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
-var particlejs, images, createjs, ss;
+})( (libs = libs||{}).assets = libs.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
+
+export {libs}
