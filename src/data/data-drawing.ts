@@ -1,79 +1,166 @@
 import { ColorData } from "./data-color";
 import { AlphaCurveType } from "../enum/alpha-curve-type";
 
+/**
+ * パーティクルの描画情報を扱うデータ型クラスです。
+ */
 export class DrawingData {
+  /**
+   * 背景色です。
+   * @type {string}
+   */
   bgColor: string = "";
+  /**
+   * 幅です。
+   * @type {number}
+   */
   width: number = 0.0;
+  /**
+   * 高さです。
+   * @type {number}
+   */
   height: number = 0.0;
 
-  /** 1秒あたりの発生数です。 */
+  /**
+   * 1秒あたりの発生数です。
+   * @type {number}
+   */
   emitFrequency: number = 0;
 
-  /** 発生基準位置 - X座標 (px)です。 */
+  /**
+   *  発生基準位置 - X座標 (px)です。
+   * @type {number}
+   */
   startX: number = 0;
-  /** 発生基準位置 - X座標のばらつき (px)です。 */
+  /**
+   * 発生基準位置 - X座標のばらつき (px)です。
+   * @type {number}
+   */
   startXVariance: number = 0;
 
-  /** 発生位置 - Y座標 (px)です。 */
+  /**
+   * 発生位置 - Y座標 (px)です。
+   * @type {number}
+   */
   startY: number = 0;
-  /** 発生位置 - Y座標のばらつき (px)です。 */
+  /**
+   * 発生位置 - Y座標のばらつき (px)です。
+   * @type {number}
+   */
   startYVariance: number = 0;
 
-  /** 初期速度 - 方向 (度)です。 */
+  /**
+   * 初期速度 - 方向 (度)です。
+   * @type {number}
+   */
   initialDirection: number = 0;
-  /** 初期速度 - 方向のばらつき (度)です。 */
+  /**
+   * 初期速度 - 方向のばらつき (度)です。
+   * @type {number}
+   */
   initialDirectionVariance: number = 0;
 
-  /** 初期速度 (px)です。 */
+  /** 初期速度 (px)です。
+   * @type {number}
+   */
   initialSpeed: number = 0;
-  /** 初期速度のばらつきです。 */
+  /** 初期速度のばらつきです。
+   * @type {number}
+   */
   initialSpeedVariance: number = 0;
 
-  /** 摩擦です。 */
+  /** 摩擦です。
+   * @type {number}
+   */
   friction: number = 0;
 
-  /** 重力です。 */
+  /** 重力です。
+   * @type {number}
+   */
   accelerationSpeed: number = 0;
-  /** 重力方向 (度)です。 */
+  /** 重力方向 (度)です。
+   * @type {number}
+   */
   accelerationDirection: number = 0;
 
-  /** 開始時のスケールです。 */
+  /** 開始時のスケールです。
+   * @type {number}
+   */
   startScale: number = 0;
   /** 開始時のスケールのばらつきです。 */
   startScaleVariance: number = 0;
 
-  /** 終了時のスケールです。 */
+  /** 終了時のスケールです。
+   * @type {number}
+   */
   finishScale: number = 0;
-  /** 終了時のスケールのばらつきです。 */
+  /** 終了時のスケールのばらつきです。
+   * @type {number}
+   */
   finishScaleVariance: number = 0;
 
-  /** ライフ(フレーム数)です。 */
-  lifeSpan: number = 0;
-  /** ライフのばらつき(フレーム数)です。 */
-  lifeSpanVariance: number = 0;
+  /**
+   * ライフ(フレーム数)です。
+   * @type {number}
+   */
+  lifeSpan: number = 0; /**
+   * ライフのばらつき(フレーム数)です。
+   * @type {number}
+   */
+  /**  */ lifeSpanVariance: number = 0;
 
-  /** 開始時の透明度です。 */
+  /**
+   *  開始時の透明度です。
+   * @type {number}
+   */
   startAlpha: number = 0;
-  /** 開始時の透明度のばらつきです。 */
+
+  /**
+   * 開始時の透明度のばらつきです。
+   * @type {number}
+   */
   startAlphaVariance: number = 0;
 
-  /** 終了時の透明度です。 */
+  /**
+   * 終了時の透明度です。
+   * @type {number}
+   */
   finishAlpha: number = 0;
-  /** 終了時の透明度のばらつきです。 */
+
+  /**
+   * 終了時の透明度のばらつきです。
+   * @type {number}
+   */
   finishAlphaVariance: number = 0;
 
-  /** 使用するシェイプID設定です。 */
+  /**
+   * 使用するシェイプID設定です。
+   * @type {string[]}
+   */
   shapeIdList: string[] = [""];
 
-  /** 初期カラーの設定です。 */
+  /**
+   * 初期カラーの設定です。
+   * @type {ColorData}
+   */
   startColor: ColorData = new ColorData();
 
-  /** シェイプを加算合成します。 */
+  /**
+   * シェイプを加算合成します。
+   * @type {boolean}
+   */
   blendMode: boolean = true;
 
-  /** 透明度の計算式の設定です。 */
+  /**
+   * 透明度の計算式の設定です。
+   * @type {AlphaCurveType.Normal}
+   */
   alphaCurveType: number = AlphaCurveType.Normal;
 
+  /**
+   * コンストラクターです。
+   * @param json
+   */
   constructor(json: any = null) {
     if (json) {
       this.importFromJson(json);
@@ -96,7 +183,7 @@ export class DrawingData {
 
   /**
    * パーティクルの設定をDrawingDataオブジェクトから読み込みます
-   * @param obj
+   * @param {DrawingData} obj
    */
   public importData(obj: DrawingData) {
     const checkSkipKey = (key: string) => {

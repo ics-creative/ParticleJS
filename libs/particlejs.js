@@ -87,6 +87,11 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 
 // CONCATENATED MODULE: ./src/asset-shapes.ts
+/**
+ * アセットを含むオブジェクトです。このクラスは将来変更する可能性が高いので deprecated とします。
+ * 利用しないでください。
+ * @type {{}}
+ */
 var Assets = {};
 var asset_shapes_images = {};
 var asset_shapes_createjs = window["createjs"];
@@ -431,9 +436,19 @@ var ss = {};
 
 // CONCATENATED MODULE: ./src/assets/shape-generator.ts
 
+/**
+ * シェイプをインスタンス化するクラスです。
+ * ParticleJSの内部的な利用以外では使用しないことをオススメします。
+ */
 var shape_generator_ShapeGenerator = /** @class */ (function () {
     function ShapeGenerator() {
     }
+    /**
+     * シェイプインスタンスを作成します。
+     * @param {string} id
+     * @returns {createjs.Container}
+     * @see data-shape.ts
+     */
     ShapeGenerator.prototype.generateShape = function (id) {
         var cls = Assets[id];
         return new cls();
@@ -443,6 +458,9 @@ var shape_generator_ShapeGenerator = /** @class */ (function () {
 
 
 // CONCATENATED MODULE: ./src/data/data-color.ts
+/**
+ * 色の情報を扱うデータ型クラスです。
+ */
 var ColorData = /** @class */ (function () {
     function ColorData() {
         /**
@@ -499,63 +517,148 @@ var AlphaCurveType;
 // CONCATENATED MODULE: ./src/data/data-drawing.ts
 
 
+/**
+ * パーティクルの描画情報を扱うデータ型クラスです。
+ */
 var data_drawing_DrawingData = /** @class */ (function () {
+    /**
+     * コンストラクターです。
+     * @param json
+     */
     function DrawingData(json) {
         if (json === void 0) { json = null; }
+        /**
+         * 背景色です。
+         * @type {string}
+         */
         this.bgColor = "";
+        /**
+         * 幅です。
+         * @type {number}
+         */
         this.width = 0.0;
+        /**
+         * 高さです。
+         * @type {number}
+         */
         this.height = 0.0;
-        /** 1秒あたりの発生数です。 */
+        /**
+         * 1秒あたりの発生数です。
+         * @type {number}
+         */
         this.emitFrequency = 0;
-        /** 発生基準位置 - X座標 (px)です。 */
+        /**
+         *  発生基準位置 - X座標 (px)です。
+         * @type {number}
+         */
         this.startX = 0;
-        /** 発生基準位置 - X座標のばらつき (px)です。 */
+        /**
+         * 発生基準位置 - X座標のばらつき (px)です。
+         * @type {number}
+         */
         this.startXVariance = 0;
-        /** 発生位置 - Y座標 (px)です。 */
+        /**
+         * 発生位置 - Y座標 (px)です。
+         * @type {number}
+         */
         this.startY = 0;
-        /** 発生位置 - Y座標のばらつき (px)です。 */
+        /**
+         * 発生位置 - Y座標のばらつき (px)です。
+         * @type {number}
+         */
         this.startYVariance = 0;
-        /** 初期速度 - 方向 (度)です。 */
+        /**
+         * 初期速度 - 方向 (度)です。
+         * @type {number}
+         */
         this.initialDirection = 0;
-        /** 初期速度 - 方向のばらつき (度)です。 */
+        /**
+         * 初期速度 - 方向のばらつき (度)です。
+         * @type {number}
+         */
         this.initialDirectionVariance = 0;
-        /** 初期速度 (px)です。 */
+        /** 初期速度 (px)です。
+         * @type {number}
+         */
         this.initialSpeed = 0;
-        /** 初期速度のばらつきです。 */
+        /** 初期速度のばらつきです。
+         * @type {number}
+         */
         this.initialSpeedVariance = 0;
-        /** 摩擦です。 */
+        /** 摩擦です。
+         * @type {number}
+         */
         this.friction = 0;
-        /** 重力です。 */
+        /** 重力です。
+         * @type {number}
+         */
         this.accelerationSpeed = 0;
-        /** 重力方向 (度)です。 */
+        /** 重力方向 (度)です。
+         * @type {number}
+         */
         this.accelerationDirection = 0;
-        /** 開始時のスケールです。 */
+        /** 開始時のスケールです。
+         * @type {number}
+         */
         this.startScale = 0;
         /** 開始時のスケールのばらつきです。 */
         this.startScaleVariance = 0;
-        /** 終了時のスケールです。 */
+        /** 終了時のスケールです。
+         * @type {number}
+         */
         this.finishScale = 0;
-        /** 終了時のスケールのばらつきです。 */
+        /** 終了時のスケールのばらつきです。
+         * @type {number}
+         */
         this.finishScaleVariance = 0;
-        /** ライフ(フレーム数)です。 */
-        this.lifeSpan = 0;
-        /** ライフのばらつき(フレーム数)です。 */
-        this.lifeSpanVariance = 0;
-        /** 開始時の透明度です。 */
+        /**
+         * ライフ(フレーム数)です。
+         * @type {number}
+         */
+        this.lifeSpan = 0; /**
+         * ライフのばらつき(フレーム数)です。
+         * @type {number}
+         */
+        /**  */ this.lifeSpanVariance = 0;
+        /**
+         *  開始時の透明度です。
+         * @type {number}
+         */
         this.startAlpha = 0;
-        /** 開始時の透明度のばらつきです。 */
+        /**
+         * 開始時の透明度のばらつきです。
+         * @type {number}
+         */
         this.startAlphaVariance = 0;
-        /** 終了時の透明度です。 */
+        /**
+         * 終了時の透明度です。
+         * @type {number}
+         */
         this.finishAlpha = 0;
-        /** 終了時の透明度のばらつきです。 */
+        /**
+         * 終了時の透明度のばらつきです。
+         * @type {number}
+         */
         this.finishAlphaVariance = 0;
-        /** 使用するシェイプID設定です。 */
+        /**
+         * 使用するシェイプID設定です。
+         * @type {string[]}
+         */
         this.shapeIdList = [""];
-        /** 初期カラーの設定です。 */
+        /**
+         * 初期カラーの設定です。
+         * @type {ColorData}
+         */
         this.startColor = new ColorData();
-        /** シェイプを加算合成します。 */
+        /**
+         * シェイプを加算合成します。
+         * @type {boolean}
+         */
         this.blendMode = true;
-        /** 透明度の計算式の設定です。 */
+        /**
+         * 透明度の計算式の設定です。
+         * @type {AlphaCurveType.Normal}
+         */
         this.alphaCurveType = AlphaCurveType.Normal;
         if (json) {
             this.importFromJson(json);
@@ -573,7 +676,7 @@ var data_drawing_DrawingData = /** @class */ (function () {
     };
     /**
      * パーティクルの設定をDrawingDataオブジェクトから読み込みます
-     * @param obj
+     * @param {DrawingData} obj
      */
     DrawingData.prototype.importData = function (obj) {
         var checkSkipKey = function (key) {
@@ -719,6 +822,9 @@ var ShapeType = /** @class */ (function () {
  * パーティクルエミッターのバリューオブジェクトのクラスです。
  */
 var particle_Particle = /** @class */ (function () {
+    /**
+     * コンストラクターです。
+     */
     function Particle() {
         this.particleShape = new createjs.Container();
         this.startColor = new ColorData();
@@ -732,6 +838,10 @@ var particle_Particle = /** @class */ (function () {
 
 
 
+/**
+ * ParticleJSのバージョン情報を示します。
+ * @type {string}
+ */
 var VERSION = "1.0.0";
 /**
  * 現在のバージョンと互換性があるかどうかをチェックします。
@@ -772,6 +882,7 @@ function checkVersion(value) {
  */
 var particle_system_ParticleSystem = /** @class */ (function () {
     function ParticleSystem() {
+        /** @private  */
         this._frameCount = 0;
         this._drawingData = new data_drawing_DrawingData();
         this._particlesPool = [];
@@ -784,7 +895,8 @@ var particle_system_ParticleSystem = /** @class */ (function () {
         this.shapeGenerator = new shape_generator_ShapeGenerator();
     }
     /**
-     * パーティクルのアニメーションが再生されているかどうか。
+     * パーティクルのアニメーションが再生されているかどうかを示します。
+     * @returns {boolean}
      */
     ParticleSystem.prototype.isPlaying = function () {
         return this._playing;

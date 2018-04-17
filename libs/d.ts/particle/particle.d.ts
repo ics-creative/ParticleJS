@@ -4,7 +4,10 @@ import { ColorData } from "../data/data-color";
  * パーティクルエミッターのバリューオブジェクトのクラスです。
  */
 export declare class Particle {
-    /** パーティクルの形状です。 */
+    /**
+     * パーティクルの形状です。
+     * @type {createjs.Container}
+     */
     particleShape: createjs.Container;
     /** パーティクルが生きているかのフラグです。 */
     isAlive: boolean;
@@ -12,9 +15,9 @@ export declare class Particle {
     currentLife: number;
     /** パーティクルの生存期間（フレーム数）です。 */
     totalLife: number;
-    /** パーティクルの現在のx位置です。 */
+    /** パーティクルの現在のX位置です。 */
     x: number;
-    /** パーティクルの現在のy位置です。 */
+    /** パーティクルの現在のY位置です。 */
     y: number;
     /** パーティクルが現在向かっている方向ベクトルです。 */
     vx: number;
@@ -38,5 +41,8 @@ export declare class Particle {
     colorCommand: any;
     /** アルファカーブ */
     alphaCurveType: number;
+    /**
+     * コンストラクターです。
+     */
     constructor();
 }

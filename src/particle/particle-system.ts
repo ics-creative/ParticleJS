@@ -4,6 +4,10 @@ import { DrawingData } from "../data/data-drawing";
 import { AlphaCurveType } from "../enum/alpha-curve-type";
 import { Particle } from "./particle";
 
+/**
+ * ParticleJSのバージョン情報を示します。
+ * @type {string}
+ */
 export const VERSION = "1.0.0";
 
 /**
@@ -59,14 +63,21 @@ export class ParticleSystem {
    */
   public container: createjs.Container;
 
+  /** @private  */
   private _particlesPool: Particle[];
+  /** @private  */
   private _activeParticles: Particle[];
+  /** @private  */
   private _drawingData: DrawingData;
+  /** @private  */
   private _frameCount: number = 0;
+  /** @private  */
   private _playing: boolean;
-
+  /** @private  */
+  private shapeGenerator: ShapeGenerator;
   /**
-   * パーティクルのアニメーションが再生されているかどうか。
+   * パーティクルのアニメーションが再生されているかどうかを示します。
+   * @returns {boolean}
    */
   public isPlaying(): boolean {
     return this._playing;
@@ -87,8 +98,6 @@ export class ParticleSystem {
 
     this.shapeGenerator = new ShapeGenerator();
   }
-
-  private shapeGenerator: ShapeGenerator;
 
   /**
    * パーティクルの設定データを取り込みます。
@@ -191,7 +200,7 @@ export class ParticleSystem {
   /**
    * パーティクルが生きているか確認します。
    */
-  private lifeCheck() {
+  private lifeCheck(): void {
     for (let i = 0; i < this._activeParticles.length; i++) {
       // もしも死んでいたら、アクティブリストから外してプールに保存する。
       if (!this._activeParticles[i].isAlive) {
@@ -207,7 +216,7 @@ export class ParticleSystem {
   /**
    * パーティクルを全て削除します。
    */
-  public clear() {
+  public clear(): void {
     for (let i = 0; i < this._activeParticles.length; i++) {
       const particle = this._activeParticles[i];
       particle.isAlive = false;
@@ -221,7 +230,7 @@ export class ParticleSystem {
   /**
    * パーティクルシステムを破棄します。
    */
-  public dispose() {
+  public dispose(): void {
     for (let i = 0; i < this._activeParticles.length; i++) {
       const particle = this._activeParticles[i];
       particle.isAlive = false;
@@ -240,7 +249,7 @@ export class ParticleSystem {
   /**
    * パーティクルの生成を行います。
    */
-  private emit() {
+  private emit(): void {
     // インターバルチェック
     const framerate = Math.round(createjs.Ticker.framerate);
     const frameInSec = this._frameCount % framerate;

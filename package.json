@@ -23,7 +23,6 @@
   },
   "scripts": {
     "start": "gulp start",
-    "build": "webpack",
     "sync": "lite-server & watch 'gulp build-particle-system' src",
     "generate-documentation": "gulp typedoc; cd generate-examples-code; node index;",
     "format": "prettier --write 'src/**/*.ts' && prettier --write '*.js'"
@@ -36,7 +35,6 @@
   },
   "homepage": "https://github.com/ics-creative/ParticleJS#readme",
   "dependencies": {
-    "@types/createjs": "^0.0.29",
-    "@types/reflect-metadata": "^0.1.0"
+    "@types/createjs": "^0.0.29"
   }
 }

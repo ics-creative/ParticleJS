@@ -2,6 +2,10 @@
 import { ColorData } from "../data/data-color";
 import { DrawingData } from "../data/data-drawing";
 import { Particle } from "./particle";
+/**
+ * ParticleJSのバージョン情報を示します。
+ * @type {string}
+ */
 export declare const VERSION = "1.0.0";
 /**
  * 現在のバージョンと互換性があるかどうかをチェックします。
@@ -20,17 +24,24 @@ export declare class ParticleSystem {
      * パーティクルが配置されるコンテナーです。
      */
     container: createjs.Container;
+    /** @private  */
     private _particlesPool;
+    /** @private  */
     private _activeParticles;
+    /** @private  */
     private _drawingData;
+    /** @private  */
     private _frameCount;
+    /** @private  */
     private _playing;
+    /** @private  */
+    private shapeGenerator;
     /**
-     * パーティクルのアニメーションが再生されているかどうか。
+     * パーティクルのアニメーションが再生されているかどうかを示します。
+     * @returns {boolean}
      */
     isPlaying(): boolean;
     constructor();
-    private shapeGenerator;
     /**
      * パーティクルの設定データを取り込みます。
      */
