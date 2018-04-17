@@ -12,11 +12,11 @@ export namespace particlejs {
    * @param value
    */
   export function checkVersion(value: string) {
-    let currentVersion = VERSION.split(".");
+    const currentVersion = VERSION.split(".");
 
     //  ここはそもそもこない想定だけれども。
     if (currentVersion.length <= 2) {
-      console.log("ERROR! バージョン表記エラーが発生しました。");
+      console.log("バージョン表記エラーが発生しました。");
       return false;
     }
 
@@ -31,7 +31,7 @@ export namespace particlejs {
       }
     }
 
-    let jsonVersion = value.split(".");
+    const jsonVersion = value.split(".");
 
     //  メジャーバージョンのチェック
     if (currentVersion[0] != jsonVersion[0]) {
@@ -129,13 +129,13 @@ export class ParticleSystem {
    * パーティクルの動きを更新します。
    */
   private animate() {
-    let rad =
+    const rad =
       createjs.Matrix2D.DEG_TO_RAD * this._drawingData.accelerationDirection;
-    let accX = Math.cos(rad) * this._drawingData.accelerationSpeed;
-    let accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
+    const accX = Math.cos(rad) * this._drawingData.accelerationSpeed;
+    const accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
 
     for (let i = 0; i < this._activeParticles.length; i++) {
-      let particle: Particle = this._activeParticles[i];
+      const particle: Particle = this._activeParticles[i];
 
       // 加速度計算 (重力)
       particle.vx += accX;
@@ -153,17 +153,17 @@ export class ParticleSystem {
       particle.particleShape.x = particle.x;
       particle.particleShape.y = particle.y;
 
-      let lifeParcent = particle.currentLife / particle.totalLife;
+      const lifeParcent = particle.currentLife / particle.totalLife;
 
       switch (Number(particle.alphaCurveType)) {
         case AlphaCurveType.Random:
-          let min = Math.min(particle.finishAlpha, particle.startAlpha);
-          let max = Math.max(particle.finishAlpha, particle.startAlpha);
+          const min = Math.min(particle.finishAlpha, particle.startAlpha);
+          const max = Math.max(particle.finishAlpha, particle.startAlpha);
           particle.particleShape.alpha = Math.random() * (max - min) + min;
           break;
         case AlphaCurveType.Normal:
         default:
-          let alpha = this.calcCurrentValue(
+          const alpha = this.calcCurrentValue(
             particle.startAlpha,
             particle.finishAlpha,
             lifeParcent
@@ -172,7 +172,7 @@ export class ParticleSystem {
           break;
       }
 
-      let scale = this.calcCurrentValue(
+      const scale = this.calcCurrentValue(
         particle.startScale,
         particle.finishScale,
         lifeParcent
@@ -196,7 +196,7 @@ export class ParticleSystem {
     for (let i = 0; i < this._activeParticles.length; i++) {
       // もしも死んでいたら、アクティブリストから外してプールに保存する。
       if (!this._activeParticles[i].isAlive) {
-        let particle = this._activeParticles[i];
+        const particle = this._activeParticles[i];
         this.container.removeChild(particle.particleShape);
         this._activeParticles.splice(i, 1);
         this._particlesPool.push(particle);
@@ -210,7 +210,7 @@ export class ParticleSystem {
    */
   public clear() {
     for (let i = 0; i < this._activeParticles.length; i++) {
-      let particle = this._activeParticles[i];
+      const particle = this._activeParticles[i];
       particle.isAlive = false;
       this.container.removeChild(particle.particleShape);
       this._activeParticles.splice(i, 1);
@@ -224,7 +224,7 @@ export class ParticleSystem {
    */
   public dispose() {
     for (let i = 0; i < this._activeParticles.length; i++) {
-      let particle = this._activeParticles[i];
+      const particle = this._activeParticles[i];
       particle.isAlive = false;
       this.container.removeChild(particle.particleShape);
     }
@@ -271,7 +271,7 @@ export class ParticleSystem {
    * @returns {Particle}
    */
   private emitParticle(): void {
-    let particle = this.generateParticle();
+    const particle = this.generateParticle();
     this.container.addChild(particle.particleShape);
     this._activeParticles.push(particle);
   }
@@ -326,7 +326,7 @@ export class ParticleSystem {
     particle.currentLife = particle.totalLife;
 
     //  スピード
-    let speed: number = Math.max(
+    const speed: number = Math.max(
       0,
       this.calcRandomValueWithVariance(
         this._drawingData.initialSpeed,
@@ -334,7 +334,7 @@ export class ParticleSystem {
         false
       )
     );
-    let angle =
+    const angle =
       createjs.Matrix2D.DEG_TO_RAD *
       this.calcRandomValueWithVariance(
         this._drawingData.initialDirection,
@@ -397,7 +397,7 @@ export class ParticleSystem {
   public generateShape(particle: Particle, shapeIdList: string[]) {
     particle.particleShape.removeAllChildren();
 
-    let startColor: ColorData = this._drawingData.startColor;
+    const startColor: ColorData = this._drawingData.startColor;
 
     particle.startColor.hue =
       this.calcRandomValueWithVariance(
@@ -416,43 +416,43 @@ export class ParticleSystem {
       false
     );
 
-    let hue = Number(particle.startColor.hue);
-    let saturation = Number(particle.startColor.saturation);
-    let luminance = Number(particle.startColor.luminance);
+    const hue = Number(particle.startColor.hue);
+    const saturation = Number(particle.startColor.saturation);
+    const luminance = Number(particle.startColor.luminance);
 
-    let color = `hsl(${hue}, ${saturation}%, ${luminance}%)`;
+    const color = `hsl(${hue}, ${saturation}%, ${luminance}%)`;
 
-    let r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
-    let shapeId =
+    const r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
+    const shapeId =
       this._drawingData.shapeIdList.length == 0
         ? ""
         : this._drawingData.shapeIdList[r];
 
     particle.colorCommand = null;
 
-    let container = <createjs.Container>this.shapeGenerator.generateShape(
+    const container = <createjs.Container>this.shapeGenerator.generateShape(
       shapeId
     );
     particle.particleShape.addChild(container);
 
-    let shape = <createjs.Shape>container.getChildAt(0); // こういう作りにする
+    const shape = <createjs.Shape>container.getChildAt(0); // こういう作りにする
 
     if (shape == null) {
       return;
     }
 
-    let instructions = shape.graphics.instructions;
+    const instructions = shape.graphics.instructions;
     if (instructions && instructions.length > 0) {
       for (let i = 0; i < instructions.length; i++) {
-        let cmd = instructions[i];
+        const cmd = instructions[i];
         if (cmd instanceof createjs.Graphics.Fill) {
           // 塗りのとき
           // グラデーション塗りだったら
           if (cmd.style instanceof CanvasGradient) {
             // 昔のグラデーションを保持
-            let oldStyle = <any>cmd.style;
-            let g = ParticleSystem.HELPER_GRAPHICS;
-            let newStyle = g.beginRadialGradientFill(
+            const oldStyle = <any>cmd.style;
+            const g = ParticleSystem.HELPER_GRAPHICS;
+            const newStyle = g.beginRadialGradientFill(
               [color, `hsla(${hue}, ${saturation}%, ${luminance}%, 0)`],
               oldStyle.props.ratios,
               oldStyle.props.x0,
@@ -518,7 +518,7 @@ export class ParticleSystem {
     variance: number,
     isInteger: boolean
   ): number {
-    let result = Number(value) + (Math.random() - 0.5) * variance;
+    const result = Number(value) + (Math.random() - 0.5) * variance;
 
     if (isInteger == true) {
       return Math.floor(result);

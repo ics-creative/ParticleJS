@@ -86,12 +86,12 @@ export class DrawingData {
    * パーティクルの設定をJSON形式のオブジェクトから読み込みます。
    * @param json
    */
-  public importFromJson(obj: any): void {
-    var checkSkipKey = (key: string) => {
+  public importFromJson(json: any): void {
+    const checkSkipKey = (key: string) => {
       return key == "width" || key == "height" || key == "bgColor";
     };
 
-    this.setData(obj, checkSkipKey);
+    this.setData(json, checkSkipKey);
   }
 
   /**
@@ -99,7 +99,7 @@ export class DrawingData {
    * @param obj
    */
   public importData(obj: DrawingData) {
-    var checkSkipKey = (key: string) => {
+    const checkSkipKey = (key: string) => {
       return (
         key == "width" || key == "height" || key == "startX" || key == "startY"
       );
@@ -110,7 +110,7 @@ export class DrawingData {
 
   static checkReflectEnable(): boolean {
     try {
-      var result = !!(Reflect && Reflect.has);
+      const result = !!(Reflect && Reflect.has);
       return result;
     } catch (e) {
       return false;
@@ -131,7 +131,7 @@ export class DrawingData {
         }
       }
     } else {
-      var self = <any>this;
+      const self = <any>this;
       for (let key in obj) {
         // 無視するプロパティー
         if (checkSkipKey(key)) {
