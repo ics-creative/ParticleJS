@@ -1,4 +1,4 @@
-import { assets } from "./asset-shapes.js";
+import { Assets } from "./asset-shapes";
 import { ShapeGenerator } from "./assets/shape-generator";
 import { ColorData } from "./data/data-color";
 import { DrawingData } from "./data/data-drawing";
@@ -18,5 +18,5 @@ export {
   ShapeGenerator,
   AlphaCurveType,
   ShapeType,
-  assets
+  Assets
 };

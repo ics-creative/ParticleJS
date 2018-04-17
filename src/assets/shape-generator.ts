@@ -1,11 +1,10 @@
-import { assets } from "../asset-shapes.js";
+import { Assets } from "../asset-shapes";
 
 export class ShapeGenerator {
   constructor() {}
 
   public generateShape(id: string): createjs.Container {
-    const namespaceObj = assets;
-    const cls = <any>namespaceObj[id];
+    const cls = <any>Assets[id];
     return <createjs.Container>new cls();
   }
 }
