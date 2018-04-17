@@ -4,7 +4,7 @@ import { DrawingData } from "../data/data-drawing";
 import { AlphaCurveType } from "../enum/alpha-curve-type";
 import { Particle } from "./particle";
 
-export const VERSION = "0.1.3";
+export const VERSION = "1.0.0";
 
 /**
  * 現在のバージョンと互換性があるかどうかをチェックします。

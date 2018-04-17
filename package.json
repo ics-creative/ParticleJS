@@ -1,6 +1,6 @@
 {
   "name": "particlejs",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
   "main": "libs/particlejs.js",
   "types": "libs/d.ts/particlejs.d.ts",

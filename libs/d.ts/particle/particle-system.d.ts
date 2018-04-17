@@ -2,7 +2,7 @@
 import { ColorData } from "../data/data-color";
 import { DrawingData } from "../data/data-drawing";
 import { Particle } from "./particle";
-export declare const VERSION = "0.1.3";
+export declare const VERSION = "1.0.0";
 /**
  * 現在のバージョンと互換性があるかどうかをチェックします。
  * @param value
