@@ -5,16 +5,20 @@
   "main": "libs/particle.js",
   "devDependencies": {
     "browserify": "^16.2.0",
+    "del": "^3.0.0",
     "es6-shim": "^0.35.3",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "gulp-shell": "^0.6.5",
+    "gulp-typedoc": "^2.2.0",
     "gulp-typescript": "^4.0.2",
+    "gulp-uglify": "^3.0.0",
     "harmony-reflect": "^1.4.2",
     "lite-server": "^2.0.1",
     "prettier": "^1.12.1",
     "run-sequence": "^2.2.1",
     "tsify": "^4.0.0",
+    "typedoc": "^0.11.1",
     "typescript": "^2.8.1",
     "uglify-js": "^3.3.21",
     "watch": "^1.0.2"
@@ -37,11 +41,6 @@
   },
   "homepage": "https://github.com/ics-creative/ParticleJS#readme",
   "dependencies": {
-    "@types/createjs": "^0.0.29",
-    "del": "^3.0.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-typedoc": "^2.2.0",
-    "gulp-uglify": "^3.0.0",
-    "typedoc": "^0.11.1"
+    "@types/createjs": "^0.0.29"
   }
 }
