@@ -4,20 +4,20 @@
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
   "main": "index.js",
   "devDependencies": {
-    "browserify": "^13.0.0",
-    "es6-shim": "^0.34.2",
+    "browserify": "^16.2.0",
+    "es6-shim": "^0.35.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
-    "gulp-shell": "^0.5.2",
+    "gulp-shell": "^0.6.5",
+    "gulp-typescript": "^4.0.2",
     "harmony-reflect": "^1.4.2",
-    "gulp-typescript": "^2.10.0",
     "lite-server": "^2.0.1",
-    "run-sequence": "^1.1.5",
-    "tsify": "^0.13.2",
-    "typescript": "^1.7.5",
-    "typings": "^0.6.6",
-    "uglify-js": "^2.6.1",
-    "watch": "^0.17.1"
+    "run-sequence": "^2.2.1",
+    "tsify": "^4.0.0",
+    "typescript": "^2.8.1",
+    "typings": "^2.1.1",
+    "uglify-js": "^3.3.21",
+    "watch": "^1.0.2"
   },
   "scripts": {
     "install": "typings install",
@@ -38,10 +38,10 @@
   },
   "homepage": "https://github.com/ics-creative/ParticleJS#readme",
   "dependencies": {
-    "del": "^2.2.0",
+    "del": "^3.0.0",
     "gulp-concat": "^2.6.0",
-    "gulp-typedoc": "^1.2.1",
-    "gulp-uglify": "^1.5.3",
-    "typedoc": "^0.3.12"
+    "gulp-typedoc": "^2.2.0",
+    "gulp-uglify": "^3.0.0",
+    "typedoc": "^0.11.1"
   }
 }
