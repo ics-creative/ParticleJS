@@ -1,20 +1,19 @@
 "use strict";
 
-import {Particle} from "./particle";
-import {DrawingData} from "../data/data-drawing";
-import {ShapeGenerator} from "../assets/shape-generator";
-import {ColorData} from "../data/data-color";
-import {AlphaCurveType} from "../enum/alpha-curve-type";
+import { Particle } from "./particle";
+import { DrawingData } from "../data/data-drawing";
+import { ShapeGenerator } from "../assets/shape-generator";
+import { ColorData } from "../data/data-color";
+import { AlphaCurveType } from "../enum/alpha-curve-type";
 
-export module particlejs{
+export namespace particlejs {
   export const VERSION = "0.1.3";
 
   /**
    * 現在のバージョンと互換性があるかどうかをチェックします。
    * @param value
    */
-  export function checkVersion(value:string){
-
+  export function checkVersion(value: string) {
     let currentVersion = VERSION.split(".");
 
     //  ここはそもそもこない想定だけれども。
@@ -57,23 +56,23 @@ export class ParticleSystem {
   /**
    *  グラフィックオブジェクトです。内部計算に使用します。
    */
-  private static HELPER_GRAPHICS:createjs.Graphics = new createjs.Graphics();
+  private static HELPER_GRAPHICS: createjs.Graphics = new createjs.Graphics();
 
   /**
    * パーティクルが配置されるコンテナーです。
    */
-  public container:createjs.Container;
+  public container: createjs.Container;
 
-  private _particlesPool:Particle[];
-  private _activeParticles:Particle[];
-  private _drawingData:DrawingData;
-  private _frameCount:number = 0;
-  private _playing:boolean;
+  private _particlesPool: Particle[];
+  private _activeParticles: Particle[];
+  private _drawingData: DrawingData;
+  private _frameCount: number = 0;
+  private _playing: boolean;
 
   /**
    * パーティクルのアニメーションが再生されているかどうか。
    */
-  public isPlaying():boolean {
+  public isPlaying(): boolean {
     return this._playing;
   }
 
@@ -93,34 +92,32 @@ export class ParticleSystem {
     this.shapeGenerator = new ShapeGenerator();
   }
 
-  private shapeGenerator:ShapeGenerator;
-
+  private shapeGenerator: ShapeGenerator;
 
   /**
    * パーティクルの設定データを取り込みます。
    */
-  public setData(drawingData:DrawingData) {
+  public setData(drawingData: DrawingData) {
     this._drawingData = drawingData;
   }
 
   /**
    * パーティクルの設定データをJson形式のオブジェクトで取り込みます。
    */
-  public importFromJson(jsonObject:any) {
-
+  public importFromJson(jsonObject: any) {
     if (!particlejs.checkVersion(jsonObject["VERSION"] || "")) {
-      console.log("WARN! 読み込んだJSONファイルとParticleJSのバージョンが違います。 https://github.com/ics-creative/ParticleJS");
+      console.log(
+        "WARN! 読み込んだJSONファイルとParticleJSのバージョンが違います。 https://github.com/ics-creative/ParticleJS"
+      );
     }
 
     this._drawingData.importFromJson(jsonObject);
   }
 
-
   /**
    * パーティクルシステムの更新を行います。
    */
   public update() {
-
     if (!this._playing) {
       return;
     }
@@ -134,22 +131,21 @@ export class ParticleSystem {
    * パーティクルの動きを更新します。
    */
   private animate() {
-
-    let rad = createjs.Matrix2D.DEG_TO_RAD * this._drawingData.accelerationDirection;
+    let rad =
+      createjs.Matrix2D.DEG_TO_RAD * this._drawingData.accelerationDirection;
     let accX = Math.cos(rad) * this._drawingData.accelerationSpeed;
     let accY = Math.sin(rad) * this._drawingData.accelerationSpeed;
 
     for (let i = 0; i < this._activeParticles.length; i++) {
-
-      let particle:Particle = this._activeParticles[i];
+      let particle: Particle = this._activeParticles[i];
 
       // 加速度計算 (重力)
       particle.vx += accX;
       particle.vy += accY;
 
       // 摩擦計算
-      particle.vx *= (1 - this._drawingData.friction);
-      particle.vy *= (1 - this._drawingData.friction);
+      particle.vx *= 1 - this._drawingData.friction;
+      particle.vy *= 1 - this._drawingData.friction;
 
       // 座標計算
       particle.x += particle.vx;
@@ -169,12 +165,20 @@ export class ParticleSystem {
           break;
         case AlphaCurveType.Normal:
         default:
-          let alpha = this.calcCurrentValue(particle.startAlpha, particle.finishAlpha, lifeParcent);
+          let alpha = this.calcCurrentValue(
+            particle.startAlpha,
+            particle.finishAlpha,
+            lifeParcent
+          );
           particle.particleShape.alpha = alpha;
           break;
       }
 
-      let scale = this.calcCurrentValue(particle.startScale, particle.finishScale, lifeParcent);
+      let scale = this.calcCurrentValue(
+        particle.startScale,
+        particle.finishScale,
+        lifeParcent
+      );
       particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
 
       //  パーティクルが死んでいたら、オブジェクトプールに移動
@@ -240,12 +244,11 @@ export class ParticleSystem {
    * パーティクルの生成を行います。
    */
   private emit() {
-
     // インターバルチェック
     const framerate = Math.round(createjs.Ticker.framerate);
     const frameInSec = this._frameCount % framerate;
     const emitPerSec = this._drawingData.emitFrequency;
-    const loopInt = (emitPerSec == 0) ? 0 : Math.floor(emitPerSec / framerate);
+    const loopInt = emitPerSec == 0 ? 0 : Math.floor(emitPerSec / framerate);
 
     // ① 整数分の実行回数
     for (let i = 0; i < loopInt; i++) {
@@ -253,9 +256,9 @@ export class ParticleSystem {
     }
 
     // ② 小数点分の実行回数
-    const loopFloat = ((emitPerSec / framerate) - loopInt);
+    const loopFloat = emitPerSec / framerate - loopInt;
     // フレームレートより少ない場合、かつ、生成persecが0ではないとき
-    if (emitPerSec != 0 && (frameInSec % Math.floor(1 / loopFloat) == 0)) {
+    if (emitPerSec != 0 && frameInSec % Math.floor(1 / loopFloat) == 0) {
       this.emitParticle();
     }
 
@@ -263,14 +266,13 @@ export class ParticleSystem {
     if (this._frameCount >= framerate) {
       this._frameCount = 0;
     }
-
   }
 
   /**
    * 個々のパーティクルを生成し、パーティクルシステムに登録します。
    * @returns {Particle}
    */
-  private emitParticle():void {
+  private emitParticle(): void {
     let particle = this.generateParticle();
     this.container.addChild(particle.particleShape);
     this._activeParticles.push(particle);
@@ -280,9 +282,8 @@ export class ParticleSystem {
    * パーティクルを生成し、パラメーターを設定します。
    * @returns {Particle}
    */
-  private generateParticle():Particle {
-
-    let particle:Particle = null;
+  private generateParticle(): Particle {
+    let particle: Particle = null;
     if (this._particlesPool.length >= 1) {
       particle = this._particlesPool.shift();
     } else {
@@ -298,37 +299,94 @@ export class ParticleSystem {
    * パーティクルパラメータの設定を行います。
    * @param particle
    */
-  private setParticleParameter(particle:Particle):void {
-
+  private setParticleParameter(particle: Particle): void {
     particle.particleShape.removeAllChildren();
 
     particle.isAlive = true;
-    particle.x = this.calcRandomValueWithVariance(this._drawingData.startX, this._drawingData.startXVariance, false);
-    particle.y = this.calcRandomValueWithVariance(this._drawingData.startY, this._drawingData.startYVariance, false);
-
+    particle.x = this.calcRandomValueWithVariance(
+      this._drawingData.startX,
+      this._drawingData.startXVariance,
+      false
+    );
+    particle.y = this.calcRandomValueWithVariance(
+      this._drawingData.startY,
+      this._drawingData.startYVariance,
+      false
+    );
 
     this.generateShape(particle, this._drawingData.shapeIdList);
 
     //  生存期間
-    particle.totalLife = Math.max(1, this.calcRandomValueWithVariance(this._drawingData.lifeSpan, this._drawingData.lifeSpanVariance, true));
+    particle.totalLife = Math.max(
+      1,
+      this.calcRandomValueWithVariance(
+        this._drawingData.lifeSpan,
+        this._drawingData.lifeSpanVariance,
+        true
+      )
+    );
     particle.currentLife = particle.totalLife;
 
     //  スピード
-    let speed:number = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.initialSpeed, this._drawingData.initialSpeedVariance, false));
-    let angle = createjs.Matrix2D.DEG_TO_RAD * ( this.calcRandomValueWithVariance(this._drawingData.initialDirection, this._drawingData.initialDirectionVariance, false));
+    let speed: number = Math.max(
+      0,
+      this.calcRandomValueWithVariance(
+        this._drawingData.initialSpeed,
+        this._drawingData.initialSpeedVariance,
+        false
+      )
+    );
+    let angle =
+      createjs.Matrix2D.DEG_TO_RAD *
+      this.calcRandomValueWithVariance(
+        this._drawingData.initialDirection,
+        this._drawingData.initialDirectionVariance,
+        false
+      );
     particle.vx = Math.cos(angle) * speed;
     particle.vy = Math.sin(angle) * speed;
 
     //  アルファ
-    particle.startAlpha = this.calcRandomValueWithRange(0.0, 1.0, this.calcRandomValueWithVariance(this._drawingData.startAlpha, this._drawingData.startAlphaVariance, false));
-    particle.finishAlpha = this.calcRandomValueWithRange(0.0, 1.0, this.calcRandomValueWithVariance(this._drawingData.finishAlpha, this._drawingData.finishAlphaVariance, false));
+    particle.startAlpha = this.calcRandomValueWithRange(
+      0.0,
+      1.0,
+      this.calcRandomValueWithVariance(
+        this._drawingData.startAlpha,
+        this._drawingData.startAlphaVariance,
+        false
+      )
+    );
+    particle.finishAlpha = this.calcRandomValueWithRange(
+      0.0,
+      1.0,
+      this.calcRandomValueWithVariance(
+        this._drawingData.finishAlpha,
+        this._drawingData.finishAlphaVariance,
+        false
+      )
+    );
 
     //  スケール
-    particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
-    particle.finishScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
+    particle.startScale = Math.max(
+      0,
+      this.calcRandomValueWithVariance(
+        this._drawingData.startScale,
+        this._drawingData.startScaleVariance,
+        false
+      )
+    );
+    particle.finishScale = Math.max(
+      0,
+      this.calcRandomValueWithVariance(
+        this._drawingData.finishScale,
+        this._drawingData.finishScaleVariance,
+        false
+      )
+    );
 
     // ブレンドモードを設定
-    particle.particleShape.compositeOperation = this._drawingData.blendMode == true ? "lighter" : null;
+    particle.particleShape.compositeOperation =
+      this._drawingData.blendMode == true ? "lighter" : null;
 
     particle.alphaCurveType = this._drawingData.alphaCurveType;
   }
@@ -338,15 +396,27 @@ export class ParticleSystem {
    * @param particle
    * @param shapeIdList
    */
-  public generateShape(particle:Particle, shapeIdList:string[]) {
-
+  public generateShape(particle: Particle, shapeIdList: string[]) {
     particle.particleShape.removeAllChildren();
 
-    let startColor:ColorData = this._drawingData.startColor;
+    let startColor: ColorData = this._drawingData.startColor;
 
-    particle.startColor.hue = this.calcRandomValueWithVariance(startColor.hue, startColor.hueVariance, false) % 360;
-    particle.startColor.luminance = this.calcRandomValueWithVariance(startColor.luminance, startColor.luminanceVariance, false);
-    particle.startColor.saturation = this.calcRandomValueWithVariance(startColor.saturation, startColor.saturationVariance, false);
+    particle.startColor.hue =
+      this.calcRandomValueWithVariance(
+        startColor.hue,
+        startColor.hueVariance,
+        false
+      ) % 360;
+    particle.startColor.luminance = this.calcRandomValueWithVariance(
+      startColor.luminance,
+      startColor.luminanceVariance,
+      false
+    );
+    particle.startColor.saturation = this.calcRandomValueWithVariance(
+      startColor.saturation,
+      startColor.saturationVariance,
+      false
+    );
 
     let hue = Number(particle.startColor.hue);
     let saturation = Number(particle.startColor.saturation);
@@ -355,16 +425,19 @@ export class ParticleSystem {
     let color = `hsl(${hue}, ${saturation}%, ${luminance}%)`;
 
     let r = Math.floor(Math.random() * this._drawingData.shapeIdList.length);
-    let shapeId = ( this._drawingData.shapeIdList.length == 0 )
-      ? ''
-      : this._drawingData.shapeIdList[r]
+    let shapeId =
+      this._drawingData.shapeIdList.length == 0
+        ? ""
+        : this._drawingData.shapeIdList[r];
 
     particle.colorCommand = null;
 
-    let container = <createjs.Container> this.shapeGenerator.generateShape(shapeId);
+    let container = <createjs.Container>this.shapeGenerator.generateShape(
+      shapeId
+    );
     particle.particleShape.addChild(container);
 
-    let shape = <createjs.Shape> container.getChildAt(0); // こういう作りにする
+    let shape = <createjs.Shape>container.getChildAt(0); // こういう作りにする
 
     if (shape == null) {
       return;
@@ -374,26 +447,31 @@ export class ParticleSystem {
     if (instructions && instructions.length > 0) {
       for (let i = 0; i < instructions.length; i++) {
         let cmd = instructions[i];
-        if (cmd instanceof createjs.Graphics.Fill) { // 塗りのとき
+        if (cmd instanceof createjs.Graphics.Fill) {
+          // 塗りのとき
           // グラデーション塗りだったら
           if (cmd.style instanceof CanvasGradient) {
             // 昔のグラデーションを保持
-            let oldStyle = <any> cmd.style;
+            let oldStyle = <any>cmd.style;
             let g = ParticleSystem.HELPER_GRAPHICS;
-            let newStyle = g.beginRadialGradientFill([color, `hsla(${hue}, ${saturation}%, ${luminance}%, 0)`],
+            let newStyle = g.beginRadialGradientFill(
+              [color, `hsla(${hue}, ${saturation}%, ${luminance}%, 0)`],
               oldStyle.props.ratios,
               oldStyle.props.x0,
               oldStyle.props.y0,
               oldStyle.props.r0,
               oldStyle.props.x1,
               oldStyle.props.y1,
-              oldStyle.props.r1).command;
+              oldStyle.props.r1
+            ).command;
             instructions[i] = newStyle;
-          } else { // 単色塗りなら
+          } else {
+            // 単色塗りなら
             cmd.style = color;
             particle.colorCommand = cmd;
           }
-        } else if (cmd instanceof createjs.Graphics.Stroke) { // 線のとき
+        } else if (cmd instanceof createjs.Graphics.Stroke) {
+          // 線のとき
           cmd.style = color;
           particle.colorCommand = cmd;
         }
@@ -404,14 +482,14 @@ export class ParticleSystem {
   /**
    * 一時的にパーティクルの再生を停止します。
    */
-  public pause():void {
+  public pause(): void {
     this._playing = false;
   }
 
   /**
    * pause()で停止したパーティクルの再生を再開します。
    */
-  public resume():void {
+  public resume(): void {
     this._playing = true;
   }
 
@@ -422,7 +500,11 @@ export class ParticleSystem {
    * @param value
    * @returns {number}
    */
-  private calcRandomValueWithRange(minValue:number, maxValue:number, value:number):number {
+  private calcRandomValueWithRange(
+    minValue: number,
+    maxValue: number,
+    value: number
+  ): number {
     return Math.min(maxValue, Math.max(minValue, value));
   }
 
@@ -433,8 +515,12 @@ export class ParticleSystem {
    * @param isInteger 整数であるかを指定します。
    * @returns {number}  数値を返します。
    */
-  private calcRandomValueWithVariance(value:number, variance:number, isInteger:boolean):number {
-    let result = Number(value) + ( Math.random() - 0.5 ) * variance;
+  private calcRandomValueWithVariance(
+    value: number,
+    variance: number,
+    isInteger: boolean
+  ): number {
+    let result = Number(value) + (Math.random() - 0.5) * variance;
 
     if (isInteger == true) {
       return Math.floor(result);
@@ -450,7 +536,7 @@ export class ParticleSystem {
    * @param life 現在の寿命を示します。開始時は1.0で、終了時は0.0の想定です。
    * @returns {number} 現在の値です。
    */
-  private calcCurrentValue(start:number, end:number, life:number):number {
+  private calcCurrentValue(start: number, end: number, life: number): number {
     return Number(start) * life + Number(end) * (1 - life);
   }
 
@@ -458,7 +544,7 @@ export class ParticleSystem {
    * 1秒あたりの発生数です。
    * @param value
    */
-  public set emitFrequency(value:number) {
+  public set emitFrequency(value: number) {
     this._drawingData.emitFrequency = value;
   }
 
@@ -466,16 +552,15 @@ export class ParticleSystem {
    * 1秒あたりの発生数です。
    * @returns {number}
    */
-  public get emitFrequency():number {
+  public get emitFrequency(): number {
     return this._drawingData.emitFrequency;
   }
-
 
   /**
    * 発生基準位置 - X座標 (px)です。
    * @param value
    */
-  public set startX(value:number) {
+  public set startX(value: number) {
     this._drawingData.startX = value;
   }
 
@@ -483,7 +568,7 @@ export class ParticleSystem {
    * 発生基準位置 - X座標 (px)です。
    * @returns {number}
    */
-  public get startX():number {
+  public get startX(): number {
     return this._drawingData.startX;
   }
 
@@ -491,34 +576,31 @@ export class ParticleSystem {
    * 発生基準位置 - X座標のばらつき (px)です。
    * @param value
    */
-  public set startXVariance(value:number) {
+  public set startXVariance(value: number) {
     this._drawingData.startXVariance = value;
   }
 
-
   /**
    * 発生基準位置 - X座標のばらつき (px)です。
    * @returns {number}
    */
-  public get startXVariance():number {
+  public get startXVariance(): number {
     return this._drawingData.startX;
   }
-
 
   /**
    * 発生位置 - Y座標 (px)です。
    * @param value
    */
-  public set startY(value:number) {
+  public set startY(value: number) {
     this._drawingData.startY = value;
   }
-
 
   /**
    * 発生位置 - Y座標 (px)です。
    * @returns {number}
    */
-  public get startY():number {
+  public get startY(): number {
     return this._drawingData.startY;
   }
 
@@ -526,16 +608,15 @@ export class ParticleSystem {
    * 発生基準位置 - X座標のばらつき (px)です。
    * @param value
    */
-  public set startYVariance(value:number) {
+  public set startYVariance(value: number) {
     this._drawingData.startYVariance = value;
   }
-
 
   /**
    * 発生基準位置 - X座標のばらつき (px)です。
    * @returns {number}
    */
-  public get startYVariance():number {
+  public get startYVariance(): number {
     return this._drawingData.startYVariance;
   }
 
@@ -543,16 +624,15 @@ export class ParticleSystem {
    * 初期速度 - 方向 (度)です。
    * @param value
    */
-  public set initialDirection(value:number) {
+  public set initialDirection(value: number) {
     this._drawingData.initialDirection = value;
   }
-
 
   /**
    * 初期速度 - 方向 (度)です。
    * @returns {number}
    */
-  public get initialDirection():number {
+  public get initialDirection(): number {
     return this._drawingData.initialDirection;
   }
 
@@ -560,16 +640,15 @@ export class ParticleSystem {
    * 初期速度 - 方向のばらつき (度)です。
    * @param value
    */
-  public set initialDirectionVariance(value:number) {
+  public set initialDirectionVariance(value: number) {
     this._drawingData.initialDirectionVariance = value;
   }
-
 
   /**
    * 初期速度 - 方向のばらつき (度)です。
    * @returns {number}
    */
-  public get initialDirectionVariance():number {
+  public get initialDirectionVariance(): number {
     return this._drawingData.initialDirectionVariance;
   }
 
@@ -577,16 +656,15 @@ export class ParticleSystem {
    * 初期速度 (px)です。
    * @param value
    */
-  public set initialSpeed(value:number) {
+  public set initialSpeed(value: number) {
     this._drawingData.initialSpeed = value;
   }
-
 
   /**
    * 初期速度 (px)です。
    * @returns {number}
    */
-  public get initialSpeed():number {
+  public get initialSpeed(): number {
     return this._drawingData.initialSpeed;
   }
 
@@ -594,16 +672,15 @@ export class ParticleSystem {
    * 初期速度のばらつきです。
    * @param value
    */
-  public set initialSpeedVariance(value:number) {
+  public set initialSpeedVariance(value: number) {
     this._drawingData.initialSpeedVariance = value;
   }
-
 
   /**
    * 初期速度のばらつきです。
    * @returns {number}
    */
-  public get initialSpeedVariance():number {
+  public get initialSpeedVariance(): number {
     return this._drawingData.initialSpeedVariance;
   }
 
@@ -611,16 +688,15 @@ export class ParticleSystem {
    * 摩擦です。
    * @param value
    */
-  public set friction(value:number) {
+  public set friction(value: number) {
     this._drawingData.friction = value;
   }
-
 
   /**
    * 摩擦です。
    * @returns {number}
    */
-  public get friction():number {
+  public get friction(): number {
     return this._drawingData.friction;
   }
 
@@ -628,16 +704,15 @@ export class ParticleSystem {
    * 重力です。
    * @param value
    */
-  public set accelerationSpeed(value:number) {
+  public set accelerationSpeed(value: number) {
     this._drawingData.accelerationSpeed = value;
   }
-
 
   /**
    * 重力です。
    * @returns {number}
    */
-  public get accelerationSpeed():number {
+  public get accelerationSpeed(): number {
     return this._drawingData.accelerationSpeed;
   }
 
@@ -645,7 +720,7 @@ export class ParticleSystem {
    * 重力方向 (度)です。
    * @param value
    */
-  public set accelerationDirection(value:number) {
+  public set accelerationDirection(value: number) {
     this._drawingData.accelerationDirection = value;
   }
 
@@ -653,7 +728,7 @@ export class ParticleSystem {
    * 重力です。
    * @returns {number}
    */
-  public get accelerationDirection():number {
+  public get accelerationDirection(): number {
     return this._drawingData.accelerationDirection;
   }
 
@@ -661,7 +736,7 @@ export class ParticleSystem {
    * 開始時のスケールです。
    * @param value
    */
-  public set startScale(value:number) {
+  public set startScale(value: number) {
     this._drawingData.startScale = value;
   }
 
@@ -669,7 +744,7 @@ export class ParticleSystem {
    * 開始時のスケールです。
    * @returns {number}
    */
-  public get startScale():number {
+  public get startScale(): number {
     return this._drawingData.startScale;
   }
 
@@ -677,7 +752,7 @@ export class ParticleSystem {
    * 開始時のスケールのばらつきです。
    * @param value
    */
-  public set startScaleVariance(value:number) {
+  public set startScaleVariance(value: number) {
     this._drawingData.startScaleVariance = value;
   }
 
@@ -685,7 +760,7 @@ export class ParticleSystem {
    * 開始時のスケールのばらつきです。
    * @returns {number}
    */
-  public get startScaleVariance():number {
+  public get startScaleVariance(): number {
     return this._drawingData.startScaleVariance;
   }
 
@@ -693,7 +768,7 @@ export class ParticleSystem {
    * 終了時のスケールです。
    * @param value
    */
-  public set finishScale(value:number) {
+  public set finishScale(value: number) {
     this._drawingData.finishScale = value;
   }
 
@@ -701,7 +776,7 @@ export class ParticleSystem {
    * 終了時のスケールです。
    * @returns {number}
    */
-  public get finishScale():number {
+  public get finishScale(): number {
     return this._drawingData.finishScale;
   }
 
@@ -709,7 +784,7 @@ export class ParticleSystem {
    * 終了時のスケールのばらつきです。
    * @param value
    */
-  public set finishScaleVariance(value:number) {
+  public set finishScaleVariance(value: number) {
     this._drawingData.finishScaleVariance = value;
   }
 
@@ -717,7 +792,7 @@ export class ParticleSystem {
    * 終了時のスケールのばらつきです。
    * @returns {number}
    */
-  public get finishScaleVariance():number {
+  public get finishScaleVariance(): number {
     return this._drawingData.finishScaleVariance;
   }
 
@@ -725,7 +800,7 @@ export class ParticleSystem {
    * ライフ(フレーム数)です。
    * @param value
    */
-  public set lifeSpan(value:number) {
+  public set lifeSpan(value: number) {
     this._drawingData.lifeSpan = value;
   }
 
@@ -733,16 +808,15 @@ export class ParticleSystem {
    * ライフ(フレーム数)です。
    * @returns {number}
    */
-  public get lifeSpan():number {
+  public get lifeSpan(): number {
     return this._drawingData.lifeSpan;
   }
-
 
   /**
    * ライフのばらつき(フレーム数)です。
    * @param value
    */
-  public set lifeSpanVariance(value:number) {
+  public set lifeSpanVariance(value: number) {
     this._drawingData.lifeSpanVariance = value;
   }
 
@@ -750,7 +824,7 @@ export class ParticleSystem {
    * ライフのばらつき(フレーム数)です。
    * @returns {number}
    */
-  public get lifeSpanVariance():number {
+  public get lifeSpanVariance(): number {
     return this._drawingData.lifeSpanVariance;
   }
 
@@ -758,7 +832,7 @@ export class ParticleSystem {
    * 始時の透明度です。
    * @param value
    */
-  public set startAlpha(value:number) {
+  public set startAlpha(value: number) {
     this._drawingData.startAlpha = value;
   }
 
@@ -766,7 +840,7 @@ export class ParticleSystem {
    * 始時の透明度です。
    * @returns {number}
    */
-  public get startAlpha():number {
+  public get startAlpha(): number {
     return this._drawingData.startAlpha;
   }
 
@@ -774,7 +848,7 @@ export class ParticleSystem {
    * 開始時の透明度のばらつきです。
    * @param value
    */
-  public set startAlphaVariance(value:number) {
+  public set startAlphaVariance(value: number) {
     this._drawingData.startAlphaVariance = value;
   }
 
@@ -782,7 +856,7 @@ export class ParticleSystem {
    * 開始時の透明度のばらつきです。
    * @returns {number}
    */
-  public get startAlphaVariance():number {
+  public get startAlphaVariance(): number {
     return this._drawingData.startAlphaVariance;
   }
 
@@ -790,7 +864,7 @@ export class ParticleSystem {
    * 終了時の透明度です。
    * @param value
    */
-  public set finishAlpha(value:number) {
+  public set finishAlpha(value: number) {
     this._drawingData.finishAlpha = value;
   }
 
@@ -798,7 +872,7 @@ export class ParticleSystem {
    * 終了時の透明度です。
    * @returns {number}
    */
-  public get finishAlpha():number {
+  public get finishAlpha(): number {
     return this._drawingData.finishAlpha;
   }
 
@@ -806,7 +880,7 @@ export class ParticleSystem {
    * 終了時の透明度のばらつきです。
    * @param value
    */
-  public set finishAlphaVariance(value:number) {
+  public set finishAlphaVariance(value: number) {
     this._drawingData.finishAlphaVariance = value;
   }
 
@@ -814,7 +888,7 @@ export class ParticleSystem {
    * 終了時の透明度のばらつきです。
    * @returns {number}
    */
-  public get finishAlphaVariance():number {
+  public get finishAlphaVariance(): number {
     return this._drawingData.finishAlphaVariance;
   }
 
@@ -822,7 +896,7 @@ export class ParticleSystem {
    * 使用するシェイプID設定です。
    * @param string[]
    */
-  public set shapeIdList(value:string[]) {
+  public set shapeIdList(value: string[]) {
     this._drawingData.shapeIdList = value;
   }
 
@@ -830,7 +904,7 @@ export class ParticleSystem {
    * 使用するシェイプID設定です。
    * @returns {string[]}
    */
-  public get shapeIdList():string[] {
+  public get shapeIdList(): string[] {
     return this._drawingData.shapeIdList;
   }
 
@@ -838,7 +912,7 @@ export class ParticleSystem {
    * 初期カラーの設定です。
    * @param value
    */
-  public set startColor(value:ColorData) {
+  public set startColor(value: ColorData) {
     this._drawingData.startColor = value;
   }
 
@@ -846,16 +920,15 @@ export class ParticleSystem {
    * 初期カラーの設定です。
    * @returns {ColorData}
    */
-  public get startColor():ColorData {
+  public get startColor(): ColorData {
     return this._drawingData.startColor;
   }
-
 
   /**
    * trueのときシェイプを加算合成します。
    * @param value
    */
-  public set blendMode(value:boolean) {
+  public set blendMode(value: boolean) {
     this._drawingData.blendMode = value;
   }
 
@@ -863,7 +936,7 @@ export class ParticleSystem {
    * trueのときシェイプを加算合成します。
    * @returns {boolean}
    */
-  public get blendMode():boolean {
+  public get blendMode(): boolean {
     return this._drawingData.blendMode;
   }
 
@@ -871,7 +944,7 @@ export class ParticleSystem {
    * 透明度の計算式の設定です。
    * @param value - 0:通常, 1:ランダム
    */
-  public set alphaCurveType(value:number) {
+  public set alphaCurveType(value: number) {
     this._drawingData.alphaCurveType = value;
   }
 
@@ -879,7 +952,7 @@ export class ParticleSystem {
    * 透明度の計算式の設定です。
    * @returns {number}
    */
-  public get alphaCurveType():number {
+  public get alphaCurveType(): number {
     return this._drawingData.alphaCurveType;
   }
 }

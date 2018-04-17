@@ -1,55 +1,55 @@
 "use strict";
 
-import {ColorData} from "../data/data-color";
+import { ColorData } from "../data/data-color";
 
 /**
  * パーティクルエミッターのバリューオブジェクトのクラスです。
  */
 export class Particle {
   /** パーティクルの形状です。 */
-  public particleShape:createjs.Container;
+  public particleShape: createjs.Container;
 
   /** パーティクルが生きているかのフラグです。 */
-  public isAlive:boolean;
+  public isAlive: boolean;
   /** パーティクルの現在の残り生存期間（フレーム数）です。 */
-  public currentLife:number;
+  public currentLife: number;
   /** パーティクルの生存期間（フレーム数）です。 */
-  public totalLife:number;
+  public totalLife: number;
 
   /** パーティクルの現在のx位置です。 */
-  public x:number;
+  public x: number;
   /** パーティクルの現在のy位置です。 */
-  public y:number;
+  public y: number;
 
   /** パーティクルが現在向かっている方向ベクトルです。 */
-  public vx:number;
+  public vx: number;
   /** パーティクルが方向ベクトルです。 */
-  public vy:number;
+  public vy: number;
 
   /** アルファのイージング関数です。 */
-  public easingAlpha:(life:number)=>number;
+  public easingAlpha: (life: number) => number;
   /** 開始アルファ値です0〜1.0の間になります。 */
-  public startAlpha:number;
+  public startAlpha: number;
   /** 終了時のアルファ値です0〜1.0の間になります。 */
-  public finishAlpha:number;
+  public finishAlpha: number;
 
   /** スケールのイージング関数です。 */
-  public easingScale:(life:number)=>number;
+  public easingScale: (life: number) => number;
   /** 開始スケール値です0〜1.0の間になります。 */
-  public startScale:number;
+  public startScale: number;
   /** 終了時のスケール値です0〜1.0の間になります。 */
-  public finishScale:number;
+  public finishScale: number;
 
   /** 開始時のカラーです。 */
-  public startColor:ColorData;
+  public startColor: ColorData;
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
-  public colorCommand:any;
+  public colorCommand: any;
 
   /** アルファカーブ */
-  public alphaCurveType:number;
+  public alphaCurveType: number;
 
   constructor() {
-    this.particleShape = new createjs.Container;
+    this.particleShape = new createjs.Container();
 
     this.startColor = new ColorData();
   }

@@ -65,5 +65,4 @@ export class ShapeType {
    * @type {string}
    */
   public static TRIANGLE = "triangle";
-
 }
