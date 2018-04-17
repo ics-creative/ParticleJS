@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
+<head lang="ja">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=960px, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="google" content="notranslate"/>
+  <meta name="referrer" content="unsafe-url"/>
+
   <title>ParticleJS - 初めてのParticleJS</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css">
   <style>
+    body {
+      display: flex;
+      justify-content: center;
+      background: #323232;
+    }
+
     iframe {
-      width: 960px;
+      width: 100%;
+      max-width: 960px;
       height: 540px;
-      border: 0;
+      border: none;
+      margin: 0;
+      padding: 0;
     }
 
-    #code-box {
-      padding: 0px;
-      width: 960px;
-      overflow: auto;
+    .code-box {
+      max-width: 960px;
     }
 
-    #code-box pre {
-      padding: 0px;
-      margin: 0px;
+    .hljs {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    #canvas-box {
-      padding: 0px;
-      margin: 0px;
+    .hljs-comment, .hljs-quote {
+      font-style: normal !important;
     }
 
   </style>
 
 </head>
 <body>
-<div class="container">
-  <div id="canvas-box">
-    <iframe src="../../examples/first-step.html">
-    </iframe>
-  </div>
-  <div id="code-box">
-    <pre id="mycode"><code class="js">&lt;!DOCTYPE html&gt;
-&lt;html&gt;
+  <div class="container">
+    <div class="canvas-box">
+      <iframe src="../../examples/first-step.html">
+      </iframe>
+    </div>
+    <div class="code-box">
+      <pre class="mycode"><code class="js">&lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta charset=&quot;UTF-8&quot;/&gt;
   &lt;title&gt;ParticleJS - 初めてのParticleJS&lt;/title&gt;
 
   &lt;!-- CreateJSのライブラリー読み込み --&gt;
@@ -57,9 +64,9 @@
     var stage = null;
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
-    window.addEventListener(&quot;load&quot;, function () {
+    window.addEventListener(&#039;load&#039;, function () {
       // Stageオブジェクトを作成します。表示リストのルートになります。
-      stage = new createjs.Stage(&quot;myCanvas&quot;);
+      stage = new createjs.Stage(&#039;myCanvas&#039;);
 
       // パーティクルシステム作成します。
       particleSystem = new particlejs.ParticleSystem();
@@ -71,45 +78,45 @@
       particleSystem.importFromJson(
         // パラメーターJSONのコピー＆ペースト ここから--
         {
-          &quot;bgColor&quot;: &quot;#00000&quot;,
-          &quot;width&quot;: 500,
-          &quot;height&quot;: 500,
-          &quot;emitFrequency&quot;: &quot;100&quot;,
-          &quot;startX&quot;: 480,
-          &quot;startXVariance&quot;: 400,
-          &quot;startY&quot;: 250,
-          &quot;startYVariance&quot;: 50,
-          &quot;initialDirection&quot;: &quot;0&quot;,
-          &quot;initialDirectionVariance&quot;: &quot;360&quot;,
-          &quot;initialSpeed&quot;: &quot;5&quot;,
-          &quot;initialSpeedVariance&quot;: &quot;3.7&quot;,
-          &quot;friction&quot;: &quot;0.038&quot;,
-          &quot;accelerationSpeed&quot;: &quot;0.0&quot;,
-          &quot;accelerationDirection&quot;: &quot;0&quot;,
-          &quot;startScale&quot;: 1,
-          &quot;startScaleVariance&quot;: 0.79,
-          &quot;finishScale&quot;: &quot;0&quot;,
-          &quot;finishScaleVariance&quot;: &quot;0&quot;,
-          &quot;lifeSpan&quot;: &quot;50&quot;,
-          &quot;lifeSpanVariance&quot;: &quot;196&quot;,
-          &quot;startAlpha&quot;: &quot;1&quot;,
-          &quot;startAlphaVariance&quot;: &quot;0&quot;,
-          &quot;finishAlpha&quot;: &quot;0.35&quot;,
-          &quot;finishAlphaVariance&quot;: 0.5,
-          &quot;shapeIdList&quot;: [
-            &quot;blur_circle&quot;,
-            &quot;circle&quot;
+          &#039;bgColor&#039;: &#039;#00000&#039;,
+          &#039;width&#039;: 500,
+          &#039;height&#039;: 500,
+          &#039;emitFrequency&#039;: &#039;100&#039;,
+          &#039;startX&#039;: 480,
+          &#039;startXVariance&#039;: 400,
+          &#039;startY&#039;: 250,
+          &#039;startYVariance&#039;: 50,
+          &#039;initialDirection&#039;: &#039;0&#039;,
+          &#039;initialDirectionVariance&#039;: &#039;360&#039;,
+          &#039;initialSpeed&#039;: &#039;5&#039;,
+          &#039;initialSpeedVariance&#039;: &#039;3.7&#039;,
+          &#039;friction&#039;: &#039;0.038&#039;,
+          &#039;accelerationSpeed&#039;: &#039;0.0&#039;,
+          &#039;accelerationDirection&#039;: &#039;0&#039;,
+          &#039;startScale&#039;: 1,
+          &#039;startScaleVariance&#039;: 0.79,
+          &#039;finishScale&#039;: &#039;0&#039;,
+          &#039;finishScaleVariance&#039;: &#039;0&#039;,
+          &#039;lifeSpan&#039;: &#039;50&#039;,
+          &#039;lifeSpanVariance&#039;: &#039;196&#039;,
+          &#039;startAlpha&#039;: &#039;1&#039;,
+          &#039;startAlphaVariance&#039;: &#039;0&#039;,
+          &#039;finishAlpha&#039;: &#039;0.35&#039;,
+          &#039;finishAlphaVariance&#039;: 0.5,
+          &#039;shapeIdList&#039;: [
+            &#039;blur_circle&#039;,
+            &#039;circle&#039;
           ],
-          &quot;startColor&quot;: {
-            &quot;hue&quot;: 222,
-            &quot;hueVariance&quot;: &quot;55&quot;,
-            &quot;saturation&quot;: &quot;71&quot;,
-            &quot;saturationVariance&quot;: &quot;78&quot;,
-            &quot;luminance&quot;: &quot;83&quot;,
-            &quot;luminanceVariance&quot;: &quot;16&quot;
+          &#039;startColor&#039;: {
+            &#039;hue&#039;: 222,
+            &#039;hueVariance&#039;: &#039;55&#039;,
+            &#039;saturation&#039;: &#039;71&#039;,
+            &#039;saturationVariance&#039;: &#039;78&#039;,
+            &#039;luminance&#039;: &#039;83&#039;,
+            &#039;luminanceVariance&#039;: &#039;16&#039;
           },
-          &quot;blendMode&quot;: true,
-          &quot;alphaCurveType&quot;: &quot;1&quot;
+          &#039;blendMode&#039;: true,
+          &#039;alphaCurveType&#039;: &#039;1&#039;
         }
         // パラメーターJSONのコピー＆ペースト ここまで---
       );
@@ -119,7 +126,7 @@
       // requestAnimationFrameに従った呼び出し
       createjs.Ticker.timingMode = createjs.Ticker.RAF;
       // 定期的に呼ばれる関数を登録
-      createjs.Ticker.addEventListener(&quot;tick&quot;, handleTick);
+      createjs.Ticker.addEventListener(&#039;tick&#039;, handleTick);
     });
 
     function handleTick() {
@@ -137,19 +144,32 @@
       background-color: black;
     }
 
-    * {
-      margin: 0px;
-      padding: 0px;
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #323232;
+      overflow: hidden;
     }
   &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;canvas width=&quot;960&quot; height=&quot;540&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
+  &lt;div&gt;
+    &lt;canvas width=&quot;960&quot; height=&quot;540&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
+  &lt;/div&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    <script>hljs.initHighlightingOnLoad();</script>
+    </div>
   </div>
-</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 
 </html>

@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
+<head lang="ja">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=960px, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="google" content="notranslate"/>
+  <meta name="referrer" content="unsafe-url"/>
+
   <title>ParticleJS - デモ</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/styles/default.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css">
   <style>
+    body {
+      display: flex;
+      justify-content: center;
+      background: #323232;
+    }
+
     iframe {
-      width: 960px;
+      width: 100%;
+      max-width: 960px;
       height: 540px;
-      border: 0;
+      border: none;
+      margin: 0;
+      padding: 0;
     }
 
-    #code-box {
-      padding: 0px;
-      width: 960px;
-      overflow: auto;
+    .code-box {
+      max-width: 960px;
     }
 
-    #code-box pre {
-      padding: 0px;
-      margin: 0px;
+    .hljs {
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     }
 
-    #canvas-box {
-      padding: 0px;
-      margin: 0px;
+    .hljs-comment, .hljs-quote {
+      font-style: normal !important;
     }
 
   </style>
 
 </head>
 <body>
-<div class="container">
-  <div id="canvas-box">
-    <iframe src="../../examples/color-change.html">
-    </iframe>
-  </div>
-  <div id="code-box">
-    <pre id="mycode"><code class="js">&lt;html&gt;
+  <div class="container">
+    <div class="canvas-box">
+      <iframe src="../../examples/color-change.html">
+      </iframe>
+    </div>
+    <div class="code-box">
+      <pre class="mycode"><code class="js">&lt;html&gt;
 &lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta charset=&quot;UTF-8&quot;/&gt;
   &lt;title&gt;ParticleJS - デモ&lt;/title&gt;
 
   &lt;!-- CreateJSのライブラリー読み込み --&gt;
@@ -143,9 +151,18 @@
       background-color: black;
     }
 
-    * {
-      margin: 0px;
-      padding: 0px;
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #323232;
+      overflow: hidden;
     }
   &lt;/style&gt;
 &lt;/head&gt;
@@ -153,9 +170,11 @@
 &lt;canvas width=&quot;960&quot; height=&quot;540&quot; id=&quot;myCanvas&quot;&gt;&lt;/canvas&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre>
-    <script>hljs.initHighlightingOnLoad();</script>
+    </div>
   </div>
-</div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
 </body>
 
 </html>

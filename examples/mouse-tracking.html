@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>ParticleJS - マウス追従</title>
 
   <!-- CreateJSのライブラリー読み込み -->
@@ -16,9 +15,9 @@
     var stage = null;
 
     //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
-    window.addEventListener("load", function () {
+    window.addEventListener('load', function () {
       // Stageオブジェクトを作成します。表示リストのルートになります。
-      stage = new createjs.Stage("myCanvas");
+      stage = new createjs.Stage('myCanvas');
 
       // パーティクルシステム作成します。
       particleSystem = new particlejs.ParticleSystem();
@@ -30,44 +29,44 @@
       particleSystem.importFromJson(
         // パラメーターJSONのコピー＆ペースト ここから--
         {
-          "bgColor": "#00000",
-          "width": 838,
-          "height": 607,
-          "emitFrequency": 300,
-          "startX": 419,
-          "startXVariance": "0",
-          "startY": 304,
-          "startYVariance": "0",
-          "initialDirection": "209.5",
-          "initialDirectionVariance": "155",
-          "initialSpeed": "2.6",
-          "initialSpeedVariance": "3.8",
-          "friction": "0.0085",
-          "accelerationSpeed": "0.835",
-          "accelerationDirection": "233.2",
-          "startScale": "1",
-          "startScaleVariance": "0.52",
-          "finishScale": "0",
-          "finishScaleVariance": "0",
-          "lifeSpan": "40",
-          "lifeSpanVariance": "0",
-          "startAlpha": "1",
-          "startAlphaVariance": "0",
-          "finishAlpha": "1",
-          "finishAlphaVariance": "0",
-          "shapeIdList": [
-            "blur_circle"
+          'bgColor': '#00000',
+          'width': 838,
+          'height': 607,
+          'emitFrequency': 300,
+          'startX': 419,
+          'startXVariance': '0',
+          'startY': 304,
+          'startYVariance': '0',
+          'initialDirection': '209.5',
+          'initialDirectionVariance': '155',
+          'initialSpeed': '2.6',
+          'initialSpeedVariance': '3.8',
+          'friction': '0.0085',
+          'accelerationSpeed': '0.835',
+          'accelerationDirection': '233.2',
+          'startScale': '1',
+          'startScaleVariance': '0.52',
+          'finishScale': '0',
+          'finishScaleVariance': '0',
+          'lifeSpan': '40',
+          'lifeSpanVariance': '0',
+          'startAlpha': '1',
+          'startAlphaVariance': '0',
+          'finishAlpha': '1',
+          'finishAlphaVariance': '0',
+          'shapeIdList': [
+            'blur_circle'
           ],
-          "startColor": {
-            "hue": "17",
-            "hueVariance": "32",
-            "saturation": "100",
-            "saturationVariance": "45",
-            "luminance": "56",
-            "luminanceVariance": "19"
+          'startColor': {
+            'hue': '17',
+            'hueVariance': '32',
+            'saturation': '100',
+            'saturationVariance': '45',
+            'luminance': '56',
+            'luminanceVariance': '19'
           },
-          "blendMode": true,
-          "alphaCurveType": "0"
+          'blendMode': true,
+          'alphaCurveType': '0'
         }
         // パラメーターJSONのコピー＆ペースト ここまで---
       );
@@ -77,7 +76,7 @@
       // requestAnimationFrameに従った呼び出し
       createjs.Ticker.timingMode = createjs.Ticker.RAF;
       // 定期的に呼ばれる関数を登録
-      createjs.Ticker.addEventListener("tick", handleTick);
+      createjs.Ticker.addEventListener('tick', handleTick);
     });
 
     function handleTick() {
@@ -99,13 +98,22 @@
       background-color: black;
     }
 
-    * {
-      margin: 0px;
-      padding: 0px;
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #323232;
+      overflow: hidden;
     }
   </style>
 </head>
 <body>
-<canvas width="960" height="540" id="myCanvas"></canvas>
+  <canvas width="960" height="540" id="myCanvas"></canvas>
 </body>
 </html>

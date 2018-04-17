@@ -1,6 +1,6 @@
 <html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8"/>
   <title>ParticleJS - デモ</title>
 
   <!-- CreateJSのライブラリー読み込み -->
@@ -102,9 +102,18 @@
       background-color: black;
     }
 
-    * {
-      margin: 0px;
-      padding: 0px;
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #323232;
+      overflow: hidden;
     }
   </style>
 </head>
