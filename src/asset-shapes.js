@@ -1,4 +1,4 @@
-var libs = {};
+var lib = {};
 var images = {};
 var createjs = window.createjs;
 var ss = {};
@@ -209,6 +209,7 @@ p.nominalBounds = new cjs.Rectangle(-32.5,-32.5,65.1,65.1);
 }).prototype = p = new cjs.Container();
 p.nominalBounds = new cjs.Rectangle(275,200,554,187.5);
 
-})( (libs = libs||{}).assets = libs.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
+})( (lib = lib||{}).assets = lib.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});
 
-export {libs}
+var assets = lib.assets;
+export {assets}

@@ -87,7 +87,7 @@ return /******/ (function(modules) { // webpackBootstrap
 __webpack_require__.r(__webpack_exports__);
 
 // CONCATENATED MODULE: ./src/asset-shapes.js
-var libs = {};
+var lib = {};
 var asset_shapes_images = {};
 var asset_shapes_createjs = window.createjs;
 var ss = {};
@@ -298,8 +298,9 @@ p.nominalBounds = new cjs.Rectangle(-32.5,-32.5,65.1,65.1);
 }).prototype = p = new cjs.Container();
 p.nominalBounds = new cjs.Rectangle(275,200,554,187.5);
 
-})( (libs = libs||{}).assets = libs.assets || {} , asset_shapes_images = asset_shapes_images||{}, asset_shapes_createjs = asset_shapes_createjs||{}, ss = ss||{});
+})( (lib = lib||{}).assets = lib.assets || {} , asset_shapes_images = asset_shapes_images||{}, asset_shapes_createjs = asset_shapes_createjs||{}, ss = ss||{});
 
+var assets = lib.assets;
 
 // CONCATENATED MODULE: ./src/assets/shape-generator.ts
 
@@ -307,7 +308,7 @@ var shape_generator_ShapeGenerator = /** @class */ (function () {
     function ShapeGenerator() {
     }
     ShapeGenerator.prototype.generateShape = function (id) {
-        var namespaceObj = libs.assets;
+        var namespaceObj = assets;
         var cls = namespaceObj[id];
         return new cls();
     };
@@ -492,6 +493,97 @@ var data_drawing_DrawingData = /** @class */ (function () {
     };
     DrawingData.ENABLE_REFLECT = DrawingData.checkReflectEnable();
     return DrawingData;
+}());
+
+
+// CONCATENATED MODULE: ./src/data/data-shape.ts
+/**
+ * Created by 「asset-shapes.fla」/「generate-assets.jsfl」 on Wed Jan 20 2016
+ * !!!!!このコードはJSFLから自動生成されたコードです。修正する場合はご注意ください。!!!!!
+ */
+var ShapeData = /** @class */ (function () {
+    function ShapeData() {
+        this.assetList = [
+            "blur_circle",
+            "circle",
+            "flower",
+            "heart",
+            "kirakira",
+            "kirakira2",
+            "reverse_blur_circle",
+            "square",
+            "star",
+            "star_10",
+            "triangle"
+        ];
+    }
+    return ShapeData;
+}());
+
+
+// CONCATENATED MODULE: ./src/enum/shape-type.ts
+/**
+ * シェイプの種類を定義したクラスです。
+ */
+var ShapeType = /** @class */ (function () {
+    function ShapeType() {
+    }
+    /**
+     * ふわっとした円のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.BLUR_CIRCLE = "blur_circle";
+    /**
+     * 円のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.CIRCLE = "circle";
+    /**
+     * 花の形のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.FLOWER = "flower";
+    /**
+     * ハートの形のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.HEART = "heart";
+    /**
+     * キラキラ(1)のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.KIRAKIRA = "kirakira";
+    /**
+     * キラキラ(2)のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.KIRAKIRA2 = "kirakira2";
+    /**
+     * 中央が繰り抜かれた円のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.REVERSE_CIRCLE = "reverse_blur_circle";
+    /**
+     * 四角形のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.SQUARE = "square";
+    /**
+     * 星形のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.STAR = "star";
+    /**
+     * 星形(棘が10)のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.STAR_10 = "star_10";
+    /**
+     * 三角形のシェイプIDです。
+     * @type {string}
+     */
+    ShapeType.TRIANGLE = "triangle";
+    return ShapeType;
 }());
 
 
@@ -1342,7 +1434,23 @@ var particle_system_ParticleSystem = /** @class */ (function () {
 
 // CONCATENATED MODULE: ./src/particlejs.ts
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ParticleSystem", function() { return particle_system_ParticleSystem; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Particle", function() { return particle_Particle; });
 /* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "DrawingData", function() { return data_drawing_DrawingData; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ColorData", function() { return ColorData; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ShapeData", function() { return ShapeData; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ShapeGenerator", function() { return shape_generator_ShapeGenerator; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "AlphaCurveType", function() { return AlphaCurveType; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ShapeType", function() { return ShapeType; });
+/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "assets", function() { return assets; });
+
+
+
+
+
+
+
+
 
 
 
