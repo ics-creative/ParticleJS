@@ -2,17 +2,14 @@
   "name": "particlejs",
   "version": "0.1.3",
   "description": "![Particle Develop](https://ics.media/wp-content/uploads/2016/01/160125_particle_develop.png)",
-  "main": "libs/particle.js",
+  "main": "libs/particlejs.js",
+  "types": "libs/d.ts/particlejs.d.ts",
   "devDependencies": {
-    "del": "^3.0.0",
-    "es6-shim": "^0.35.3",
     "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.1",
     "gulp-shell": "^0.6.5",
     "gulp-typedoc": "^2.2.0",
     "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^3.0.0",
-    "harmony-reflect": "^1.4.2",
     "lite-server": "^2.0.1",
     "prettier": "^1.12.1",
     "run-sequence": "^2.2.1",
@@ -31,10 +28,7 @@
     "generate-documentation": "gulp typedoc; cd generate-examples-code; node index;",
     "format": "prettier --write 'src/**/*.ts' && prettier --write '*.js'"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ics-creative/ParticleJS.git"
-  },
+  "repository": "ics-creative/ParticleJS",
   "author": "Nozomi Nohara <nozomi.nohara@ics-web.jp>",
   "license": "MIT",
   "bugs": {
@@ -42,6 +36,7 @@
   },
   "homepage": "https://github.com/ics-creative/ParticleJS#readme",
   "dependencies": {
-    "@types/createjs": "^0.0.29"
+    "@types/createjs": "^0.0.29",
+    "@types/reflect-metadata": "^0.1.0"
   }
 }

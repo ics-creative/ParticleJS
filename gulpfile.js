@@ -1,7 +1,6 @@
 const gulp = require("gulp");
 const shell = require("gulp-shell");
 const uglify = require("gulp-uglify");
-const del = require("del");
 const runSequence = require("run-sequence");
 
 gulp.task(
@@ -13,28 +12,21 @@ gulp.task(
 
 gulp.task("build-particle-system", shell.task(["webpack"]));
 
-gulp.task("clean-tmp", cb => {
-  del(["particlejs.js.tmp", "tmp"], cb);
-});
-
-gulp.task("start", () =>
-  runSequence("build-particle-system", "uglify", "clean-tmp")
-);
+gulp.task("start", () => runSequence("build-particle-system", "uglify"));
 
 const typedoc = require("gulp-typedoc");
 
 gulp.task("typedoc", () =>
-  gulp.src(["libs/d.ts/particlejs.d.ts"]).pipe(
+  gulp.src(["src/particlejs.ts"]).pipe(
     typedoc({
       // TypeScript options (see typescript docs)
-      module: "es2015",
+      module: "umd",
       target: "es5",
-      includeDeclarations: true,
+      includeDeclarations: false,
 
       // Output options (see typedoc docs)
       out: "./docs",
-      json: "tmp/doc.json",
-      mode: "modules",
+      mode: "file",
 
       // TypeDoc options (see typedoc docs)
       name: "ParticleJS",
