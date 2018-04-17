@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ParticleJS | ParticleJS</title>
+	<title>ParticleSystem | ParticleJS</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -879,7 +879,7 @@ img { max-width: 100%; }
 		<div class="container">
 			<div class="table-wrap">
 				<div class="table-cell">
-					<strong><a href="index.html">ParticleJS</a></strong>
+					<strong><a href="../index.html">ParticleJS</a></strong>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -910,127 +910,1329 @@ img { max-width: 100%; }
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class=" tsd-kind-enum tsd-is-external">
-			<a href="enums/alphacurvetype.html" class="tsd-kind-icon">Alpha<wbr>Curve<wbr>Type</a>
+			<a href="../enums/alphacurvetype.html" class="tsd-kind-icon">Alpha<wbr>Curve<wbr>Type</a>
 		</li>
 		<li class=" tsd-kind-class tsd-is-external">
-			<a href="classes/colordata.html" class="tsd-kind-icon">Color<wbr>Data</a>
+			<a href="colordata.html" class="tsd-kind-icon">Color<wbr>Data</a>
 		</li>
 		<li class=" tsd-kind-class tsd-is-external">
-			<a href="classes/drawingdata.html" class="tsd-kind-icon">Drawing<wbr>Data</a>
+			<a href="drawingdata.html" class="tsd-kind-icon">Drawing<wbr>Data</a>
 		</li>
 		<li class=" tsd-kind-class tsd-is-external">
-			<a href="classes/particle.html" class="tsd-kind-icon">Particle</a>
+			<a href="particle.html" class="tsd-kind-icon">Particle</a>
+		</li>
+		<li class="current tsd-kind-class tsd-is-external">
+			<a href="particlesystem.html" class="tsd-kind-icon">Particle<wbr>System</a>
+			<ul>
+				<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#constructor" class="tsd-kind-icon">constructor</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#_activeparticles" class="tsd-kind-icon">_active<wbr>Particles</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#_drawingdata" class="tsd-kind-icon">_drawing<wbr>Data</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#_framecount" class="tsd-kind-icon">_frame<wbr>Count</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#_particlespool" class="tsd-kind-icon">_particles<wbr>Pool</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#_playing" class="tsd-kind-icon">_playing</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#container" class="tsd-kind-icon">container</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#shapegenerator" class="tsd-kind-icon">shape<wbr>Generator</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-external">
+					<a href="particlesystem.html#helper_graphics" class="tsd-kind-icon">HELPER_<wbr>GRAPHICS</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#accelerationdirection" class="tsd-kind-icon">acceleration<wbr>Direction</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#accelerationspeed" class="tsd-kind-icon">acceleration<wbr>Speed</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#alphacurvetype" class="tsd-kind-icon">alpha<wbr>Curve<wbr>Type</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#blendmode" class="tsd-kind-icon">blend<wbr>Mode</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#emitfrequency" class="tsd-kind-icon">emit<wbr>Frequency</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#finishalpha" class="tsd-kind-icon">finish<wbr>Alpha</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#finishalphavariance" class="tsd-kind-icon">finish<wbr>Alpha<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#finishscale" class="tsd-kind-icon">finish<wbr>Scale</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#finishscalevariance" class="tsd-kind-icon">finish<wbr>Scale<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#friction" class="tsd-kind-icon">friction</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#initialdirection" class="tsd-kind-icon">initial<wbr>Direction</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#initialdirectionvariance" class="tsd-kind-icon">initial<wbr>Direction<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#initialspeed" class="tsd-kind-icon">initial<wbr>Speed</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#initialspeedvariance" class="tsd-kind-icon">initial<wbr>Speed<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#lifespan" class="tsd-kind-icon">life<wbr>Span</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#lifespanvariance" class="tsd-kind-icon">life<wbr>Span<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#shapeidlist" class="tsd-kind-icon">shape<wbr>IdList</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startalpha" class="tsd-kind-icon">start<wbr>Alpha</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startalphavariance" class="tsd-kind-icon">start<wbr>Alpha<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startcolor" class="tsd-kind-icon">start<wbr>Color</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startscale" class="tsd-kind-icon">start<wbr>Scale</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startscalevariance" class="tsd-kind-icon">start<wbr>Scale<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startx" class="tsd-kind-icon">startX</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startxvariance" class="tsd-kind-icon">startXVariance</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#starty" class="tsd-kind-icon">startY</a>
+				</li>
+				<li class=" tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#startyvariance" class="tsd-kind-icon">startYVariance</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#animate" class="tsd-kind-icon">animate</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#calccurrentvalue" class="tsd-kind-icon">calc<wbr>Current<wbr>Value</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#calcrandomvaluewithrange" class="tsd-kind-icon">calc<wbr>Random<wbr>Value<wbr>With<wbr>Range</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#calcrandomvaluewithvariance" class="tsd-kind-icon">calc<wbr>Random<wbr>Value<wbr>With<wbr>Variance</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#clear" class="tsd-kind-icon">clear</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#dispose" class="tsd-kind-icon">dispose</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#emit" class="tsd-kind-icon">emit</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#emitparticle" class="tsd-kind-icon">emit<wbr>Particle</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#generateparticle" class="tsd-kind-icon">generate<wbr>Particle</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#generateshape" class="tsd-kind-icon">generate<wbr>Shape</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#importfromjson" class="tsd-kind-icon">import<wbr>From<wbr>Json</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#isplaying" class="tsd-kind-icon">is<wbr>Playing</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#lifecheck" class="tsd-kind-icon">life<wbr>Check</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#pause" class="tsd-kind-icon">pause</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#resume" class="tsd-kind-icon">resume</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#setdata" class="tsd-kind-icon">set<wbr>Data</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<a href="particlesystem.html#setparticleparameter" class="tsd-kind-icon">set<wbr>Particle<wbr>Parameter</a>
+				</li>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<a href="particlesystem.html#update" class="tsd-kind-icon">update</a>
+				</li>
+			</ul>
 		</li>
 		<li class=" tsd-kind-class tsd-is-external">
-			<a href="classes/particlesystem.html" class="tsd-kind-icon">Particle<wbr>System</a>
-		</li>
-		<li class=" tsd-kind-class tsd-is-external">
-			<a href="classes/shapegenerator.html" class="tsd-kind-icon">Shape<wbr>Generator</a>
+			<a href="shapegenerator.html" class="tsd-kind-icon">Shape<wbr>Generator</a>
 		</li>
 		<li class=" tsd-kind-variable tsd-is-external">
-			<a href="globals.html#version" class="tsd-kind-icon">VERSION</a>
+			<a href="../globals.html#version" class="tsd-kind-icon">VERSION</a>
 		</li>
 		<li class=" tsd-kind-function tsd-is-external">
-			<a href="globals.html#checkversion" class="tsd-kind-icon">check<wbr>Version</a>
+			<a href="../globals.html#checkversion" class="tsd-kind-icon">check<wbr>Version</a>
 		</li>
 	</ul>
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<div class="tsd-panel tsd-typography">
-			<h1 id="particlejs">ParticleJS</h1>
-			<p><img src="https://raw.githubusercontent.com/ics-creative/ParticleJS/master/eyecatch.png" alt="ParticleJS"></p>
-			<p>ParticleJS provide an easy way to display particle systems from within the EaselJS Framework.
-			That way, adding special effects like explosions, smoke, snow, fire, etc. is very easy to do.</p>
-			<ul>
-				<li><a href="https://ics-creative.github.io/ParticleJS/docs/">API Document</a></li>
-				<li>Examples<ul>
-						<li><a href="https://ics-creative.github.io/ParticleJS/docs/examples/first-step.html">First step</a></li>
-						<li><a href="https://ics-creative.github.io/ParticleJS/docs/examples/mouse-tracking.html">Mouse tracking</a></li>
-						<li><a href="https://ics-creative.github.io/ParticleJS/docs/examples/color-change.html">Color change</a></li>
-					</ul>
+		<section class="tsd-panel tsd-comment">
+			<div class="tsd-comment tsd-typography">
+				<div class="lead">
+					<p>パーティクルの制御クラスです。</p>
+				</div>
+			</div>
+		</section>
+		<section class="tsd-panel tsd-hierarchy">
+			<h3>Hierarchy</h3>
+			<ul class="tsd-hierarchy">
+				<li>
+					<span class="target">ParticleSystem</span>
 				</li>
-				<li><a href="https://raw.githubusercontent.com/ics-creative/ParticleJS/master/LICENSE">MIT LICENSE</a></li>
 			</ul>
-		</div>
-		<div style="position:relative;"><a name="typedoc-main-index" class="tsd-anchor"></a></div>
+		</section>
 		<section class="tsd-panel-group tsd-index-group">
 			<h2>Index</h2>
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section tsd-is-external">
-						<h3>Enumerations</h3>
+						<h3>Constructors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-enum tsd-is-external"><a href="enums/alphacurvetype.html" class="tsd-kind-icon">Alpha<wbr>Curve<wbr>Type</a></li>
+							<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#constructor" class="tsd-kind-icon">constructor</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-external">
-						<h3>Classes</h3>
+						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-class tsd-is-external"><a href="classes/colordata.html" class="tsd-kind-icon">Color<wbr>Data</a></li>
-							<li class="tsd-kind-class tsd-is-external"><a href="classes/drawingdata.html" class="tsd-kind-icon">Drawing<wbr>Data</a></li>
-							<li class="tsd-kind-class tsd-is-external"><a href="classes/particle.html" class="tsd-kind-icon">Particle</a></li>
-							<li class="tsd-kind-class tsd-is-external"><a href="classes/particlesystem.html" class="tsd-kind-icon">Particle<wbr>System</a></li>
-							<li class="tsd-kind-class tsd-is-external"><a href="classes/shapegenerator.html" class="tsd-kind-icon">Shape<wbr>Generator</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#_activeparticles" class="tsd-kind-icon">_active<wbr>Particles</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#_drawingdata" class="tsd-kind-icon">_drawing<wbr>Data</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#_framecount" class="tsd-kind-icon">_frame<wbr>Count</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#_particlespool" class="tsd-kind-icon">_particles<wbr>Pool</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#_playing" class="tsd-kind-icon">_playing</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#container" class="tsd-kind-icon">container</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#shapegenerator" class="tsd-kind-icon">shape<wbr>Generator</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-external"><a href="particlesystem.html#helper_graphics" class="tsd-kind-icon">HELPER_<wbr>GRAPHICS</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-external">
-						<h3>Variables</h3>
+						<h3>Accessors</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-variable tsd-is-external"><a href="globals.html#version" class="tsd-kind-icon">VERSION</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#accelerationdirection" class="tsd-kind-icon">acceleration<wbr>Direction</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#accelerationspeed" class="tsd-kind-icon">acceleration<wbr>Speed</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#alphacurvetype" class="tsd-kind-icon">alpha<wbr>Curve<wbr>Type</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#blendmode" class="tsd-kind-icon">blend<wbr>Mode</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#emitfrequency" class="tsd-kind-icon">emit<wbr>Frequency</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#finishalpha" class="tsd-kind-icon">finish<wbr>Alpha</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#finishalphavariance" class="tsd-kind-icon">finish<wbr>Alpha<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#finishscale" class="tsd-kind-icon">finish<wbr>Scale</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#finishscalevariance" class="tsd-kind-icon">finish<wbr>Scale<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#friction" class="tsd-kind-icon">friction</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#initialdirection" class="tsd-kind-icon">initial<wbr>Direction</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#initialdirectionvariance" class="tsd-kind-icon">initial<wbr>Direction<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#initialspeed" class="tsd-kind-icon">initial<wbr>Speed</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#initialspeedvariance" class="tsd-kind-icon">initial<wbr>Speed<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#lifespan" class="tsd-kind-icon">life<wbr>Span</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#lifespanvariance" class="tsd-kind-icon">life<wbr>Span<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#shapeidlist" class="tsd-kind-icon">shape<wbr>IdList</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startalpha" class="tsd-kind-icon">start<wbr>Alpha</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startalphavariance" class="tsd-kind-icon">start<wbr>Alpha<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startcolor" class="tsd-kind-icon">start<wbr>Color</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startscale" class="tsd-kind-icon">start<wbr>Scale</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startscalevariance" class="tsd-kind-icon">start<wbr>Scale<wbr>Variance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startx" class="tsd-kind-icon">startX</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startxvariance" class="tsd-kind-icon">startXVariance</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#starty" class="tsd-kind-icon">startY</a></li>
+							<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#startyvariance" class="tsd-kind-icon">startYVariance</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section tsd-is-external">
-						<h3>Functions</h3>
+						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-function tsd-is-external"><a href="globals.html#checkversion" class="tsd-kind-icon">check<wbr>Version</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#animate" class="tsd-kind-icon">animate</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#calccurrentvalue" class="tsd-kind-icon">calc<wbr>Current<wbr>Value</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#calcrandomvaluewithrange" class="tsd-kind-icon">calc<wbr>Random<wbr>Value<wbr>With<wbr>Range</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#calcrandomvaluewithvariance" class="tsd-kind-icon">calc<wbr>Random<wbr>Value<wbr>With<wbr>Variance</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#clear" class="tsd-kind-icon">clear</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#dispose" class="tsd-kind-icon">dispose</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#emit" class="tsd-kind-icon">emit</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#emitparticle" class="tsd-kind-icon">emit<wbr>Particle</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#generateparticle" class="tsd-kind-icon">generate<wbr>Particle</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#generateshape" class="tsd-kind-icon">generate<wbr>Shape</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#importfromjson" class="tsd-kind-icon">import<wbr>From<wbr>Json</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#isplaying" class="tsd-kind-icon">is<wbr>Playing</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#lifecheck" class="tsd-kind-icon">life<wbr>Check</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#pause" class="tsd-kind-icon">pause</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#resume" class="tsd-kind-icon">resume</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#setdata" class="tsd-kind-icon">set<wbr>Data</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external"><a href="particlesystem.html#setparticleparameter" class="tsd-kind-icon">set<wbr>Particle<wbr>Parameter</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-external"><a href="particlesystem.html#update" class="tsd-kind-icon">update</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group tsd-is-external">
-			<h2>Variables</h2>
-			<section class="tsd-panel tsd-member tsd-kind-variable tsd-is-external">
-				<a name="version" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagConst">Const</span> VERSION</h3>
-				<div class="tsd-signature tsd-kind-icon">VERSION<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"1.0.0"</span><span class="tsd-signature-symbol"> =&nbsp;&quot;1.0.0&quot;</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L7">particle/particle-system.ts:7</a></li>
-					</ul>
-				</aside>
-			</section>
-		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-external">
-			<h2>Functions</h2>
-			<section class="tsd-panel tsd-member tsd-kind-function tsd-is-external">
-				<a name="checkversion" class="tsd-anchor"></a>
-				<h3>check<wbr>Version</h3>
-				<ul class="tsd-signatures tsd-kind-function tsd-is-external">
-					<li class="tsd-signature tsd-kind-icon">check<wbr>Version<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+			<h2>Constructors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+				<a name="constructor" class="tsd-anchor"></a>
+				<h3>constructor</h3>
+				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">new <wbr>Particle<wbr>System<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="particlesystem.html" class="tsd-signature-type">ParticleSystem</a></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L13">particle/particle-system.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L73">particle/particle-system.ts:73</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <a href="particlesystem.html" class="tsd-signature-type">ParticleSystem</a></h4>
+					</li>
+				</ul>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Properties</h2>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="_activeparticles" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _active<wbr>Particles</h3>
+				<div class="tsd-signature tsd-kind-icon">_active<wbr>Particles<span class="tsd-signature-symbol">:</span> <a href="particle.html" class="tsd-signature-type">Particle</a><span class="tsd-signature-symbol">[]</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L63">particle/particle-system.ts:63</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="_drawingdata" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _drawing<wbr>Data</h3>
+				<div class="tsd-signature tsd-kind-icon">_drawing<wbr>Data<span class="tsd-signature-symbol">:</span> <a href="drawingdata.html" class="tsd-signature-type">DrawingData</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L64">particle/particle-system.ts:64</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="_framecount" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _frame<wbr>Count</h3>
+				<div class="tsd-signature tsd-kind-icon">_frame<wbr>Count<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> =&nbsp;0</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L65">particle/particle-system.ts:65</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="_particlespool" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _particles<wbr>Pool</h3>
+				<div class="tsd-signature tsd-kind-icon">_particles<wbr>Pool<span class="tsd-signature-symbol">:</span> <a href="particle.html" class="tsd-signature-type">Particle</a><span class="tsd-signature-symbol">[]</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L62">particle/particle-system.ts:62</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="_playing" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> _playing</h3>
+				<div class="tsd-signature tsd-kind-icon">_playing<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L66">particle/particle-system.ts:66</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-external">
+				<a name="container" class="tsd-anchor"></a>
+				<h3>container</h3>
+				<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Container</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L60">particle/particle-system.ts:60</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>パーティクルが配置されるコンテナーです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="shapegenerator" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> shape<wbr>Generator</h3>
+				<div class="tsd-signature tsd-kind-icon">shape<wbr>Generator<span class="tsd-signature-symbol">:</span> <a href="shapegenerator.html" class="tsd-signature-type">ShapeGenerator</a></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L91">particle/particle-system.ts:91</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-external">
+				<a name="helper_graphics" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> HELPER_<wbr>GRAPHICS</h3>
+				<div class="tsd-signature tsd-kind-icon">HELPER_<wbr>GRAPHICS<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Graphics</span><span class="tsd-signature-symbol"> =&nbsp;new createjs.Graphics()</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L55">particle/particle-system.ts:55</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p> グラフィックオブジェクトです。内部計算に使用します。</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Accessors</h2>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="accelerationdirection" class="tsd-anchor"></a>
+				<h3>acceleration<wbr>Direction</h3>
+				<div class="tsd-signature tsd-kind-icon">acceleration<wbr>Direction<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L720">particle/particle-system.ts:720</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L728">particle/particle-system.ts:728</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>重力方向 (度)です。
+						重力です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="accelerationspeed" class="tsd-anchor"></a>
+				<h3>acceleration<wbr>Speed</h3>
+				<div class="tsd-signature tsd-kind-icon">acceleration<wbr>Speed<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L704">particle/particle-system.ts:704</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L712">particle/particle-system.ts:712</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>重力です。
+						重力です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="alphacurvetype" class="tsd-anchor"></a>
+				<h3>alpha<wbr>Curve<wbr>Type</h3>
+				<div class="tsd-signature tsd-kind-icon">alpha<wbr>Curve<wbr>Type<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L944">particle/particle-system.ts:944</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L952">particle/particle-system.ts:952</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>透明度の計算式の設定です。
+						透明度の計算式の設定です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="blendmode" class="tsd-anchor"></a>
+				<h3>blend<wbr>Mode</h3>
+				<div class="tsd-signature tsd-kind-icon">blend<wbr>Mode<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L928">particle/particle-system.ts:928</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L936">particle/particle-system.ts:936</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>trueのときシェイプを加算合成します。
+						trueのときシェイプを加算合成します。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="emitfrequency" class="tsd-anchor"></a>
+				<h3>emit<wbr>Frequency</h3>
+				<div class="tsd-signature tsd-kind-icon">emit<wbr>Frequency<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L544">particle/particle-system.ts:544</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L552">particle/particle-system.ts:552</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>1秒あたりの発生数です。
+						1秒あたりの発生数です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="finishalpha" class="tsd-anchor"></a>
+				<h3>finish<wbr>Alpha</h3>
+				<div class="tsd-signature tsd-kind-icon">finish<wbr>Alpha<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L864">particle/particle-system.ts:864</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L872">particle/particle-system.ts:872</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>終了時の透明度です。
+						終了時の透明度です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="finishalphavariance" class="tsd-anchor"></a>
+				<h3>finish<wbr>Alpha<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">finish<wbr>Alpha<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L880">particle/particle-system.ts:880</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L888">particle/particle-system.ts:888</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>終了時の透明度のばらつきです。
+						終了時の透明度のばらつきです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="finishscale" class="tsd-anchor"></a>
+				<h3>finish<wbr>Scale</h3>
+				<div class="tsd-signature tsd-kind-icon">finish<wbr>Scale<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L768">particle/particle-system.ts:768</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L776">particle/particle-system.ts:776</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>終了時のスケールです。
+						終了時のスケールです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="finishscalevariance" class="tsd-anchor"></a>
+				<h3>finish<wbr>Scale<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">finish<wbr>Scale<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L784">particle/particle-system.ts:784</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L792">particle/particle-system.ts:792</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>終了時のスケールのばらつきです。
+						終了時のスケールのばらつきです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="friction" class="tsd-anchor"></a>
+				<h3>friction</h3>
+				<div class="tsd-signature tsd-kind-icon">friction<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L688">particle/particle-system.ts:688</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L696">particle/particle-system.ts:696</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>摩擦です。
+						摩擦です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="initialdirection" class="tsd-anchor"></a>
+				<h3>initial<wbr>Direction</h3>
+				<div class="tsd-signature tsd-kind-icon">initial<wbr>Direction<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L624">particle/particle-system.ts:624</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L632">particle/particle-system.ts:632</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>初期速度 - 方向 (度)です。
+						初期速度 - 方向 (度)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="initialdirectionvariance" class="tsd-anchor"></a>
+				<h3>initial<wbr>Direction<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">initial<wbr>Direction<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L640">particle/particle-system.ts:640</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L648">particle/particle-system.ts:648</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>初期速度 - 方向のばらつき (度)です。
+						初期速度 - 方向のばらつき (度)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="initialspeed" class="tsd-anchor"></a>
+				<h3>initial<wbr>Speed</h3>
+				<div class="tsd-signature tsd-kind-icon">initial<wbr>Speed<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L656">particle/particle-system.ts:656</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L664">particle/particle-system.ts:664</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>初期速度 (px)です。
+						初期速度 (px)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="initialspeedvariance" class="tsd-anchor"></a>
+				<h3>initial<wbr>Speed<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">initial<wbr>Speed<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L672">particle/particle-system.ts:672</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L680">particle/particle-system.ts:680</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>初期速度のばらつきです。
+						初期速度のばらつきです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="lifespan" class="tsd-anchor"></a>
+				<h3>life<wbr>Span</h3>
+				<div class="tsd-signature tsd-kind-icon">life<wbr>Span<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L800">particle/particle-system.ts:800</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L808">particle/particle-system.ts:808</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>ライフ(フレーム数)です。
+						ライフ(フレーム数)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="lifespanvariance" class="tsd-anchor"></a>
+				<h3>life<wbr>Span<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">life<wbr>Span<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L816">particle/particle-system.ts:816</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L824">particle/particle-system.ts:824</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>ライフのばらつき(フレーム数)です。
+						ライフのばらつき(フレーム数)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="shapeidlist" class="tsd-anchor"></a>
+				<h3>shape<wbr>IdList</h3>
+				<div class="tsd-signature tsd-kind-icon">shape<wbr>IdList<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L896">particle/particle-system.ts:896</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L904">particle/particle-system.ts:904</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>使用するシェイプID設定です。
+						使用するシェイプID設定です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startalpha" class="tsd-anchor"></a>
+				<h3>start<wbr>Alpha</h3>
+				<div class="tsd-signature tsd-kind-icon">start<wbr>Alpha<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L832">particle/particle-system.ts:832</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L840">particle/particle-system.ts:840</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>始時の透明度です。
+						始時の透明度です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startalphavariance" class="tsd-anchor"></a>
+				<h3>start<wbr>Alpha<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">start<wbr>Alpha<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L848">particle/particle-system.ts:848</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L856">particle/particle-system.ts:856</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>開始時の透明度のばらつきです。
+						開始時の透明度のばらつきです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startcolor" class="tsd-anchor"></a>
+				<h3>start<wbr>Color</h3>
+				<div class="tsd-signature tsd-kind-icon">start<wbr>Color<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L912">particle/particle-system.ts:912</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L920">particle/particle-system.ts:920</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>初期カラーの設定です。
+						初期カラーの設定です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startscale" class="tsd-anchor"></a>
+				<h3>start<wbr>Scale</h3>
+				<div class="tsd-signature tsd-kind-icon">start<wbr>Scale<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L736">particle/particle-system.ts:736</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L744">particle/particle-system.ts:744</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>開始時のスケールです。
+						開始時のスケールです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startscalevariance" class="tsd-anchor"></a>
+				<h3>start<wbr>Scale<wbr>Variance</h3>
+				<div class="tsd-signature tsd-kind-icon">start<wbr>Scale<wbr>Variance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L752">particle/particle-system.ts:752</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L760">particle/particle-system.ts:760</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>開始時のスケールのばらつきです。
+						開始時のスケールのばらつきです。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startx" class="tsd-anchor"></a>
+				<h3>startX</h3>
+				<div class="tsd-signature tsd-kind-icon">startX<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L560">particle/particle-system.ts:560</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L568">particle/particle-system.ts:568</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>発生基準位置 - X座標 (px)です。
+						発生基準位置 - X座標 (px)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startxvariance" class="tsd-anchor"></a>
+				<h3>startXVariance</h3>
+				<div class="tsd-signature tsd-kind-icon">startXVariance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L576">particle/particle-system.ts:576</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L584">particle/particle-system.ts:584</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>発生基準位置 - X座標のばらつき (px)です。
+						発生基準位置 - X座標のばらつき (px)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="starty" class="tsd-anchor"></a>
+				<h3>startY</h3>
+				<div class="tsd-signature tsd-kind-icon">startY<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L592">particle/particle-system.ts:592</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L600">particle/particle-system.ts:600</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>発生位置 - Y座標 (px)です。
+						発生位置 - Y座標 (px)です。</p>
+					</div>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-accessor tsd-parent-kind-class tsd-is-external">
+				<a name="startyvariance" class="tsd-anchor"></a>
+				<h3>startYVariance</h3>
+				<div class="tsd-signature tsd-kind-icon">startYVariance<span class="tsd-signature-symbol">:</span> </div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L608">particle/particle-system.ts:608</a></li>
+						<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L616">particle/particle-system.ts:616</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>発生基準位置 - X座標のばらつき (px)です。
+						発生基準位置 - X座標のばらつき (px)です。</p>
+					</div>
+				</div>
+			</section>
+		</section>
+		<section class="tsd-panel-group tsd-member-group tsd-is-external">
+			<h2>Methods</h2>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="animate" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> animate</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">animate<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L130">particle/particle-system.ts:130</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
-								<p>現在のバージョンと互換性があるかどうかをチェックします。</p>
+								<p>パーティクルの動きを更新します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="calccurrentvalue" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> calc<wbr>Current<wbr>Value</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">calc<wbr>Current<wbr>Value<span class="tsd-signature-symbol">(</span>start<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, end<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, life<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L536">particle/particle-system.ts:536</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>現在の年齢依存の数値を計算します。</p>
 							</div>
 						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>value: <span class="tsd-signature-type">string</span></h5>
+								<h5>start: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>開始時の値です。</p>
+								</div>
+							</li>
+							<li>
+								<h5>end: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>終了時の値です。</p>
+								</div>
+							</li>
+							<li>
+								<h5>life: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>現在の寿命を示します。開始時は1.0で、終了時は0.0の想定です。</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						<p>現在の値です。</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="calcrandomvaluewithrange" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> calc<wbr>Random<wbr>Value<wbr>With<wbr>Range</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">calc<wbr>Random<wbr>Value<wbr>With<wbr>Range<span class="tsd-signature-symbol">(</span>minValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, maxValue<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L500">particle/particle-system.ts:500</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>一定範囲の数値を計算します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>minValue: <span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li>
+								<h5>maxValue: <span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li>
+								<h5>value: <span class="tsd-signature-type">number</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="calcrandomvaluewithvariance" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> calc<wbr>Random<wbr>Value<wbr>With<wbr>Variance</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">calc<wbr>Random<wbr>Value<wbr>With<wbr>Variance<span class="tsd-signature-symbol">(</span>value<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, variance<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span>, isInteger<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L515">particle/particle-system.ts:515</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>ばらつきのある値を計算し取得します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>value: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>基準値です。</p>
+								</div>
+							</li>
+							<li>
+								<h5>variance: <span class="tsd-signature-type">number</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>バラつきの範囲です。</p>
+								</div>
+							</li>
+							<li>
+								<h5>isInteger: <span class="tsd-signature-type">boolean</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>整数であるかを指定します。</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+						<p>数値を返します。</p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="clear" class="tsd-anchor"></a>
+				<h3>clear</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">clear<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L210">particle/particle-system.ts:210</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルを全て削除します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="dispose" class="tsd-anchor"></a>
+				<h3>dispose</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">dispose<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L224">particle/particle-system.ts:224</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルシステムを破棄します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="emit" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> emit</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">emit<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L243">particle/particle-system.ts:243</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルの生成を行います。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="emitparticle" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> emit<wbr>Particle</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">emit<wbr>Particle<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L272">particle/particle-system.ts:272</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>個々のパーティクルを生成し、パーティクルシステムに登録します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="generateparticle" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> generate<wbr>Particle</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">generate<wbr>Particle<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="particle.html" class="tsd-signature-type">Particle</a></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L282">particle/particle-system.ts:282</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルを生成し、パラメーターを設定します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <a href="particle.html" class="tsd-signature-type">Particle</a></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="generateshape" class="tsd-anchor"></a>
+				<h3>generate<wbr>Shape</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">generate<wbr>Shape<span class="tsd-signature-symbol">(</span>particle<span class="tsd-signature-symbol">: </span><a href="particle.html" class="tsd-signature-type">Particle</a>, shapeIdList<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L396">particle/particle-system.ts:396</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルに使用するシェイプを生成します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>particle: <a href="particle.html" class="tsd-signature-type">Particle</a></h5>
+							</li>
+							<li>
+								<h5>shapeIdList: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 								<div class="tsd-comment tsd-typography">
 								</div>
 							</li>
 						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="importfromjson" class="tsd-anchor"></a>
+				<h3>import<wbr>From<wbr>Json</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">import<wbr>From<wbr>Json<span class="tsd-signature-symbol">(</span>jsonObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L103">particle/particle-system.ts:103</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルの設定データをJson形式のオブジェクトで取り込みます。</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>jsonObject: <span class="tsd-signature-type">any</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="isplaying" class="tsd-anchor"></a>
+				<h3>is<wbr>Playing</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">is<wbr>Playing<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L71">particle/particle-system.ts:71</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルのアニメーションが再生されているかどうか。</p>
+							</div>
+						</div>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="lifecheck" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> life<wbr>Check</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">life<wbr>Check<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L194">particle/particle-system.ts:194</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルが生きているか確認します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="pause" class="tsd-anchor"></a>
+				<h3>pause</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">pause<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L482">particle/particle-system.ts:482</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>一時的にパーティクルの再生を停止します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="resume" class="tsd-anchor"></a>
+				<h3>resume</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">resume<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L489">particle/particle-system.ts:489</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>pause()で停止したパーティクルの再生を再開します。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="setdata" class="tsd-anchor"></a>
+				<h3>set<wbr>Data</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">set<wbr>Data<span class="tsd-signature-symbol">(</span>drawingData<span class="tsd-signature-symbol">: </span><a href="drawingdata.html" class="tsd-signature-type">DrawingData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L96">particle/particle-system.ts:96</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルの設定データを取り込みます。</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>drawingData: <a href="drawingdata.html" class="tsd-signature-type">DrawingData</a></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+				<a name="setparticleparameter" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagPrivate">Private</span> set<wbr>Particle<wbr>Parameter</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">set<wbr>Particle<wbr>Parameter<span class="tsd-signature-symbol">(</span>particle<span class="tsd-signature-symbol">: </span><a href="particle.html" class="tsd-signature-type">Particle</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L299">particle/particle-system.ts:299</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルパラメータの設定を行います。</p>
+							</div>
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>particle: <a href="particle.html" class="tsd-signature-type">Particle</a></h5>
+								<div class="tsd-comment tsd-typography">
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-external">
+				<a name="update" class="tsd-anchor"></a>
+				<h3>update</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-external">
+					<li class="tsd-signature tsd-kind-icon">update<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/ics-creative/ParticleJS/blob/f07e0d5/src/particle/particle-system.ts#L117">particle/particle-system.ts:117</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>パーティクルシステムの更新を行います。</p>
+							</div>
+						</div>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 					</li>
 				</ul>
 			</section>
