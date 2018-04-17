@@ -12,6 +12,7 @@
     "gulp-typescript": "^4.0.2",
     "harmony-reflect": "^1.4.2",
     "lite-server": "^2.0.1",
+    "prettier": "^1.12.1",
     "run-sequence": "^2.2.1",
     "tsify": "^4.0.0",
     "typescript": "^2.8.1",
@@ -22,7 +23,8 @@
     "start": "gulp start",
     "sync": "lite-server & watch 'gulp build-particle-system' src",
     "generate-declaration": "tsc -p src --outDir tmp --module commonjs --declaration",
-    "generate-documentation": "gulp typedoc ; cd generate-examples-code; node index;"
+    "generate-documentation": "gulp typedoc ; cd generate-examples-code; node index;",
+    "format": "prettier --write 'src/**/*.ts' && prettier --write 'gulpfile.js'"
   },
   "repository": {
     "type": "git",
