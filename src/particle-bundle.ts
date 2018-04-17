@@ -1,5 +1,4 @@
 /// <reference path="../node_modules/typescript/lib/lib.es6.d.ts"/>
-/// <reference path="../typings/main.d.ts"/>
 
 import {particlejs, ParticleSystem} from "./particle/particle-system";
 import {DrawingData} from "./data/data-drawing";

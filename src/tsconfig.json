@@ -9,9 +9,8 @@
     "removeComments": false,
     "noImplicitAny": true
   },
-  "files":[
-    "particle-bundle.ts",
-    "../typings/main.d.ts"
+  "files": [
+    "particle-bundle.ts"
   ],
   "exclude": [
     "node_modules"
