@@ -1,5 +1,3 @@
-"use strict";
-
 declare namespace window {
   export var particlejs: any;
 }

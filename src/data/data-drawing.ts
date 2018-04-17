@@ -1,5 +1,3 @@
-"use strict";
-
 import { ColorData } from "./data-color";
 import { AlphaCurveType } from "../enum/alpha-curve-type";
 

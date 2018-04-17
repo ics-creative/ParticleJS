@@ -1,5 +1,3 @@
-"use strict";
-
 import { Particle } from "./particle";
 import { DrawingData } from "../data/data-drawing";
 import { ShapeGenerator } from "../assets/shape-generator";

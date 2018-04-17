@@ -1,5 +1,3 @@
-"use strict";
-
 export class ColorData {
   /**
    * 色相を表します(0-360)。
