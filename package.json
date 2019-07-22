@@ -12,7 +12,6 @@
     "gulp-uglify": "^3.0.0",
     "lite-server": "^2.0.1",
     "prettier": "^1.12.1",
-    "run-sequence": "^2.2.1",
     "ts-loader": "^4.2.0",
     "typedoc": "^0.14.2",
     "typescript": "^2.8.1",
