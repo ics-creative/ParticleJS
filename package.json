@@ -5,7 +5,7 @@
   "main": "libs/particlejs.js",
   "types": "libs/d.ts/particlejs.d.ts",
   "devDependencies": {
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-shell": "^0.6.5",
     "gulp-typedoc": "^2.2.0",
     "gulp-typescript": "^4.0.2",
@@ -14,12 +14,12 @@
     "prettier": "^1.12.1",
     "run-sequence": "^2.2.1",
     "ts-loader": "^4.2.0",
-    "typedoc": "^0.11.1",
+    "typedoc": "^0.14.2",
     "typescript": "^2.8.1",
     "uglify-js": "^3.3.21",
     "watch": "^1.0.2",
     "webpack": "^4.5.0",
-    "webpack-cli": "^2.0.14"
+    "webpack-cli": "^3.3.6"
   },
   "scripts": {
     "start": "gulp start",
