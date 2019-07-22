@@ -46,17 +46,32 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, {
-/******/ 				configurable: false,
-/******/ 				enumerable: true,
-/******/ 				get: getter
-/******/ 			});
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
 /******/ 		}
 /******/ 	};
 /******/
 /******/ 	// define __esModule on exports
 /******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
 /******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
 /******/ 	};
 /******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
@@ -76,11 +91,18 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(1);
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -577,15 +599,18 @@ var data_drawing_DrawingData = /** @class */ (function () {
          * @type {number}
          */
         this.initialDirectionVariance = 0;
-        /** 初期速度 (px)です。
+        /**
+         * 初期速度 (px)です。
          * @type {number}
          */
         this.initialSpeed = 0;
-        /** 初期速度のばらつきです。
+        /**
+         * 初期速度のばらつきです。
          * @type {number}
          */
         this.initialSpeedVariance = 0;
-        /** 摩擦です。
+        /**
+         * 摩擦です。
          * @type {number}
          */
         this.friction = 0;
@@ -593,21 +618,28 @@ var data_drawing_DrawingData = /** @class */ (function () {
          * @type {number}
          */
         this.accelerationSpeed = 0;
-        /** 重力方向 (度)です。
+        /**
+         * 重力方向 (度)です。
          * @type {number}
          */
         this.accelerationDirection = 0;
-        /** 開始時のスケールです。
+        /**
+         * 開始時のスケールです。
          * @type {number}
          */
         this.startScale = 0;
-        /** 開始時のスケールのばらつきです。 */
+        /**
+         * 開始時のスケールのばらつきです。
+         * @type {number}
+         */
         this.startScaleVariance = 0;
-        /** 終了時のスケールです。
+        /**
+         * 終了時のスケールです。
          * @type {number}
          */
         this.finishScale = 0;
-        /** 終了時のスケールのばらつきです。
+        /**
+         * 終了時のスケールのばらつきです。
          * @type {number}
          */
         this.finishScaleVariance = 0;
@@ -615,7 +647,8 @@ var data_drawing_DrawingData = /** @class */ (function () {
          * ライフ(フレーム数)です。
          * @type {number}
          */
-        this.lifeSpan = 0; /**
+        this.lifeSpan = 0;
+        /**
          * ライフのばらつき(フレーム数)です。
          * @type {number}
          */
@@ -1671,16 +1704,16 @@ var particle_system_ParticleSystem = /** @class */ (function () {
 
 
 // CONCATENATED MODULE: ./src/particlejs.ts
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ParticleSystem", function() { return particle_system_ParticleSystem; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Particle", function() { return particle_Particle; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "DrawingData", function() { return data_drawing_DrawingData; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ColorData", function() { return ColorData; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ShapeData", function() { return ShapeData; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ShapeGenerator", function() { return shape_generator_ShapeGenerator; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "AlphaCurveType", function() { return AlphaCurveType; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "ShapeType", function() { return ShapeType; });
-/* concated harmony reexport */__webpack_require__.d(__webpack_exports__, "Assets", function() { return Assets; });
+/* concated harmony reexport ParticleSystem */__webpack_require__.d(__webpack_exports__, "ParticleSystem", function() { return particle_system_ParticleSystem; });
+/* concated harmony reexport Particle */__webpack_require__.d(__webpack_exports__, "Particle", function() { return particle_Particle; });
+/* concated harmony reexport VERSION */__webpack_require__.d(__webpack_exports__, "VERSION", function() { return VERSION; });
+/* concated harmony reexport DrawingData */__webpack_require__.d(__webpack_exports__, "DrawingData", function() { return data_drawing_DrawingData; });
+/* concated harmony reexport ColorData */__webpack_require__.d(__webpack_exports__, "ColorData", function() { return ColorData; });
+/* concated harmony reexport ShapeData */__webpack_require__.d(__webpack_exports__, "ShapeData", function() { return ShapeData; });
+/* concated harmony reexport ShapeGenerator */__webpack_require__.d(__webpack_exports__, "ShapeGenerator", function() { return shape_generator_ShapeGenerator; });
+/* concated harmony reexport AlphaCurveType */__webpack_require__.d(__webpack_exports__, "AlphaCurveType", function() { return AlphaCurveType; });
+/* concated harmony reexport ShapeType */__webpack_require__.d(__webpack_exports__, "ShapeType", function() { return ShapeType; });
+/* concated harmony reexport Assets */__webpack_require__.d(__webpack_exports__, "Assets", function() { return Assets; });
 
 
 
@@ -1691,13 +1724,6 @@ var particle_system_ParticleSystem = /** @class */ (function () {
 
 
 
-
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(0);
 
 
 /***/ })
