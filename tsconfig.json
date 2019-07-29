@@ -10,7 +10,7 @@
       "dom"
     ],
     "declaration": true,
-    "declarationDir": "d.ts"
+    "declarationDir": "libs/d.ts"
   },
   "files": [
     "./src/particlejs.ts"
