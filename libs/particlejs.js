@@ -1147,7 +1147,7 @@ var particle_system_ParticleSystem = /** @class */ (function () {
             ? ""
             : this._drawingData.shapeIdList[r];
         particle.colorCommand = null;
-        var container = this.shapeGenerator.generateShape(shapeId);
+        var container = (this.shapeGenerator.generateShape(shapeId));
         particle.particleShape.addChild(container);
         var shape = container.getChildAt(0); // こういう作りにする
         if (shape == null) {
