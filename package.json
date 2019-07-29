@@ -6,7 +6,7 @@
   "types": "libs/d.ts/particlejs.d.ts",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-shell": "^0.6.5",
+    "gulp-shell": "^0.7.1",
     "gulp-typedoc": "^2.2.0",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.0",
