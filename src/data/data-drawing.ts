@@ -32,6 +32,7 @@ export class DrawingData {
    * @type {number}
    */
   startX: number = 0;
+
   /**
    * 発生基準位置 - X座標のばらつき (px)です。
    * @type {number}
@@ -43,6 +44,7 @@ export class DrawingData {
    * @type {number}
    */
   startY: number = 0;
+
   /**
    * 発生位置 - Y座標のばらつき (px)です。
    * @type {number}
@@ -54,22 +56,27 @@ export class DrawingData {
    * @type {number}
    */
   initialDirection: number = 0;
+
   /**
    * 初期速度 - 方向のばらつき (度)です。
    * @type {number}
    */
   initialDirectionVariance: number = 0;
 
-  /** 初期速度 (px)です。
+  /**
+   * 初期速度 (px)です。
    * @type {number}
    */
   initialSpeed: number = 0;
-  /** 初期速度のばらつきです。
+
+  /**
+   * 初期速度のばらつきです。
    * @type {number}
    */
   initialSpeedVariance: number = 0;
 
-  /** 摩擦です。
+  /**
+   * 摩擦です。
    * @type {number}
    */
   friction: number = 0;
@@ -78,23 +85,33 @@ export class DrawingData {
    * @type {number}
    */
   accelerationSpeed: number = 0;
-  /** 重力方向 (度)です。
+
+  /**
+   * 重力方向 (度)です。
    * @type {number}
    */
   accelerationDirection: number = 0;
 
-  /** 開始時のスケールです。
+  /**
+   * 開始時のスケールです。
    * @type {number}
    */
   startScale: number = 0;
-  /** 開始時のスケールのばらつきです。 */
+
+  /**
+   * 開始時のスケールのばらつきです。
+   * @type {number}
+   */
   startScaleVariance: number = 0;
 
-  /** 終了時のスケールです。
+  /**
+   * 終了時のスケールです。
    * @type {number}
    */
   finishScale: number = 0;
-  /** 終了時のスケールのばらつきです。
+
+  /**
+   * 終了時のスケールのばらつきです。
    * @type {number}
    */
   finishScaleVariance: number = 0;
@@ -103,7 +120,9 @@ export class DrawingData {
    * ライフ(フレーム数)です。
    * @type {number}
    */
-  lifeSpan: number = 0; /**
+  lifeSpan: number = 0;
+
+  /**
    * ライフのばらつき(フレーム数)です。
    * @type {number}
    */

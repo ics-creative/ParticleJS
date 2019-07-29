@@ -438,8 +438,8 @@ export class ParticleSystem {
 
     particle.colorCommand = null;
 
-    const container = <createjs.Container>this.shapeGenerator.generateShape(
-      shapeId
+    const container = <createjs.Container>(
+      this.shapeGenerator.generateShape(shapeId)
     );
     particle.particleShape.addChild(container);
 

@@ -9,5 +9,5 @@ export declare enum AlphaCurveType {
     /**
      * ランダムです。
      */
-    Random = 1,
+    Random = 1
 }

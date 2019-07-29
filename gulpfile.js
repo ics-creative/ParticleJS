@@ -1,7 +1,6 @@
 const gulp = require("gulp");
 const shell = require("gulp-shell");
 const uglify = require("gulp-uglify");
-const runSequence = require("run-sequence");
 
 gulp.task(
   "uglify",
@@ -12,7 +11,7 @@ gulp.task(
 
 gulp.task("build-particle-system", shell.task(["webpack"]));
 
-gulp.task("start", () => runSequence("build-particle-system", "uglify"));
+gulp.task("start", gulp.series("build-particle-system", "uglify"));
 
 const typedoc = require("gulp-typedoc");
 

@@ -53,15 +53,18 @@ export declare class DrawingData {
      * @type {number}
      */
     initialDirectionVariance: number;
-    /** 初期速度 (px)です。
+    /**
+     * 初期速度 (px)です。
      * @type {number}
      */
     initialSpeed: number;
-    /** 初期速度のばらつきです。
+    /**
+     * 初期速度のばらつきです。
      * @type {number}
      */
     initialSpeedVariance: number;
-    /** 摩擦です。
+    /**
+     * 摩擦です。
      * @type {number}
      */
     friction: number;
@@ -69,21 +72,28 @@ export declare class DrawingData {
      * @type {number}
      */
     accelerationSpeed: number;
-    /** 重力方向 (度)です。
+    /**
+     * 重力方向 (度)です。
      * @type {number}
      */
     accelerationDirection: number;
-    /** 開始時のスケールです。
+    /**
+     * 開始時のスケールです。
      * @type {number}
      */
     startScale: number;
-    /** 開始時のスケールのばらつきです。 */
+    /**
+     * 開始時のスケールのばらつきです。
+     * @type {number}
+     */
     startScaleVariance: number;
-    /** 終了時のスケールです。
+    /**
+     * 終了時のスケールです。
      * @type {number}
      */
     finishScale: number;
-    /** 終了時のスケールのばらつきです。
+    /**
+     * 終了時のスケールのばらつきです。
      * @type {number}
      */
     finishScaleVariance: number;
@@ -92,6 +102,10 @@ export declare class DrawingData {
      * @type {number}
      */
     lifeSpan: number;
+    /**
+     * ライフのばらつき(フレーム数)です。
+     * @type {number}
+     */
     /**  */ lifeSpanVariance: number;
     /**
      *  開始時の透明度です。
@@ -150,5 +164,5 @@ export declare class DrawingData {
      */
     importData(obj: DrawingData): void;
     static checkReflectEnable(): boolean;
-    private setData(obj, checkSkipKey);
+    private setData;
 }
