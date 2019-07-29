@@ -8,7 +8,7 @@
     "gulp": "^4.0.2",
     "gulp-shell": "^0.6.5",
     "gulp-typedoc": "^2.2.0",
-    "gulp-typescript": "^4.0.2",
+    "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.0",
     "lite-server": "^2.0.1",
     "prettier": "^1.12.1",
