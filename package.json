@@ -10,7 +10,7 @@
     "gulp-typedoc": "^2.2.0",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.0",
-    "lite-server": "^2.0.1",
+    "lite-server": "^2.5.4",
     "prettier": "^1.12.1",
     "ts-loader": "^6.0.4",
     "typedoc": "^0.15.0",
