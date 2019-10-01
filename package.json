@@ -12,7 +12,7 @@
     "gulp-uglify": "^3.0.0",
     "lite-server": "^2.5.4",
     "prettier": "^1.12.1",
-    "ts-loader": "^6.0.4",
+    "ts-loader": "^6.2.0",
     "typedoc": "^0.15.0",
     "typescript": "^3.5.3",
     "uglify-js": "^3.3.21",
