@@ -7,7 +7,7 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-shell": "^0.7.1",
-    "gulp-typedoc": "^2.2.0",
+    "gulp-typedoc": "^2.2.3",
     "gulp-typescript": "^5.0.1",
     "gulp-uglify": "^3.0.0",
     "lite-server": "^2.5.4",
