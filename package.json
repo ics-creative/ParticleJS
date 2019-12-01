@@ -14,7 +14,7 @@
     "prettier": "^1.12.1",
     "ts-loader": "^6.0.4",
     "typedoc": "^0.15.0",
-    "typescript": "^3.5.3",
+    "typescript": "^3.7.2",
     "uglify-js": "^3.3.21",
     "watch": "^1.0.2",
     "webpack": "^4.39.2",
