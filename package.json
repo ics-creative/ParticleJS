@@ -18,7 +18,7 @@
     "uglify-js": "^3.3.21",
     "watch": "^1.0.2",
     "webpack": "^4.39.2",
-    "webpack-cli": "^3.3.7"
+    "webpack-cli": "^3.3.11"
   },
   "scripts": {
     "start": "gulp start",
