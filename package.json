@@ -13,7 +13,7 @@
     "lite-server": "^2.5.4",
     "prettier": "^1.12.1",
     "ts-loader": "^6.0.4",
-    "typedoc": "^0.15.0",
+    "typedoc": "^0.16.11",
     "typescript": "^3.5.3",
     "uglify-js": "^3.3.21",
     "watch": "^1.0.2",
